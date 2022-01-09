@@ -1,0 +1,139 @@
+{
+    "translations": {
+        "de": "Deutsch",
+        "en": "English"
+    },
+    "va.not_found": "Nicht gefunden",
+    "va.file_manager": "File manager",
+    "va.close": "schliessen",
+    "va.logout": "Logout",
+    "va.datatable.search": "Suchen",
+    "va.datatable.add_filter": "Filter hinzufügen",
+    "va.datatable.selected_items": "1 Datensatz ausgewählt | {count} Datensätze ausgewählt",
+    "va.pages.list": "{resource} Liste",
+    "va.pages.create": "{resource} neu erstellen",
+    "va.pages.show": "Anzeigen {resource} {label}",
+    "va.pages.edit": "{resource} {label} editieren",
+    "va.pages.not_found": "{resource} #{id} nicht gefunden",
+    "va.actions.list": "Liste",
+    "va.actions.create": "Erstellen",
+    "va.actions.show": "Anzeigen",
+    "va.actions.edit": "Editieren",
+    "va.actions.delete": "Löschen",
+    "va.actions.export": "Exportieren",
+    "va.actions.clone": "Duplizieren",
+    "va.actions.add": "Hinzufügen",
+    "va.actions.remove": "Entfernen",
+    "va.actions.move": "Move",
+    "va.actions.associate": "Associate",
+    "va.actions.dissociate": "Dissociate",
+    "va.actions.locale": "Locale",
+    "va.actions.cancel": "Cancel",
+    "va.actions.save": "Save",
+    "va.actions.save_and_add": "Save and add",
+    "va.actions.save_and_show": "Save and show",
+    "va.actions.save_and_edit": "Save and edit",
+    "va.forms.required_field": "{field] ist Pflichtfeld",
+    "va.confirm.delete_many_title": "Mehrere {resource} löschen",
+    "va.confirm.delete_many_message": "{count} Datensätze löschen",
+    "va.confirm.yes": "Bestätigen",
+    "va.confirm.no": "Abbrechen",
+
+
+    "routes": {
+        "home": "Home",
+        "login": "Login",
+        "forgot_password": "Passwort vergessen",
+        "reset_password": "Passwort zurücksetzen",
+        "register": "Registrieren",
+        "profile": "Profile",
+        "dashboard": "Dashboard",
+        "not_found": "Nicht gefunden!"
+    },
+    "auth": {
+        "username": "Benutzer",
+        "password": "Passwort",
+        "remember": "Errinnern",
+        "sign_in": "Einloggen",
+        "forgot_password": "Passwort vergessen ?",
+        "send": "Senden",
+        "password_confirmation": "Passwort bestätigen",
+        "reset": "Reset",
+        "name": "Benutzername",
+        "email": "Email",
+        "register": "Registrieren"
+    },
+    "profile": {
+        "account": "Benutzer",
+        "password": "Neues Passwort",
+        "name": "Name",
+        "email": "Email",
+        "address": "Addresse",
+        "phone1": "Telefon (mobil)",
+        "current_password": "Passwort",
+        "password_confirmation": "Passwort wiederholen",
+        "update": "Update",
+        "account_updated": "Account updated",
+        "password_changed": "Passwort geändert"
+    },
+    "users": {
+        "impersonate": "Impersonate",
+        "stop_impersonate": "Stop impersonate",
+        "logged_as": "You are actually logged as {0}, click {1} link in order to stop impersonate mode."
+    },
+    "menu": {
+        "login": "Login",
+        "business": "Verwaltung",
+        "customers": "Kunden",
+        "vehicles": "Fahrzeuge",
+        "employees": "Belegschaft",
+        "users": "Mitarbeiter",
+        "profile": "Profile",
+        "dashboard": "Dashboard",
+        "events": "Aufträge"
+    },
+    "resources": {
+        "users": {
+            "name": "Mitarbeiter | Mitarbeiter",
+            "fields": {
+                "name": "Name",
+                "email": "Email",
+                "password": "Password",
+                "password_confirmation": "Password confirmation"
+            }
+        },
+        "events": {
+            "name": "Auftrag | Aufträge",
+            "fields": {},
+            "enums": {}
+        },
+        "customers": {
+            "name": "Kunde | Kunden",
+            "fields": {},
+            "enums": {}
+        },
+        "vehicles": {
+            "name": "Fahrzeug | Fahrzeuge",
+            "fields": {
+                "owner": "Besitzer",
+                "type": "Fahrzeug-Typ",
+                "branding": "Marke",
+                "permit": "Erstzulassung",
+                "insurance_type": "Kasko-Typ",
+                "inspection": "§53-Untersuchung",
+                "license_plate": "Kennzeichen",
+                "events": "Aufträge",
+                "kmAll": "Fahrzeug KM-Stand",
+                "insurance_company": "versichert bei",
+                "insurance_manager": "Ansprechp. Versicherung"
+            },
+            "enums": {
+                "insurance_type": {
+                    "Teilkasko": "Teilkasko",
+                    "Vollkasko": "Vollkasko"
+                }
+            }
+        }
+    }
+}
+

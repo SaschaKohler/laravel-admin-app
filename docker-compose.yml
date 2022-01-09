@@ -1,0 +1,76 @@
+version: '3'
+
+services:
+  ### PHP-FPM ##############################################
+  laravel:
+    build:
+      context: ./
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+    volumes:
+      - ./:/srv/api
+    extra_hosts:
+        -   "host.docker.internal:host-gateway"
+    depends_on:
+      - pgsql
+
+  ### NGINX Server #########################################
+  nginx:
+    build:
+      context: ./docker/nginx
+    volumes:
+      - ./:/srv/api
+      - ./admin/dist:/srv/api/admin
+    ports:
+      - "${NGINX_HTTP_PORT}:80"
+    depends_on:
+      - laravel
+
+  pgsql:
+    image: "postgres" # use latest official postgres version
+    ports:
+        - 5432:5432
+    environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: 'laravel-admin-app' # configure postgres
+    volumes:
+        - pgsql-admin-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+volumes:
+    pgsql-admin-data: # named volumes can be managed easier using docker-compose
+
+
+
+
+
+
+  ### MySQL ################################################
+#  mysql:
+#    build:
+#      context: ./docker/mysql
+#    environment:
+#      - MYSQL_DATABASE=${DB_DATABASE}
+#      - MYSQL_USER=${DB_USERNAME}
+#      - MYSQL_PASSWORD=${DB_PASSWORD}
+#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#      - TZ=${APP_TIMEZONE}
+#
+  ### phpMyAdmin ###########################################
+#  phpmyadmin:
+#    build:
+#      context: ./docker/phpmyadmin
+#    environment:
+#      - PMA_ARBITRARY=1
+#      - MYSQL_USER=pma
+#      - MYSQL_PASSWORD=pmapass
+#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#    ports:
+#      - "${PMA_PORT}:80"
+#    depends_on:
+#      - mysql
+
+  ### Redis ################################################
+#  redis:
+#    build:
+#      context: ./docker/redis

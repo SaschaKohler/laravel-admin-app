@@ -1,0 +1,90 @@
+resources:
+  vehicles:
+    name: Vehicle | Vehicles
+    icon : mdi-car
+    label: vehicle
+    actions:
+      - list
+      - show
+      - create
+      - edit
+      - delete
+    columns:
+      - owner
+      - type
+      - branding
+      - kilometer
+      - permit
+      - insurance_type
+      - license_plate
+      - inspection
+      - insurance_company
+      - insurance_manager
+    sortable:
+      - type
+      - permit
+      - inspection
+    searchable:
+      - type
+      - branding
+      - inspection
+      - insurance_company
+    filterable:
+      - type
+      - branding
+      - inspection
+    fields:
+      owner:
+        label: Besitzer
+        form:
+          required: true
+        db:
+          type: string
+      type:
+        label: Typ
+        form:
+          required: true
+        db:
+          type: enum
+          options:
+            - default('-')
+      branding:
+        label: Marke
+        form:
+          required: true
+        db:
+          type: string
+      permit:
+        label: Zulassung
+        form:
+          required: true
+        db:
+          type: string
+      insurance_type:
+        label: Versicherung
+        form:
+          required: true
+        db:
+          type: enum
+          options:
+            - default('-')
+      inspection:
+        label: Hpt.Untersuchung
+        form:
+          required: false
+        db:
+          type: date
+          options:
+            - nullable
+      insurance_company:
+        label: Vers.Unternehmen
+        form:
+          required: true
+        db:
+          type: string
+      insurance_manger:
+        label: Vers.Ansprech.
+        form:
+          required: true
+        db:
+          type: string
