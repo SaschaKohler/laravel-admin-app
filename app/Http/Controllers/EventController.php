@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateEvent;
 use App\Http\Resources\Event as EventResource;
 use App\Models\Vehicle;
 use App\Models\Event;
+use Illuminate\Database\Eloquent\Builder;
 use Okami101\LaravelAdmin\Filters\SearchFilter;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -29,12 +30,27 @@ class EventController extends Controller
             QueryBuilder::for(Event::class)
                 ->allowedFilters([
                     AllowedFilter::custom('q', new SearchFilter(['type'])),
+                    AllowedFilter::callback('vehicles', function (Builder $query, $value) {
+                        $query->whereHas('vehicles', function (Builder $query) use ($value) {
+                            $query->where('branding', 'LIKE', '%' . $value . '%');
+                        });
+                    }),
+                    AllowedFilter::callback('users', function (Builder $query, $value) {
+                        $query->whereHas('users', function (Builder $query) use ($value) {
+                            $query->where('name', 'LIKE', '%' . $value . '%');
+                        });
+                    }),
+                    AllowedFilter::callback('customer', function (Builder $query, $value) {
+                        $query->whereHas('customer', function (Builder $query) use ($value) {
+                            $query->where('last', 'LIKE', '%' . $value . '%');
+                        });
+                    }),
 
                     AllowedFilter::exact('id'),
                     AllowedFilter::partial('type'),
                 ])
                 ->allowedSorts(['start', 'workingHours', 'type', 'customer'])
-                ->allowedIncludes(['customer', 'vehicles'])
+                ->allowedIncludes(['customer', 'vehicles', 'users', 'tools'])
                 ->exportOrPaginate()
         );
     }
@@ -47,7 +63,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return new EventResource($event->load(['vehicles']));
+        return new EventResource($event->load(['vehicles', 'users', 'customer', 'tools']));
     }
 
     /**
@@ -87,7 +103,7 @@ class EventController extends Controller
 
         foreach ($request->vehicles as $vehicle) {
 
-            if(!$vehicle['pivot']['kmSum']) {
+            if (!$vehicle['pivot']['kmSum']) {
                 $sum = $vehicle['pivot']['kmEnd'] - $vehicle['pivot']['kmBegin'];
                 $vehicle['kmAll'] += $sum;
                 $vehicleSync[$vehicle['pivot']['vehicle_id']] = ['kmBegin' => $vehicle['pivot']['kmBegin'],
@@ -98,8 +114,16 @@ class EventController extends Controller
                 $vehicleModel->save();
             }
         }
-        if( count($vehicleSync) > 0)
-        $event->vehicles()->sync($vehicleSync);
+        if (count($vehicleSync) > 0) {
+            $event->vehicles()->sync($vehicleSync);
+        }
+
+        if ($request->tools) {
+            $event->tools()->sync($request->tools);
+        }
+
+        $event->users()->sync($request->users);
+
 
         return new EventResource($event);
     }

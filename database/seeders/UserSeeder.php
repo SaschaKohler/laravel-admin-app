@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -17,23 +18,31 @@ class UserSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
-            'roles' => ['admin']
+            'roles' => ['admin'],
         ]);
 
         User::factory()->create([
-            'name' => 'Employee',
-            'email' => 'employee@example.com',
-            'roles' => ['employee','indoor','admin']
+            'name' => 'Demo',
+            'email' => 'demo@example.com',
+            'roles' => ['admin'],
         ]);
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             User::factory()->create([
-                'name' => "Employee $i",
-                'email' => "employee-$i@example.com",
-                'roles' => ['employee', 'outdoor'],
+                'name' => "Editor $i",
+                'email' => "editor-$i@example.com",
+                'roles' => ['editor'],
             ]);
         }
 
-
+        for ($i = 1; $i <= 200; $i++) {
+            User::factory()->create([
+                'name' => "Author $i",
+                'email' => "author-$i@example.com",
+                'roles' => ['author'],
+            ]);
+        }
     }
+
 }
+

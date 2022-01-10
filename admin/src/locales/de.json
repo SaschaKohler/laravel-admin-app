@@ -38,6 +38,7 @@
     "va.confirm.delete_many_message": "{count} Datensätze löschen",
     "va.confirm.yes": "Bestätigen",
     "va.confirm.no": "Abbrechen",
+    "va.messages.updated": "Datensatz geändert",
 
 
     "routes": {
@@ -84,8 +85,10 @@
     "menu": {
         "login": "Login",
         "business": "Verwaltung",
+        "garage": "Werkstätte",
         "customers": "Kunden",
         "vehicles": "Fahrzeuge",
+        "tools": "Geräte",
         "employees": "Belegschaft",
         "users": "Mitarbeiter",
         "profile": "Profile",
@@ -104,12 +107,19 @@
         },
         "events": {
             "name": "Auftrag | Aufträge",
-            "fields": {},
+            "fields": {
+                "type": "Leistung"
+            },
             "enums": {}
         },
         "customers": {
             "name": "Kunde | Kunden",
-            "fields": {},
+            "fields": {
+                "first" : "Vorname",
+                "last" : "Nachname",
+                "street": "Strasse",
+                "city": "Stadt/Ort"
+            },
             "enums": {}
         },
         "vehicles": {
@@ -133,6 +143,15 @@
                     "Vollkasko": "Vollkasko"
                 }
             }
+        },
+        "tools": {
+            "name": "Werkzeug | Werkzeuge",
+            "fields": {
+                "title": "Gerät",
+                "acquisitionDate": "Datum d. Anschaffung",
+                "acquisitionPrice": "Preis Anschaffung"
+            },
+            "enums": {}
         }
     }
 }

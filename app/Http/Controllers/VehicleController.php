@@ -37,7 +37,7 @@ class VehicleController extends Controller
                     AllowedFilter::exact('type'),
                     AllowedFilter::partial('branding'),
                 ])
-                ->allowedSorts(['type', 'permit', 'inspection'])
+                ->allowedSorts(['type', 'permit', 'inspection','kmAll'])
                 ->allowedIncludes(['events'])
                 ->exportOrPaginate()
         );

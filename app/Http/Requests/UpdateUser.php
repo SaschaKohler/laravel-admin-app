@@ -31,7 +31,7 @@ class UpdateUser extends FormRequest
             'email' => 'sometimes|required|email|unique:users,email,'.$user->id,
             'phone1'=> 'required',
             'address' => 'required',
-            'active' => 'nullable'
+            'active' => 'nullable',
         ];
     }
 }

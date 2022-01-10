@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Okami101\LaravelAdmin\Http\Resources\BaseResource;
 
-class User extends JsonResource
+class User extends BaseResource
 {
     /**
      * Transform the resource into an array.

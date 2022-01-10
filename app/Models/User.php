@@ -41,4 +41,8 @@ class User extends Authenticatable
         'roles' => 'array',
     ];
 
+    public function events()
+    {
+        return $this->belongsToMany(Event::class)->withTimestamps();
+    }
 }

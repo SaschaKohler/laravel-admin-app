@@ -15,12 +15,7 @@ class EventFactory extends Factory
     {
         return [
             'type' => ucfirst($this->faker->words($this->faker->numberBetween(1,5),true)),
-            'color' => $this->faker->colorName,
-
             'start' => $this->faker->date('d-M-Y'),
-
-
-
 
         ];
     }

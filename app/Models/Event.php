@@ -32,8 +32,18 @@ class Event extends Model
     public function vehicles()
     {
         return $this->belongsToMany(Vehicle::class)
-            ->withPivot(['kmBegin','kmEnd','kmSum'])
+            ->withPivot(['kmBegin','kmEnd','kmSum','hours'])
             ->withTimestamps();
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    public function tools()
+    {
+        return $this->belongsToMany(Tool::class)->withTimestamps();
     }
 
 }
