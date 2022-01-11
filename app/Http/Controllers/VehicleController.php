@@ -28,13 +28,15 @@ class VehicleController extends Controller
         return VehicleResource::collection(
             QueryBuilder::for(Vehicle::class)
                 ->allowedFilters([
-                    AllowedFilter::custom('q', new SearchFilter(['type', 'branding', 'insurance_company'])),
+                    AllowedFilter::custom('q', new SearchFilter(['id','type', 'branding', 'insurance_company'])),
                     AllowedFilter::callback('events', function (Builder $query, $value) {
                         $query->whereHas('events', function (Builder $query) use ($value) {
                             $query->where('type', 'LIKE' , '%' .$value. '%');
                         });
                     }),
                     AllowedFilter::exact('type'),
+                    AllowedFilter::exact('id'),
+                    AllowedFilter::partial('insurance_company'),
                     AllowedFilter::partial('branding'),
                 ])
                 ->allowedSorts(['type', 'permit', 'inspection','kmAll'])

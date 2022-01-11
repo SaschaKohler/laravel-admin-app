@@ -36,10 +36,21 @@
     "va.forms.required_field": "{field] ist Pflichtfeld",
     "va.confirm.delete_many_title": "Mehrere {resource} löschen",
     "va.confirm.delete_many_message": "{count} Datensätze löschen",
+    "va.confirm.delete_title": "gewählten {resource} löschen",
+    "va.confirm.delete_message": "Datensatz löschen bestätigen",
     "va.confirm.yes": "Bestätigen",
     "va.confirm.no": "Abbrechen",
     "va.messages.updated": "Datensatz geändert",
+    "va.messages.created": "Datensatz erstellt",
+    "va.messages.deleted": "Datensatz gelöscht",
 
+
+    "tabs.attributes": "Auftragsdaten",
+    "tabs.vehicles": "Fahrzeuge",
+    "tabs.tools": "Werkzeuge",
+    "input.select.vehicles" : "Fahrzeuge",
+    "input.select.tools" : "Werkzeuge",
+    "va.vehicles": "Fahrzeuge",
 
     "routes": {
         "home": "Home",
@@ -93,7 +104,8 @@
         "users": "Mitarbeiter",
         "profile": "Profile",
         "dashboard": "Dashboard",
-        "events": "Aufträge"
+        "events": "Aufträge",
+        "logbook": "Logbook"
     },
     "resources": {
         "users": {

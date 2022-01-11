@@ -77,13 +77,23 @@ class EventController extends Controller
         $event = Event::create($request->all());
 
 
-        $vehicleSync = array();
+//        $vehicleSync = array();
+//
+//        foreach ($request->vehicles as $vehicle) {
+//
+//            $vehicleSync[] = $vehicle['pivot']['vehicle_id'];
+//        }
+//        $event->vehicles()->sync($vehicleSync);
 
-        foreach ($request->vehicles as $vehicle) {
-
-            $vehicleSync[] = $vehicle['pivot']['vehicle_id'];
+        if ($request->vehicles) {
+            $event->vehicles()->sync($request->vehicles);
         }
-        $event->vehicles()->sync($vehicleSync);
+        if ($request->tools) {
+            $event->tools()->sync($request->tools);
+        }
+
+        $event->users()->sync($request->users);
+
 
         return new EventResource($event);
     }
@@ -99,30 +109,45 @@ class EventController extends Controller
     {
         $event->update($request->all());
 
-        $vehicleSync = array();
-
-        foreach ($request->vehicles as $vehicle) {
-
-            if (!$vehicle['pivot']['kmSum']) {
-                $sum = $vehicle['pivot']['kmEnd'] - $vehicle['pivot']['kmBegin'];
-                $vehicle['kmAll'] += $sum;
-                $vehicleSync[$vehicle['pivot']['vehicle_id']] = ['kmBegin' => $vehicle['pivot']['kmBegin'],
-                    'kmEnd' => $vehicle['pivot']['kmEnd'],
-                    'kmSum' => $sum];
-                $vehicleModel = Vehicle::find($vehicle['pivot']['vehicle_id']);
-                $vehicleModel->kmAll += $sum;
-                $vehicleModel->save();
+        if($request->users) {
+            if ($request->vehicles) {
+                $event->vehicles()->sync($request->vehicles);
             }
-        }
-        if (count($vehicleSync) > 0) {
-            $event->vehicles()->sync($vehicleSync);
+            if ($request->tools) {
+                $event->tools()->sync($request->tools);
+            }
+
+            $event->users()->sync($request->users);
+
+        } else {
+
+        $vehicleSync = array();
+            foreach ($request->vehicles as $vehicle) {
+
+                if ($vehicle['pivot']['kmEnd'] || $vehicle['pivot']['kmBegin']) {
+                    $sum = $vehicle['pivot']['kmEnd'] - $vehicle['pivot']['kmBegin'];
+                    $vehicle['kmAll'] += $sum;
+                    $vehicleSync[$vehicle['pivot']['vehicle_id']] = [
+                        'kmBegin' => $vehicle['pivot']['kmBegin'],
+                        'kmEnd' => $vehicle['pivot']['kmEnd'],
+                        'kmSum' => $sum
+                    ];
+                    $vehicleModel = Vehicle::find($vehicle['pivot']['vehicle_id']);
+                    $vehicleModel->kmAll += $sum;
+                    $vehicleModel->save();
+                }
+            }
+            if (count($vehicleSync) > 0) {
+                $event->vehicles()->sync($vehicleSync);
+            }
+
+
+
         }
 
-        if ($request->tools) {
-            $event->tools()->sync($request->tools);
-        }
 
-        $event->users()->sync($request->users);
+
+
 
 
         return new EventResource($event);

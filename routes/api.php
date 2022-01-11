@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\MonsterChildController;
 use App\Http\Controllers\MonsterController;
 use App\Http\Controllers\ToolController;
@@ -39,5 +40,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         'vehicles' => VehicleController::class,
         'statistics' => StatisticsController::class,
         'tools' => ToolController::class,
+
     ]);
+
+//    Route::get('api/logbook',[LogbookController::class,'index'])->name('logbook.index')
 });
