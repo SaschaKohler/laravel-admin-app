@@ -17,6 +17,7 @@ class CreateToolsTable extends Migration
             $table->string('title');
             $table->date('acquisitionDate')->nullable();
             $table->unsignedDecimal('acquisitionPrice')->nullable();
+            $table->unsignedDecimal('hoursAll')->nullable();
             $table->timestamps();
         });
     }

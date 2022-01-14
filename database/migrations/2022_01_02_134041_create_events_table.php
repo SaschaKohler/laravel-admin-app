@@ -18,8 +18,8 @@ class CreateEventsTable extends Migration
             $table->string('color');
             $table->date('start');
             $table->date('end')->nullable()->default(null);
-            $table->integer('event_id')->unsigned()->nullable()->default(null);
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreignId('event_id')->nullable()->references('id')
+                ->on('events')->onDelete('cascade');
             $table->timestamps();
         });
     }

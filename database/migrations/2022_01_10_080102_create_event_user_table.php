@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 class CreateEventUserTable extends Migration
@@ -21,7 +22,10 @@ class CreateEventUserTable extends Migration
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');;
-            $table->unsignedBigInteger('workingHours')->nullable();
+            $table->unsignedDecimal('hours')->nullable();
+            $table->time('startTime')->default(Carbon::parse('07:00')->format('H:I'));
+            $table->time('endTime')->nullable()->default(Carbon::parse('16:00')->format('H:I'));
+
             $table->timestamps();
         });
     }

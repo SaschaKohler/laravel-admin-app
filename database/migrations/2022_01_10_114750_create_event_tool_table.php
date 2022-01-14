@@ -21,7 +21,7 @@ class CreateEventToolTable extends Migration
             $table->foreignId('tool_id')
                 ->references('id')
                 ->on('tools')->onDelete('cascade');;
-            $table->unsignedBigInteger('usageHours')->nullable();
+            $table->unsignedDecimal('hours')->nullable();
             $table->timestamps();
         });
     }

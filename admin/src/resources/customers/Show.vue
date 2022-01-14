@@ -15,8 +15,6 @@
               <va-field source="street"></va-field>
               <va-field source="city"></va-field>
               <va-field source="phone"></va-field>
-              <va-field source="created_at" type="date"></va-field>
-              <va-field source="updated_at" type="date"></va-field>
             </v-card-text>
           </base-material-card>
         </v-col>

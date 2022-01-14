@@ -1,37 +1,55 @@
 <template>
-    <va-form :id="id" :item="item" v-model="model">
+    <va-form :id="id" :item="item">
         <v-row justify="center">
             <v-col sm="6">
                 <base-material-tabs-card
                     :tabs="[
-                        { id: 'attributes', label: $i18n.t('tabs.attributes'), icon: 'mdi-' },
-                        { id: 'vehicles',  label: $i18n.t('tabs.vehicles'),  icon: 'mdi-car-estate' },
-                        { id: 'tools', label: $i18n.t('tabs.tools'), icon: 'mdi-hammer-screwdriver'},
+                        {
+                            id: 'attributes',
+                            label: $i18n.t('tabs.attributes'),
+                            icon: 'mdi-',
+                        },
+                        {
+                            id: 'vehicles',
+                            label: $i18n.t('tabs.vehicles'),
+                            icon: 'mdi-car-estate',
+                        },
+                        {
+                            id: 'tools',
+                            label: $i18n.t('tabs.tools'),
+                            icon: 'mdi-hammer-screwdriver',
+                        },
                     ]"
                 >
                     <template v-slot:attributes>
                         <v-card-text>
-                            <va-text-input
+                            <va-select-input
                                 source="type"
                                 required
-                            ></va-text-input>
-                            <va-text-input
-                                source="color"
-                                required
-                            ></va-text-input>
+                            ></va-select-input>
+                            <va-select-input source="color" required>
+                            </va-select-input>
                             <va-date-input
                                 source="start"
                                 format="short"
+                                v-model="picker"
                             ></va-date-input>
+                            <va-select-input
+                                source="recurrence"
+                                :choices="recurrence_choices"
+                                required
+                            ></va-select-input>
                             <va-select-input
                                 source="customer_id"
                                 reference="customers"
+                                :label="$t('va.customer')"
                                 required
                             ></va-select-input>
                             <va-select-input
                                 source="users"
                                 model="users"
                                 reference="users"
+                                :label="$t('va.users')"
                                 required
                                 multiple
                                 clearable
@@ -42,11 +60,11 @@
                         <v-card-text>
                             <va-select-input
                                 source="vehicles"
-                                model="vehicles"
                                 :label="$i18n.t('input.select.vehicles')"
                                 reference="vehicles"
                                 multiple
                                 clearable
+                                required
                             ></va-select-input>
                         </v-card-text>
                     </template>
@@ -54,21 +72,19 @@
                         <v-card-text>
                             <va-select-input
                                 source="tools"
-                                model="tools"
                                 reference="tools"
                                 :label="$i18n.t('input.select.tools')"
                                 required
                                 multiple
                                 clearable
-                                orange
                             ></va-select-input>
                         </v-card-text>
                     </template>
                     <template v-slot:footer>
                         <v-row>
                             <v-card-text>
-                        <v-spacer></v-spacer>
-                        <va-save-button></va-save-button>
+                                <v-spacer></v-spacer>
+                                <va-save-button></va-save-button>
                             </v-card-text>
                         </v-row>
                     </template>
@@ -80,9 +96,27 @@
 
 <script>
 export default {
-    props: ["id", "title", "item", "create"],
+    props: ['id', 'title', 'item', 'date'],
     data() {
-        return {};
+        return {
+            value: null,
+            tools: [],
+            vehicles: [],
+            picker: new Date(
+                Date.now() - new Date().getTimezoneOffset() * 60000
+            )
+                .toISOString()
+                .substr(0, 10),
+            recurrence_choices: [
+                {value: 0, text: 'keine'},
+                {value: 1, text: 'täglich'},
+                {value: 2, text: 'wöchentlich'},
+                {value: 3, text: '14 tägig'},
+                {value: 4, text: 'monatlich'},
+                {value: 5, text: 'alle 3 Monate'},
+                {value: 6, text: 'halbjährlich'},
+            ],
+        };
     },
     methods: {
         onChange() {
@@ -90,8 +124,7 @@ export default {
         },
         show(val) {
             console.log(val);
-        }
-
-    }
+        },
+    },
 };
 </script>

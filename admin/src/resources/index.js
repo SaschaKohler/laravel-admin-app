@@ -25,7 +25,6 @@ export default [
         icon: 'mdi-alien',
         permissions: ['admin'],
         include: ['vehicles'],
-
     },
     {
         name: 'vehicles',
@@ -45,4 +44,4 @@ export default [
         label: 'title',
         permissions: ['admin'],
     },
-]
+];
