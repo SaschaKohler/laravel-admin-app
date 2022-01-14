@@ -41,7 +41,7 @@ class VehicleController extends Controller
                 ])
                 ->allowedSorts(['type', 'permit', 'inspection','kmAll'])
                 ->allowedIncludes(['events'])
-                ->exportOrPaginate()
+                ->get()
         );
     }
 

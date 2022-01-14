@@ -29,11 +29,11 @@ class ToolController extends Controller
                 ->allowedFilters([
                     AllowedFilter::custom('q', new SearchFilter(['title', 'acquisitionDate', 'acquisitionPrice'])),
                     AllowedFilter::exact('id'),
-                    
+
                 ])
                 ->allowedSorts(['title', 'acquisitionDate', 'acquisitionPrice'])
                 ->allowedIncludes([])
-                ->exportOrPaginate()
+                ->get()
         );
     }
 

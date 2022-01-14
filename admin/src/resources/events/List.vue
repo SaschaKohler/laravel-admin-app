@@ -3,23 +3,7 @@
         <va-list
             :filters="filters"
             :include="['customer', 'vehicles', 'users', 'tools']"
-
         >
-            <template v-slot:actions>
-
-                <va-action-button
-                    color="green"
-                    :label="$i18n.t('action.logbook')"
-                    to="events/logbook/"
-
-                ></va-action-button>
-                <va-action-button
-                    color="green"
-                    :label="$i18n.t('action.timerecord')"
-
-                ></va-action-button>
-
-            </template>
             <va-data-table :fields="fields">
                 <template v-slot:[`field.vehicles`]="{ value }">
                     <v-chip-group column>
@@ -60,6 +44,7 @@
                             :key="i"
                             color="amber lighten-3"
                             chip
+                            :label="$t('va.tools')"
                             small
                             :item="item"
                             action="show"
@@ -74,54 +59,49 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState } from 'vuex';
 
 export default {
-    props: ["resource", "title", "item"],
+    props: ['resource', 'title', 'item'],
     data() {
         return {
-            filters: ["customer", "users", "vehicles", "type"],
+            filters: ['customer', 'users', 'vehicles', 'type'],
             fields: [
-                {source: "type", sortable: true},
+                { source: 'type', sortable: true },
                 {
-                    source: "start",
-                    type: "date",
-                    attributes: {format: "short"},
+                    source: 'start',
+                    type: 'date',
+                    attributes: { format: 'long' },
                     sortable: true,
                 },
                 {
-                    source: "event_id",
-                    type: "reference",
+                    source: 'event_id',
+                    type: 'reference',
                     attributes: {
-                        reference: "events",
+                        reference: 'events',
                     },
                 },
                 {
-                    source: "customer",
+                    source: 'customer',
                     sortable: true,
-                    type: "reference",
+                    type: 'reference',
                     attributes: {
-                        reference: "customers",
+                        reference: 'customers',
                         chip: true,
-                        color: "amber lighten-2",
+                        color: 'amber lighten-2',
                     },
                 },
                 {
-                    source: "users",
-                    type: "reference",
+                    source: 'users',
                     sortable: true,
-                    attributes: {reference: "users"},
                 },
                 {
-                    source: "vehicles",
-                    type: "reference",
-                    attributes: {reference: "vehicles"},
+                    source: 'vehicles',
                 },
                 {
-                    source: "tools",
-                    type: "reference",
-                    attributes: {reference: "tools"},
+                    source: 'tools',
                 },
+                { source: 'finished', type: 'boolean', sortable: true, },
             ],
         };
     },

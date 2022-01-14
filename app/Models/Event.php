@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\RecurrenceObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,10 +10,11 @@ class Event extends Model
 {
     use HasFactory;
 
-   protected $guarded = ['id'];
+    protected $guarded = ['id'];
     // protected $fillable = ['type', 'color', 'start', 'end', 'event_id', 'customer_id'];
 
-    protected $casts = ['start' => 'date', 'end' => 'date'];
+    protected $casts = ['start' => 'date:Y-m-d', 'end' => 'date'];   // in order to get right data format for vuetify calendar !
+
 
     public function events()
     {
@@ -32,18 +34,24 @@ class Event extends Model
     public function vehicles()
     {
         return $this->belongsToMany(Vehicle::class)
-            ->withPivot(['kmBegin','kmEnd','kmSum','hours'])
+            ->withPivot(['kmBegin', 'kmEnd', 'kmSum', 'hours'])
             ->withTimestamps();
     }
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class)
+            ->withPivot('startTime')
+            ->withPivot('endTime')
+            ->withPivot('hours')
+            ->withTimestamps();
     }
 
     public function tools()
     {
-        return $this->belongsToMany(Tool::class)->withTimestamps();
+        return $this->belongsToMany(Tool::class)
+            ->withPivot('hours')
+            ->withTimestamps();
     }
 
 }

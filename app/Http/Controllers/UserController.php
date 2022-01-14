@@ -28,7 +28,7 @@ class UserController extends Controller
                     AllowedFilter::partial('roles'),
                 ])
                 ->allowedSorts(['id', 'name', 'email'])
-                ->exportOrPaginate()
+                ->get()
         );
     }
 

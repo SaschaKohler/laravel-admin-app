@@ -43,15 +43,25 @@
     "va.messages.updated": "Datensatz geändert",
     "va.messages.created": "Datensatz erstellt",
     "va.messages.deleted": "Datensatz gelöscht",
+    "va.messages.deleted_many": "Datensätze gelöscht",
 
 
     "tabs.attributes": "Auftragsdaten",
     "tabs.vehicles": "Fahrzeuge",
     "tabs.tools": "Werkzeuge",
+    "tabs.users": "Mitarbeiter",
     "input.select.vehicles" : "Fahrzeuge",
     "input.select.tools" : "Werkzeuge",
-    "va.vehicles": "Fahrzeuge",
 
+    "va.finished": "Baustelle erledigt?",
+    "va.vehicles": "Fahrzeuge",
+    "va.kmBegin": "KM Abfahrt",
+    "va.kmEnd": "KM Ankunft",
+    "va.tools": "Werkzeuge / Maschinen",
+    "va.users": "Mitarbeiter",
+    "va.customer": "Kunde / Kundendaten",
+    "pivot.hours": "Betriebsstunden",
+    "pivot.workingHours": "Arbeitsstunden",
     "routes": {
         "home": "Home",
         "login": "Login",
@@ -105,7 +115,9 @@
         "profile": "Profile",
         "dashboard": "Dashboard",
         "events": "Aufträge",
-        "logbook": "Logbook"
+        "logbook": "Logbook",
+        "my-events": "Meine Aufträge",
+        "my-logbook": "Meine Logbook"
     },
     "resources": {
         "users": {
@@ -120,9 +132,102 @@
         "events": {
             "name": "Auftrag | Aufträge",
             "fields": {
-                "type": "Leistung"
+                "type": "Leistung",
+                "finished": "Baustelle fertig",
+                "recurrence": "Intervall",
+                "event_id": "StartAuftrag",
+                "customer": "Kunde",
+                "tools": "Werkzeug / Maschinen",
+                "vehicles": "Fahrzeuge",
+                "start": "Termin",
+                "users": "Mitarbeiter",
+                "updated_at": "zul. geändert"
             },
-            "enums": {}
+            "enums": {
+                "type": {
+                    "Baumpflege": "Baumpflege",
+                    "Zaunbau": "Zaunbau",
+                    "Gartenpflege": "Gartenpflege",
+                    "Transport": "Transport",
+                    "pers. Termin": "persönlicher Termin",
+                    "Winterdienst": "Winterdienst",
+                    "Sonstiges": "Sonstiges"
+                },
+                "color": {
+                    "green lighten-2": "grün",
+                    "amber lighten-2": "amber",
+                    "blue lighten-2": "blau",
+                    "brown lighten-3": "braun",
+                    "red lighten-2": "rot",
+                    "grey lighten-2": "grau",
+                    "orange lighten-1": "orange"
+                }
+            }
+        },
+        "logbook": {
+            "name": "Auftrag | Aufträge",
+            "fields": {
+                "type": "Leistung",
+                "finished": "Baustelle fertig",
+                "customer": "Kunde",
+                "event_id": "StartAuftrag",
+                "recurrence": "Intervall",
+                "tools": "Werkzeug / Maschinen",
+                "vehicles": "Fahrzeuge",
+                "start": "Termin",
+                "users": "Mitarbeiter",
+                "updated_at": "zul. geändert"
+            }
+        },
+        "my-events": {
+            "name": "Auftrag | Aufträge",
+            "fields": {
+                "type": "Leistung",
+                "finished": "Baustelle fertig",
+                "recurrence": "Intervall",
+                "event_id": "StartAuftrag",
+                "customer": "Kunde",
+                "tools": "Werkzeug / Maschinen",
+                "vehicles": "Fahrzeuge",
+                "start": "Termin",
+                "users": "Mitarbeiter",
+                "updated_at": "zul. geändert"
+            },
+            "enums": {
+                "type": {
+                    "Baumpflege": "Baumpflege",
+                    "Zaunbau": "Zaunbau",
+                    "Gartenpflege": "Gartenpflege",
+                    "Transport": "Transport",
+                    "pers. Termin": "persönlicher Termin",
+                    "Winterdienst": "Winterdienst",
+                    "Sonstiges": "Sonstiges"
+                },
+                "color": {
+                    "green lighten-2": "grün",
+                    "amber lighten-2": "amber",
+                    "blue lighten-2": "blau",
+                    "brown lighten-3": "braun",
+                    "red lighten-2": "rot",
+                    "grey lighten-2": "grau",
+                    "orange lighten-1": "orange"
+                }
+            }
+        },
+        "my-logbook": {
+            "name": "Auftrag | Aufträge",
+            "fields": {
+                "type": "Leistung",
+                "finished": "Baustelle fertig",
+                "customer": "Kunde",
+                "event_id": "StartAuftrag",
+                "recurrence": "Intervall",
+                "tools": "Werkzeug / Maschinen",
+                "vehicles": "Fahrzeuge",
+                "start": "Termin",
+                "users": "Mitarbeiter",
+                "updated_at": "zul. geändert"
+            }
         },
         "customers": {
             "name": "Kunde | Kunden",
@@ -130,7 +235,8 @@
                 "first" : "Vorname",
                 "last" : "Nachname",
                 "street": "Strasse",
-                "city": "Stadt/Ort"
+                "city": "Stadt/Ort",
+                "phone": "Telefon"
             },
             "enums": {}
         },

@@ -2,7 +2,7 @@
   <div class="d-flex align-center justify-center fill-height">
     <div class="text-center">
       <img
-        src="../assets/logo.svg"
+        src="../assets/skit.svg"
         alt="Vuetify Admin"
         width="300"
         height="300"

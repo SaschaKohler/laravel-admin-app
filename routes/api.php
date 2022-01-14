@@ -43,5 +43,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     ]);
 
-//    Route::get('api/logbook',[LogbookController::class,'index'])->name('logbook.index')
+ //   Route::post('reset-password',[LogbookController::class,'index'])->name('logbook.index')
 });

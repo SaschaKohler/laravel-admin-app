@@ -35,7 +35,7 @@ class CustomerController extends Controller
                 ])
                 ->allowedSorts(['first', 'last', 'street', 'city'])
                 ->allowedIncludes('events')
-                ->exportOrPaginate()
+                ->get()
         );
         return $resource;
     }

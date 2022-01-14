@@ -26,7 +26,8 @@ class UpdateEvent extends FormRequest
         return [
             'vehicles' => 'required',
             'users' => 'sometimes|required',
-            'tools' => 'sometimes|required'
+            'tools' => 'sometimes|required',
+            'finished' => 'nullable|boolean'
            ];
     }
 }

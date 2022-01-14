@@ -22,7 +22,7 @@ class CreateEventVehicleTable extends Migration
             $table->unsignedBigInteger('kmBegin')->nullable()->default(0);
             $table->unsignedBigInteger('kmEnd')->nullable()->default(0);
             $table->unsignedBigInteger('kmSum')->nullable()->default(0);
-            $table->unsignedBigInteger('hours')->nullable()->default(0);
+            $table->unsignedDecimal('hours')->nullable()->default(0);
 
             $table->timestamps();
         });
