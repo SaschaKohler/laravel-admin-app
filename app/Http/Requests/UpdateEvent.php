@@ -28,6 +28,6 @@ class UpdateEvent extends FormRequest
             'users' => 'sometimes|required',
             'tools' => 'sometimes|required',
             'finished' => 'nullable|boolean'
-           ];
+        ];
     }
 }

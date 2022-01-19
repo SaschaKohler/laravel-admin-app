@@ -108,13 +108,8 @@ class RecurrenceObserver
     public function updated(Event $event)
     {
         if ($event->events()->exists() || $event->event) {
-<<<<<<< HEAD
             $startTime = Carbon::parse($event->getOriginal('start'))->diffInRealSeconds($event->start, false);
             $endTime = Carbon::parse($event->getOriginal('end'))->diffInRealSeconds($event->end, false);
-=======
-            $startTime = Carbon::parse($event->getOriginal('start'))->diffInSeconds($event->start, false);
-            $endTime = Carbon::parse($event->getOriginal('end'))->diffInSeconds($event->end, false);
->>>>>>> origin/master
             if ($event->event)
                 $childEvents = $event->event->events()->whereDate('start', '>', $event->getOriginal('start'))->get();
             else

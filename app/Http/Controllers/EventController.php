@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEvent;
 use App\Http\Requests\UpdateEvent;
 use App\Http\Resources\Event as EventResource;
+use App\Models\Tool;
+use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
@@ -49,7 +51,8 @@ class EventController extends Controller
                     AllowedFilter::exact('id'),
                     AllowedFilter::partial('type'),
                 ])
-                ->allowedSorts(['start', 'workingHours', 'type', 'customer'])
+                ->defaultSort('updated_at')
+                ->allowedSorts(['id', 'start', 'workingHours', 'type', 'customer', 'created_at', 'updated_at'])
                 ->allowedIncludes(['customer', 'vehicles', 'users', 'tools'])
                 ->exportOrPaginate()
         );
@@ -76,15 +79,6 @@ class EventController extends Controller
     {
         $event = Event::create($request->all());
 
-
-//        $vehicleSync = array();
-//
-//        foreach ($request->vehicles as $vehicle) {
-//
-//            $vehicleSync[] = $vehicle['pivot']['vehicle_id'];
-//        }
-//        $event->vehicles()->sync($vehicleSync);
-
         if ($request->vehicles) {
             $event->vehicles()->sync($request->vehicles);
         }
@@ -107,48 +101,82 @@ class EventController extends Controller
      */
     public function update(UpdateEvent $request, Event $event)
     {
-        $event->update($request->all());
 
-        if($request->users) {
+
+        if (($request->vehicles || $request->tools || $request->users) &&
+            (!is_array($request->vehicles[0]) || !is_array($request->tools[0]) || !is_array($request->users[0]))) {
+
             if ($request->vehicles) {
                 $event->vehicles()->sync($request->vehicles);
             }
-            if ($request->tools) {
+            if($request->tools){
                 $event->tools()->sync($request->tools);
             }
-
             $event->users()->sync($request->users);
-
         } else {
 
-        $vehicleSync = array();
-            foreach ($request->vehicles as $vehicle) {
+            if ($request->vehicles) {
 
-                if ($vehicle['pivot']['kmEnd'] || $vehicle['pivot']['kmBegin']) {
-                    $sum = $vehicle['pivot']['kmEnd'] - $vehicle['pivot']['kmBegin'];
-                    $vehicle['kmAll'] += $sum;
-                    $vehicleSync[$vehicle['pivot']['vehicle_id']] = [
-                        'kmBegin' => $vehicle['pivot']['kmBegin'],
-                        'kmEnd' => $vehicle['pivot']['kmEnd'],
-                        'kmSum' => $sum
-                    ];
-                    $vehicleModel = Vehicle::find($vehicle['pivot']['vehicle_id']);
-                    $vehicleModel->kmAll += $sum;
-                    $vehicleModel->save();
+                $vehicleSync = array();
+
+                foreach ($request->vehicles as $vehicle) {
+
+                    if ($vehicle['pivot']['kmEnd'] || $vehicle['pivot']['kmBegin'] || $vehicle['pivot']['hours']) {
+                        $sum = $vehicle['pivot']['kmEnd'] - $vehicle['pivot']['kmBegin'];
+                        $vehicle['kmAll'] += $sum;
+                        $vehicleSync[$vehicle['pivot']['vehicle_id']] = [
+                            'kmBegin' => $vehicle['pivot']['kmBegin'],
+                            'kmEnd' => $vehicle['pivot']['kmEnd'],
+                            'hours' => $vehicle['pivot']['hours'],
+                            'kmSum' => $sum
+                        ];
+                        $vehicleModel = Vehicle::find($vehicle['pivot']['vehicle_id']);
+
+                        if ($sum != 0) {
+                            $vehicleModel->kmAll += $sum;
+                        }
+                        if ($vehicle['pivot']['hours'] != 0) {
+                            $vehicleModel->hoursAll += $vehicle['pivot']['hours'];
+                        }
+                        $vehicleModel->save();
+                    }
+                    if (count($vehicleSync) > 0) {
+                        $event->vehicles()->sync($vehicleSync);
+                    }
                 }
             }
-            if (count($vehicleSync) > 0) {
-                $event->vehicles()->sync($vehicleSync);
+            if($request->tools) {
+                $toolSync = array();
+
+                foreach ($request->tools as $tool) {
+                    $toolSync[$tool['pivot']['tool_id']] = [
+                        'hours' => $tool['pivot']['hours'],
+                    ];
+                    $toolModel = Tool::find($tool['pivot']['tool_id']);
+                    $toolModel->hoursAll += $tool['pivot']['hours'];
+                    $toolModel->save();
+                }
+                if (count($toolSync) > 0) {
+                    $event->tools()->sync($toolSync);
+                }
             }
+            if($request->users) {
+                $usersSync = array();
 
-
-
+                foreach ($request->users as $user) {
+                    $usersSync[$user['pivot']['user_id']] = [
+                        'hours' => $user['pivot']['hours'],
+                    ];
+//                    $userModel = User::find($user['pivot']['user_id']);
+//                    $userModel->hoursAll += $user['pivot']['hours'];
+//                    $userModel->save();
+                }
+                if (count($usersSync) > 0) {
+                    $event->users()->sync($usersSync);
+                }
+            }
         }
-
-
-
-
-
+        $event->update($request->all());
 
         return new EventResource($event);
     }
@@ -160,7 +188,8 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Event $event)
+    public
+    function destroy(Event $event)
     {
         $event->delete();
 

@@ -176,7 +176,7 @@
                                         ></v-slider>
                                     </v-col>
                                 </v-row>
-                              </CustomComponent>
+                            </CustomComponent>
 
 
                             <v-row justify="right">
