@@ -1,50 +1,31 @@
 export default [
     {
         name: 'users',
-        icon: 'mdi-account-hard-hat',
+        icon: 'mdi-account',
         label: 'name',
         routes: ['list', 'show'],
     },
     {
         name: 'events',
-        icon: 'mdi-card-account-details',
+        icon: 'mdi-account',
         label: 'event',
         permissions: ['admin', 'employee'],
         include: ['vehicles', 'customers', 'users', 'tools'],
     },
 
     {
-        name: 'logbook',
-        api: 'events',
-        icon: 'mdi-notebook-edit',
-        permissions: ['admin', 'employee'],
-        include: ['vehicles', 'users', 'tools'],
-    },
-    // {
-    //     name: 'my_events',
-    //     api: 'events',
-    //     icon: 'mdi-card-account-details',
-    //     permissions : ['employee'],
-    //     // permissions: [
-    //     //     { name: "employee", actions: ["list", "show", "edit",] },
-    //     // ],
-    //     include: ['vehicles', 'customers', 'users', 'tools'],
-    // },
-    // {
-    //     name: 'my_logbook',
-    //     api: 'events',
-    //     icon: 'mdi-notebook-edit',
-    //     permissions : ['employee'],
-    //     // permissions: [
-    //     //     { name: 'employee', actions: ["list","show","edit"] }
-    //     //     ],
-    //     include: ['vehicles', 'users', 'tools'],
-    // },
-    {
         name: 'customers',
-        icon: 'mdi-account-group',
+        icon: 'mdi-alien',
         label: 'last',
         permissions: ['admin'],
+    },
+    {
+        name: 'logbook',
+        api: 'events',
+        icon: 'mdi-alien',
+        permissions: ['admin'],
+        include: ['vehicles'],
+
     },
     {
         name: 'vehicles',
@@ -64,4 +45,4 @@ export default [
         label: 'title',
         permissions: ['admin'],
     },
-];
+]
