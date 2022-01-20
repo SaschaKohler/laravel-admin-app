@@ -1,6 +1,6 @@
 <template>
   <va-edit-layout>
-    <my-logbook-form :id="id" :title="title" :item="item"></my-logbook-form>
+    <active-logbook-form :id="id" :title="title" :item="item"></active-logbook-form>
   </va-edit-layout>
 </template>
 

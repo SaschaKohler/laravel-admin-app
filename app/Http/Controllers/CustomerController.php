@@ -30,8 +30,6 @@ class CustomerController extends Controller
                     AllowedFilter::custom('q', new SearchFilter(['first', 'last', 'street', 'city'])),
                     AllowedFilter::exact('id'),
                     AllowedFilter::exact('city'),
-
-
                 ])
                 ->allowedSorts(['first', 'last', 'street', 'city'])
                 ->allowedIncludes('events')

@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 
 export default {
     props: ['resource', 'title', 'item'],
@@ -105,10 +104,6 @@ export default {
             ],
         };
     },
-    computed: {
-        ...mapState({
-            user: (state) => state.auth.user,
-        }),
-    },
+
 };
 </script>

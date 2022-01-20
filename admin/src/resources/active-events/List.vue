@@ -1,21 +1,15 @@
 <template>
     <base-material-card :icon="resource.icon" :title="title">
         <va-list
-            :filters="filters"
-            :include="['vehicles', 'tools', 'users']"
-            disable-create
-            disable-export
-            :filter="{
-                users: user.id,
+
+            disable-query-string
+            :include="['customer', 'vehicles', 'users', 'tools']"
+            :sort-by="['updated_at']"
+            :filter = "{
+                users: user.id
             }"
         >
-            <va-data-table
-                :fields="fields"
-                disable-show
-                disable-delete
-                disable-clone
-                disable-create-redirect
-            >
+            <va-data-table :fields="fields">
                 <template v-slot:[`field.vehicles`]="{ value }">
                     <v-chip-group column>
                         <va-reference-field
@@ -31,14 +25,31 @@
                         </va-reference-field>
                     </v-chip-group>
                 </template>
+                <template v-slot:[`field.users`]="{ value }">
+                    <v-chip-group column>
+                        <va-reference-field
+                            reference="users"
+                            v-for="(item, i) in value"
+                            :key="i"
+                            color="green lighten-2"
+                            chip
+                            small
+                            :item="item"
+                            action="show"
+                        >
+                            {{ item.name }}
+                        </va-reference-field>
+                    </v-chip-group>
+                </template>
                 <template v-slot:[`field.tools`]="{ value }">
                     <v-chip-group column>
                         <va-reference-field
                             reference="tools"
                             v-for="(item, i) in value"
                             :key="i"
-                            color="amber lighten-2"
+                            color="amber lighten-3"
                             chip
+                            :label="$t('va.tools')"
                             small
                             :item="item"
                         >
@@ -58,7 +69,7 @@ export default {
     props: ['resource', 'title', 'item'],
     data() {
         return {
-            filters: ['vehicles', 'type'],
+            //filters: ['customer', 'users', 'vehicles', 'type'],
             fields: [
                 { source: 'type', sortable: true },
                 {
@@ -67,7 +78,6 @@ export default {
                     attributes: { format: 'short' },
                     sortable: true,
                 },
-                'recurrence',
                 {
                     source: 'event_id',
                     type: 'reference',
@@ -76,22 +86,30 @@ export default {
                     },
                 },
                 {
+                    source: 'customer',
+                    sortable: true,
+                    type: 'reference',
+                    attributes: {
+                        reference: 'customers',
+                        chip: true,
+                        color: 'amber lighten-2',
+                    },
+                },
+                {
+                    source: 'users',
+                    sortable: true,
+                },
+                {
                     source: 'vehicles',
                 },
                 {
                     source: 'tools',
                 },
-                {
-                    source: 'finished',
-                    type: 'boolean',
-                },
+                { source: 'finished', type: 'boolean' },
                 {
                     source: 'updated_at',
                     type: 'date',
-                    sortable: true,
-                    attributes: {
-                        format: 'time',
-                    },
+                    attributes: { format: 'time' },
                 },
             ],
         };

@@ -33,6 +33,7 @@ export default {
                 title: i18n.t('routes.profile'),
             },
         },
+
         {
             path: '*',
             component: Error,

@@ -23,6 +23,7 @@
                         <va-select-input
                             source="recurrence"
                             :choices="recurrence_choices"
+                            required
                         ></va-select-input>
                         <va-select-input
                             source="customer_id"
@@ -65,6 +66,7 @@
                         <v-spacer></v-spacer>
                         <va-save-button></va-save-button>
                     </v-card-actions>
+
                 </base-material-card>
             </v-col>
         </v-row>
@@ -85,13 +87,13 @@ export default {
                 .toISOString()
                 .substr(0, 10),
             recurrence_choices: [
-                { value: 0, text: 'keine' },
-                { value: 1, text: 'täglich' },
-                { value: 2, text: 'wöchentlich' },
-                { value: 3, text: '14 tägig' },
-                { value: 4, text: 'monatlich' },
-                { value: 5, text: 'alle 3 Monate' },
-                { value: 6, text: 'halbjährlich' },
+                {value: 0, text: 'keine'},
+                {value: 1, text: 'täglich'},
+                {value: 2, text: 'wöchentlich'},
+                {value: 3, text: '14 tägig'},
+                {value: 4, text: 'monatlich'},
+                {value: 5, text: 'alle 3 Monate'},
+                {value: 6, text: 'halbjährlich'},
             ],
         };
     },

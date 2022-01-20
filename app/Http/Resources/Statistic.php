@@ -23,12 +23,9 @@ class Statistic extends JsonResource
      */
     public function toArray($request)
     {
-
         $attributes = parent::toArray($request);
 
-
         return $attributes;
-
 
     }
 }

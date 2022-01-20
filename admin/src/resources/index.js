@@ -8,38 +8,33 @@ export default [
     {
         name: 'events',
         icon: 'mdi-card-account-details',
-        label: 'event',
-        permissions: ['admin', 'employee'],
+        label: 'type',
+        permissions: ['admin'],
         include: ['vehicles', 'customers', 'users', 'tools'],
     },
-
+    {
+        name: 'active_events',
+        api: 'events',
+        icon: 'mdi-account',
+        routes: ['list', 'edit', 'show'],
+        permissions: ['employee'],
+        include: ['vehicles', 'customers', 'users', 'tools'],
+    },
     {
         name: 'logbook',
         api: 'events',
         icon: 'mdi-notebook-edit',
-        permissions: ['admin', 'employee'],
+        permissions: ['admin'],
         include: ['vehicles', 'users', 'tools'],
     },
-    // {
-    //     name: 'my_events',
-    //     api: 'events',
-    //     icon: 'mdi-card-account-details',
-    //     permissions : ['employee'],
-    //     // permissions: [
-    //     //     { name: "employee", actions: ["list", "show", "edit",] },
-    //     // ],
-    //     include: ['vehicles', 'customers', 'users', 'tools'],
-    // },
-    // {
-    //     name: 'my_logbook',
-    //     api: 'events',
-    //     icon: 'mdi-notebook-edit',
-    //     permissions : ['employee'],
-    //     // permissions: [
-    //     //     { name: 'employee', actions: ["list","show","edit"] }
-    //     //     ],
-    //     include: ['vehicles', 'users', 'tools'],
-    // },
+    {
+        name: 'active-logbook',
+        api: 'events',
+        icon: 'mdi-notebook-edit',
+        permissions: ['employee'],
+        routes: ['list', 'edit'],
+        include: ['vehicles', 'users', 'tools'],
+    },
     {
         name: 'customers',
         icon: 'mdi-account-group',
@@ -53,15 +48,16 @@ export default [
         permissions: ['admin'],
     },
     {
-        name: 'statistics',
-        icon: 'mdi-account',
-        label: 'branding',
-        permissions: ['admin'],
-    },
-    {
         name: 'tools',
         icon: 'mdi-tool',
         label: 'title',
         permissions: ['admin'],
+    },
+    {
+        name: 'tickets',
+        icon: 'mdi-ticket',
+        label: 'ticket',
+        permissions: ['admin', 'employee'],
+        include: ['event', 'user'],
     },
 ];

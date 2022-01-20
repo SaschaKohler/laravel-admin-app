@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VehicleSeeder::class);
         $this->call(ToolSeeder::class);
         $this->call(EventSeeder::class);
+        $this->call(TicketSeeder::class);
     }
 
     public static function randomMedia($type, $max, $extension = 'jpg'): string

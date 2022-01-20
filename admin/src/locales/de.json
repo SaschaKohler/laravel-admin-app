@@ -3,6 +3,7 @@
         "de": "Deutsch",
         "en": "English"
     },
+    "save": "Speichern",
     "va.not_found": "Nicht gefunden",
     "va.file_manager": "File manager",
     "va.close": "schliessen",
@@ -28,10 +29,11 @@
     "va.actions.associate": "Associate",
     "va.actions.dissociate": "Dissociate",
     "va.actions.locale": "Locale",
-    "va.actions.cancel": "Cancel",
-    "va.actions.save": "Save",
-    "va.actions.save_and_add": "Save and add",
-    "va.actions.save_and_show": "Save and show",
+    "va.actions.cancel": "Abbrechen",
+    "va.actions.save": "Speichern",
+    "va.actions.update": "Aktualisieren",
+    "va.actions.save_and_add": "Speichern und hinzufügen",
+    "va.actions.save_and_show": "Speichern und anzeigen",
     "va.actions.save_and_edit": "Save and edit",
     "va.forms.required_field": "{field] ist Pflichtfeld",
     "va.confirm.delete_many_title": "Mehrere {resource} löschen",
@@ -94,8 +96,8 @@
         "phone1": "Telefon (mobil)",
         "current_password": "Passwort",
         "password_confirmation": "Passwort wiederholen",
-        "update": "Update",
-        "account_updated": "Account updated",
+        "update": "Aktualisieren",
+        "account_updated": "Account aktualisiert",
         "password_changed": "Passwort geändert"
     },
     "users": {
@@ -116,8 +118,8 @@
         "dashboard": "Dashboard",
         "events": "Aufträge",
         "logbook": "Logbook",
-        "my-events": "Meine Aufträge",
-        "my-logbook": "Meine Logbook"
+        "act_events": "Aufträge bearbeiten",
+        "act_logbook": "Aufträge abschliessen"
     },
     "resources": {
         "users": {
@@ -129,7 +131,43 @@
                 "password_confirmation": "Password confirmation"
             }
         },
+
         "events": {
+            "name": "Auftrag | Aufträge",
+            "fields": {
+                "type": "Leistung",
+                "finished": "Baustelle fertig",
+                "recurrence": "Intervall",
+                "event_id": "StartAuftrag",
+                "customer": "Kunde",
+                "tools": "Werkzeug / Maschinen",
+                "vehicles": "Fahrzeuge",
+                "start": "Termin",
+                "users": "Mitarbeiter",
+                "updated_at": "zul. geändert"
+            },
+            "enums": {
+                "type": {
+                    "Baumpflege": "Baumpflege",
+                    "Zaunbau": "Zaunbau",
+                    "Gartenpflege": "Gartenpflege",
+                    "Transport": "Transport",
+                    "pers. Termin": "persönlicher Termin",
+                    "Winterdienst": "Winterdienst",
+                    "Sonstiges": "Sonstiges"
+                },
+                "color": {
+                    "green lighten-2": "grün",
+                    "amber lighten-2": "amber",
+                    "blue lighten-2": "blau",
+                    "brown lighten-3": "braun",
+                    "red lighten-2": "rot",
+                    "grey lighten-2": "grau",
+                    "orange lighten-1": "orange"
+                }
+            }
+        },
+        "active_events": {
             "name": "Auftrag | Aufträge",
             "fields": {
                 "type": "Leistung",
@@ -179,42 +217,7 @@
                 "updated_at": "zul. geändert"
             }
         },
-        "my-events": {
-            "name": "Auftrag | Aufträge",
-            "fields": {
-                "type": "Leistung",
-                "finished": "Baustelle fertig",
-                "recurrence": "Intervall",
-                "event_id": "StartAuftrag",
-                "customer": "Kunde",
-                "tools": "Werkzeug / Maschinen",
-                "vehicles": "Fahrzeuge",
-                "start": "Termin",
-                "users": "Mitarbeiter",
-                "updated_at": "zul. geändert"
-            },
-            "enums": {
-                "type": {
-                    "Baumpflege": "Baumpflege",
-                    "Zaunbau": "Zaunbau",
-                    "Gartenpflege": "Gartenpflege",
-                    "Transport": "Transport",
-                    "pers. Termin": "persönlicher Termin",
-                    "Winterdienst": "Winterdienst",
-                    "Sonstiges": "Sonstiges"
-                },
-                "color": {
-                    "green lighten-2": "grün",
-                    "amber lighten-2": "amber",
-                    "blue lighten-2": "blau",
-                    "brown lighten-3": "braun",
-                    "red lighten-2": "rot",
-                    "grey lighten-2": "grau",
-                    "orange lighten-1": "orange"
-                }
-            }
-        },
-        "my-logbook": {
+        "active_logbook": {
             "name": "Auftrag | Aufträge",
             "fields": {
                 "type": "Leistung",
@@ -270,6 +273,22 @@
                 "acquisitionPrice": "Preis Anschaffung"
             },
             "enums": {}
+        },
+        "tickets": {
+            "fields": {
+                "status" : "Status",
+                "rating" : "Dringlichkeit",
+                "body": "Anforderung",
+                "user": "erstellt von"
+            },
+            "enums": {
+                "status": {
+                    "new": "neu",
+                    "open": "offen",
+                    "progress": "in Bearbeitung",
+                    "ready": "erledigt"
+                }
+            }
         }
     }
 }

@@ -148,6 +148,17 @@
         "acquisitionPrice": "acquisitionPrice"
       },
       "enums": {}
+    },
+    "tickets": {
+      "name": "Ticket | Tickets",
+      "fields": {
+        "event_id": "event_id",
+        "user_id": "user_id",
+        "rating": "rating",
+        "body": "body",
+        "status": "status"
+      },
+      "enums": {}
     }
   }
 }

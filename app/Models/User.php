@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class)->withTimestamps();
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }

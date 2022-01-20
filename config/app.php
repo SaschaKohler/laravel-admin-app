@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Dirneder Verwaltung'),
+    'name' => env('APP_NAME', 'skIT Manager'),
 
     /*
     |--------------------------------------------------------------------------

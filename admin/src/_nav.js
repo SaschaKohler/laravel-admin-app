@@ -6,15 +6,15 @@ export default (i18n, admin) => [
         text: i18n.t('menu.dashboard'),
         link: '/',
     },
-    admin.can(['admin', 'employee']) && { divider: true },
-    admin.can(['admin', 'employee']) && { heading: i18n.t('menu.business') },
+    admin.can(['admin']) && { divider: true },
+    admin.can(['admin']) && { heading: i18n.t('menu.business') },
 
-    admin.can(['admin', 'employee']) && {
+    admin.can(['admin']) && {
         icon: 'mdi-card-account-details',
         text: i18n.t('menu.events'),
         link: '/events',
     },
-    admin.can(['admin', 'employee']) && {
+    admin.can(['admin']) && {
         icon: 'mdi-notebook-edit',
         text: i18n.t('menu.logbook'),
         link: '/logbook',
@@ -53,12 +53,13 @@ export default (i18n, admin) => [
     admin.can(['employee']) && { heading: i18n.t('menu.my-events') },
     admin.can(['employee']) && {
         icon: 'mdi-card-account-details',
-        text: i18n.t('menu.my-events'),
-        link: '/events',
+        text: i18n.t('menu.act_events'),
+        link: '/active-events',
     },
     admin.can(['employee']) && {
         icon: 'mdi-notebook-edit',
-        text: i18n.t('menu.my-logbook'),
-        link: '/my-logbook',
+        text: i18n.t('menu.act_logbook'),
+        link: '/active-logbook',
     },
+    admin.getResourceLink('tickets'),
 ];

@@ -39,7 +39,8 @@ class EventController extends Controller
                     }),
                     AllowedFilter::callback('users', function (Builder $query, $value) {
                         $query->whereHas('users', function (Builder $query) use ($value) {
-                            $query->where('name', 'LIKE', '%' . $value . '%');
+                            $query->where('name', 'LIKE', '%' . $value . '%')
+                            ->orWhere('user_id','=', $value);
                         });
                     }),
                     AllowedFilter::callback('customer', function (Builder $query, $value) {
@@ -52,9 +53,9 @@ class EventController extends Controller
                     AllowedFilter::partial('type'),
                 ])
                 ->defaultSort('updated_at')
-                ->allowedSorts(['id', 'start', 'workingHours', 'type', 'customer', 'created_at', 'updated_at'])
+                ->allowedSorts(['id', 'start', 'workingHours', 'type', 'customer', 'updated_at','finished'])
                 ->allowedIncludes(['customer', 'vehicles', 'users', 'tools'])
-                ->exportOrPaginate()
+                ->get()
         );
     }
 

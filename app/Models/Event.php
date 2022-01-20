@@ -54,4 +54,9 @@ class Event extends Model
             ->withTimestamps();
     }
 
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
 }

@@ -1,0 +1,76 @@
+resources:
+  tickets:
+    name: Ticket | Tickets
+    icon: mdi-ticket
+    label: ticket
+    actions:
+      - list
+      - show
+      - create
+      - edit
+      - delete
+    columns:
+      - event_id
+      - user_id
+      - rating
+      - body
+      - status
+    sortable:
+      - event
+      - user
+      - rating
+      - status
+    fields:
+      event_id:
+        label: event_id
+        type: reference
+        attributes:
+          reference: events
+        form:
+          type: autocomplete
+          model: event_id
+        db:
+          name: event_id
+          type: integer
+          options:
+            - unsigned
+            - foreign
+      user_id:
+        label: user_id
+        type: reference
+        attributes:
+          reference: users
+        form:
+          required: true
+          model: user_id
+        db:
+          name: user_id
+          type: integer
+          options:
+            - unsigned
+            - foreign
+      rating:
+        label: rating
+        form:
+          required: true
+        db:
+          name: rating
+          type: integer
+          options:
+            - unsigned
+      body:
+        label: body
+        type: string
+        form:
+          required: true
+        db:
+          name: body
+          type: string
+      status:
+        label: status
+        type: select
+        form:
+          required: true
+        db:
+          type: string
+

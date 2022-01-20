@@ -14,8 +14,9 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            'type' => ucfirst($this->faker->words($this->faker->numberBetween(1,5),true)),
-            'start' => $this->faker->date('d-M-Y'),
+            'type' => $this->faker->randomElement(['Baumpflege','Zaunbau','Gartenpflege',
+                    'Transport','pers. Termin','Winterdienst','Sonstiges']),
+            'start' => $this->faker->dateTimeBetween('-1 month','+2 month'),
 
         ];
     }

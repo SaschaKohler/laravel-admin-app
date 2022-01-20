@@ -1,6 +1,10 @@
 <template>
     <va-edit-layout>
-        <events-form :id="id" :title="title" :item="item"></events-form>
+        <active-events-form
+            :id="id"
+            :title="title"
+            :item="item"
+        ></active-events-form>
         <base-material-card
             icon="mdi-comment"
             :title="$admin.getResource('tickets').pluralName"
@@ -13,25 +17,30 @@
                     event_id: id,
                 }"
                 disable-create
+                :include="['event', 'user']"
             >
                 <va-data-table
                     :fields="fields"
-                    disable-clone
+                    disable-select
                     disable-show
+                    disable-clone
+                    disable-delete
                     row-create
                     row-edit
                     :create-data="{
                         event_id: id,
                         user_id: user.id,
                     }"
-                ></va-data-table>
+                >
+
+                </va-data-table>
             </va-list>
         </base-material-card>
     </va-edit-layout>
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapState} from 'vuex';
 
 export default {
     props: ['id', 'title', 'item'],
@@ -46,16 +55,20 @@ export default {
                         color: (v) => this.$statusColor(v),
                     },
                 },
-                { source: 'rating', type: 'rating' },
+                {
+                    source: 'rating', type: 'rating',  attributes: {
+                        halfIncrements: true
+                    }
+                },
                 {
                     source: 'body',
                     type: 'text',
-                    attributes: { truncate: 100, multiline: true },
+                    attributes: {truncate: 100, multiline: true},
                 },
                 {
                     source: 'user',
                     type: 'reference',
-                    attributes: { reference : 'users'}
+                    attributes: {reference: 'users'}
                 },
             ],
         };
@@ -67,3 +80,11 @@ export default {
     },
 };
 </script>
+
+<style>
+
+div .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+   background-color: transparent;
+}
+
+</style>
