@@ -10,22 +10,34 @@ services:
       - PGID=${DOCKER_PGID}
     volumes:
       - ./:/srv/api
-    extra_hosts:
-        -   "host.docker.internal:host-gateway"
+#    extra_hosts:
+#        -   "host.docker.internal:host-gateway"
     depends_on:
       - pgsql
-    networks:
-        - code-network
 
   ### MAILHOG Server #########################################
-  mailhog:
-    image: mailhog/mailhog:latest
-    restart: always
-    ports:
-      - "8025:8025"
-    networks:
-        - code-network
-
+#  mailhog:
+#    image: mailhog/mailhog:latest
+#    restart: always
+#    ports:
+#      - "8025:8025"
+#    networks:
+#        - code-network
+    ### VUE Server #########################################
+  vue:
+      build:
+          context: ./admin/
+      volumes:
+#        - ./:/srv/api
+#        - ./admin/dist:/srv/api/admin
+        - /app/node_modules
+        - ./admin/dist:/app/srv/api/
+      ports:
+          - "${VUE_HTTP_PORT}:80"
+      depends_on:
+          - laravel
+#      networks:
+#        - code-network
 
   ### NGINX Server #########################################
   nginx:
@@ -38,21 +50,7 @@ services:
       - "${NGINX_HTTP_PORT}:80"
     depends_on:
       - laravel
-    networks:
-        - code-network
-  ### VUE Server #########################################
-#  vue:
-#    build:
-#      context: ./admin/
-##    volumes:
-##      - ./:/srv/api
-##      - ./admin/dist:/srv/api/admin
-#    ports:
-#      - "${VUE_HTTP_PORT}:80"
-#    depends_on:
-#      - laravel
-#    networks:
-#        - code-network
+
 ##########################################################
   pgsql:
     image: "postgres" # use latest official postgres version
@@ -64,12 +62,6 @@ services:
         POSTGRES_DB: 'laravel-admin-app' # configure postgres
     volumes:
         - pgsql-admin-data:/var/lib/postgresql/data/ # persist data even if container shuts down
-    networks:
-        - code-network
-
-networks:
-    code-network:
-        driver: bridge
 
 
 volumes:
