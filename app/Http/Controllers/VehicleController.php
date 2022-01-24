@@ -40,7 +40,7 @@ class VehicleController extends Controller
                     AllowedFilter::partial('branding'),
                 ])
                 ->allowedSorts(['type', 'permit', 'inspection','kmAll'])
-                ->allowedIncludes(['events'])
+                ->allowedIncludes(['events','users'])
                 ->get()
         );
     }
@@ -53,7 +53,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        return new VehicleResource($vehicle->load([]));
+        return new VehicleResource($vehicle->load(['events']));
     }
 
     /**

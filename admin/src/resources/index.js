@@ -46,6 +46,7 @@ export default [
         icon: 'mdi-car',
         label: 'branding',
         permissions: ['admin'],
+        include: ['events'],
     },
     {
         name: 'tools',

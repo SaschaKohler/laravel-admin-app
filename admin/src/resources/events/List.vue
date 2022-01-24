@@ -66,11 +66,11 @@ export default {
         return {
             filters: ['customer', 'users', 'vehicles', 'type'],
             fields: [
-                { source: 'type', sortable: true },
+                {source: 'type', sortable: true},
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: { format: 'long' },
+                    attributes: {format: 'long'},
                     sortable: true,
                 },
                 {
@@ -100,7 +100,7 @@ export default {
                 {
                     source: 'tools',
                 },
-                { source: 'finished', type: 'boolean', sortable: true, },
+                {source: 'finished', type: 'boolean', sortable: true,},
             ],
         };
     },

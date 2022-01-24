@@ -10,10 +10,13 @@ services:
       - PGID=${DOCKER_PGID}
     volumes:
       - ./:/srv/api
-#    extra_hosts:
-#        -   "host.docker.internal:host-gateway"
+    extra_hosts:
+        -   "host.docker.internal:host-gateway"
     depends_on:
       - pgsql
+    networks:
+      - code-network
+
 
   ### MAILHOG Server #########################################
 #  mailhog:
@@ -24,18 +27,18 @@ services:
 #    networks:
 #        - code-network
     ### VUE Server #########################################
-  vue:
-      build:
-          context: ./admin/
+#  vue:
+#      build:
+#          context: ./admin/
 #      volumes:
 #        - ./:/srv/api
 #        - ./admin/dist:/srv/api/admin
 #        - /app/node_modules
 #        - ./admin/dist:/app/srv/api/
-      ports:
-          - "${VUE_HTTP_PORT}:80"
-      depends_on:
-          - laravel
+#      ports:
+#          - "${VUE_HTTP_PORT}:80"
+#      depends_on:
+#          - laravel
 #      networks:
 #        - code-network
 
@@ -50,6 +53,8 @@ services:
       - "${NGINX_HTTP_PORT}:80"
     depends_on:
       - laravel
+    networks:
+        - code-network
 
 ##########################################################
   pgsql:
@@ -62,12 +67,16 @@ services:
         POSTGRES_DB: 'laravel-admin-app' # configure postgres
     volumes:
         - pgsql-admin-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+    networks:
+        - code-network
 
 
 volumes:
     pgsql-admin-data: # named volumes can be managed easier using docker-compose
 
-
+networks:
+    code-network:
+        driver: bridge
 
 
 

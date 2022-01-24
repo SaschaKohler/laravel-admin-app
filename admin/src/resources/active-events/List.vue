@@ -5,7 +5,7 @@
             disable-query-string
             :include="['customer', 'vehicles', 'users', 'tools']"
             :sort-by="['updated_at']"
-            :filter = "{
+            :filter="{
                 users: user.id
             }"
         >
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import {mapState} from 'vuex';
 
 export default {
     props: ['resource', 'title', 'item'],
@@ -71,11 +71,11 @@ export default {
         return {
             //filters: ['customer', 'users', 'vehicles', 'type'],
             fields: [
-                { source: 'type', sortable: true },
+                {source: 'type', sortable: true},
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: { format: 'short' },
+                    attributes: {format: 'short'},
                     sortable: true,
                 },
                 {
@@ -105,11 +105,11 @@ export default {
                 {
                     source: 'tools',
                 },
-                { source: 'finished', type: 'boolean' },
+                {source: 'finished', type: 'boolean'},
                 {
                     source: 'updated_at',
                     type: 'date',
-                    attributes: { format: 'time' },
+                    attributes: {format: 'time'},
                 },
             ],
         };

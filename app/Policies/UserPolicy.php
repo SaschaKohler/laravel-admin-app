@@ -2,25 +2,23 @@
 
 namespace App\Policies;
 
-use App\Models\Event;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LogbookPolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
-
-
     public function before(User $user)
     {
-        if ($user->hasRole(['employee'])) {
+        if ($user->hasRole('admin'))
             return true;
-        }
+        if($user->hasRole('employee'))
+            return true;
     }
 
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the user can view any users.
      *
      * @param  \App\Models\User  $user
      * @return mixed
@@ -31,48 +29,48 @@ class LogbookPolicy
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the user can view the user.
      *
+     * @param  \App\Models\User  $auth
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
      * @return mixed
      */
-    public function view(User $user, Event $event)
+    public function view(User $auth, User $user)
     {
         return true;
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the user can create users.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $auth
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $auth)
     {
         return true;
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the user can update the user.
      *
+     * @param  \App\Models\User  $auth
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
      * @return mixed
      */
-    public function update(User $user, Event $event)
+    public function update(User $auth, User $user)
     {
         return true;
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Determine whether the user can delete the user.
      *
+     * @param  \App\Models\User  $auth
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Event  $event
      * @return mixed
      */
-    public function delete(User $user, Event $event)
+    public function delete(User $auth, User $user)
     {
         return true;
     }

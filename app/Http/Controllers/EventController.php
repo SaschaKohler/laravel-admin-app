@@ -37,6 +37,11 @@ class EventController extends Controller
                             $query->where('branding', 'LIKE', '%' . $value . '%');
                         });
                     }),
+                    AllowedFilter::callback('vehicle_id', function (Builder $query, $value) {
+                        $query->whereHas('vehicles', function (Builder $query) use ($value) {
+                            $query->where('vehicle_id', '=',  $value );
+                        });
+                    }),
                     AllowedFilter::callback('users', function (Builder $query, $value) {
                         $query->whereHas('users', function (Builder $query) use ($value) {
                             $query->where('name', 'LIKE', '%' . $value . '%')

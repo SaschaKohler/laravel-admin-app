@@ -46,16 +46,16 @@ export default {
                         color: (v) => this.$statusColor(v),
                     },
                 },
-                { source: 'rating', type: 'rating' },
+                {source: 'rating', type: 'rating'},
                 {
                     source: 'body',
                     type: 'text',
-                    attributes: { truncate: 100, multiline: true },
+                    attributes: {truncate: 100, multiline: true},
                 },
                 {
                     source: 'user',
                     type: 'reference',
-                    attributes: { reference : 'users'}
+                    attributes: {reference: 'users'}
                 },
             ],
         };

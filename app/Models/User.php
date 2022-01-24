@@ -41,6 +41,11 @@ class User extends Authenticatable
         'roles' => 'array',
     ];
 
+    public function hasRole(...$roles)
+    {
+        return (bool) count(array_intersect($this->roles, $roles));
+    }
+
     public function events()
     {
         return $this->belongsToMany(Event::class)->withTimestamps();
@@ -50,4 +55,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ticket::class);
     }
+
 }

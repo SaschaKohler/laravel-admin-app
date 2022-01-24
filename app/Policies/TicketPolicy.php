@@ -10,6 +10,13 @@ class TicketPolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user)
+    {
+        if ($user->hasRole('employee')) {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can view any models.
      *

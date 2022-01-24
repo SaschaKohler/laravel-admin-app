@@ -47,6 +47,8 @@
     "va.messages.deleted": "Datensatz gelöscht",
     "va.messages.deleted_many": "Datensätze gelöscht",
 
+    "carparameter": "Fahrzeugparameter",
+
 
     "tabs.attributes": "Auftragsdaten",
     "tabs.vehicles": "Fahrzeuge",

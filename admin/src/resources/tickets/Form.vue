@@ -37,7 +37,7 @@ import {mapState} from "vuex";
 
 export default {
     props: ['id', 'title', 'item'],
-    data () {
+    data() {
         return {}
 
     },
