@@ -27,11 +27,11 @@ services:
   vue:
       build:
           context: ./admin/
-      volumes:
+#      volumes:
 #        - ./:/srv/api
 #        - ./admin/dist:/srv/api/admin
-        - /app/node_modules
-        - ./admin/dist:/app/srv/api/
+#        - /app/node_modules
+#        - ./admin/dist:/app/srv/api/
       ports:
           - "${VUE_HTTP_PORT}:80"
       depends_on:
