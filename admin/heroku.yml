@@ -1,3 +1,5 @@
 build:
   docker:
-    web: ???
+    web: ./Dockerfile.heroku
+run:
+  web: serve -l $PORT
