@@ -21,7 +21,7 @@ return [
      * You can enable CORS for 1 or multiple paths.
      * Example: ['api/*']
      */
-    'paths' => ['sanctum/csrf-cookie','login', 'logout', 'forgot-password', 'reset-password', 'register', 'api/*', 'user/*'],
+    'paths' => ['login', 'logout', 'forgot-password', 'reset-password', 'register', 'api/*', 'user/*'],
 
     /*
     * Matches the request method. `[*]` allows all methods.
@@ -56,5 +56,5 @@ return [
     /*
      * Sets the Access-Control-Allow-Credentials header.
      */
-    'supports_credentials' => true,
+    'supports_credentials' => false,
 ];
