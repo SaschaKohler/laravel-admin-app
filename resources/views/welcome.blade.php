@@ -75,12 +75,19 @@
 <body>
 <div class="flex-center position-ref full-height">
     <div class="content">
+        <div class="title m-b-md">
+            <img src="../skit.svg"
+                 alt="S.K. IT"
+                 width="300"
+                 height="300">
+        </div>
 
         <div class="links">
             <a href="{{ config('admin.url') }}">Admin</a>
         </div>
 
         <div class="m-t-lg">
+            * No front-end pages are provided in this demo. Only the admin panel.
         </div>
     </div>
 </div>
