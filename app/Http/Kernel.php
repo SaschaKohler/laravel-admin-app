@@ -44,8 +44,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Okami101\LaravelAdmin\Http\Middleware\Impersonate::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Session\Middleware\StartSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
 
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
