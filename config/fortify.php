@@ -48,7 +48,6 @@ return [
 
     'username' => 'email',
 
-    'email' => 'email',
 
     /*
     |--------------------------------------------------------------------------
@@ -74,9 +73,6 @@ return [
     |
     */
 
-    'prefix' => '',
-
-    'domain' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +85,6 @@ return [
     |
     */
 
-    'middleware' => ['web'],
 
     /*
     |--------------------------------------------------------------------------
@@ -103,8 +98,7 @@ return [
     */
 
     'limiters' => [
-        'login' => 'login',
-        'two-factor' => 'two-factor',
+        'login' => null
     ],
 
     /*
@@ -137,9 +131,9 @@ return [
         // Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
-        Features::twoFactorAuthentication([
-            'confirmPassword' => true,
-        ]),
+//        Features::twoFactorAuthentication([
+//            'confirmPassword' => true,
+//        ]),
     ],
 
 ];

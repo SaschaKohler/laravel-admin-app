@@ -76,17 +76,14 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            <img src="https://www.okami101.io/vuetify-admin/logo.svg"
-                 alt="Vuetify Admin"
+            <img src="../skit.svg"
+                 alt="S.K. IT"
                  width="300"
                  height="300">
         </div>
 
         <div class="links">
             <a href="{{ config('admin.url') }}">Admin</a>
-            <a target="_blank" href="https://www.okami101.io/vuetify-admin">Docs</a>
-            <a target="_blank" href="https://github.com/okami101/vuetify-admin">GitHub</a>
-            <a target="_blank" href="https://github.com/adr1enbe4udou1n">Contact</a>
         </div>
 
         <div class="m-t-lg">
