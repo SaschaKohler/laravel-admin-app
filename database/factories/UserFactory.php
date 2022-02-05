@@ -14,6 +14,7 @@ class UserFactory extends Factory
 
 
     protected $counter = 0;
+
     /**
      * Define the model's default state.
      *
@@ -27,20 +28,20 @@ class UserFactory extends Factory
             'Steinbauer, Karl', 'Kohler, Sascha', 'Strasser, Franz', 'Schwaiger, Johann',
         ];
         $roles = [
-            '{"role" : "admin" }',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
-            '{"role" : "employee", "outdoor"}',
+            0 => 'admin',
+            1 => "employee", "outdoor",
+            2 => "employee", "outdoor",
+            3 => "employee", "outdoor",
+            4 => "employee", "outdoor",
+            5 => "employee", "outdoor",
+            6 => "employee", "outdoor",
+            7 => "employee", "outdoor",
+            8 => "employee", "outdoor",
+            9 => 'employee', 'outdoor',
+            10 => "employee", "outdoor",
+            11 => "employee", "outdoor",
+            12 => "employee", "outdoor",
+            13 => "employee", "outdoor",
 
         ];
 
@@ -50,6 +51,7 @@ class UserFactory extends Factory
         $user = $users[$this->counter];
         $pieces = explode(",", $users[$this->counter]);
 
+        $role = $roles[$this->counter];
         $email = strtolower($pieces[0]) . '@home.at';
 
         $this->counter += 1;
