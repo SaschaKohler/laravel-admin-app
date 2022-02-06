@@ -19,7 +19,6 @@
                             label: $i18n.t('tabs.users'),
                             icon: 'mdi-account',
                         },
-
                     ]"
                 >
                     <template v-slot:vehicles>
@@ -43,11 +42,10 @@
 
                                     <template
                                         v-if="
-                                                props.item.type === 'Pickup' ||
-                                                props.item.type ===
-                                                    'Pritsche' ||
-                                                props.item.type === 'PKW'
-                                            "
+                                            props.item.type === 'Pickup' ||
+                                            props.item.type === 'Pritsche' ||
+                                            props.item.type === 'PKW'
+                                        "
                                     >
                                         <v-row>
                                             <v-col v-bind="props">
@@ -68,10 +66,9 @@
                                     </template>
                                     <template
                                         v-if="
-                                                props.item.type === 'Traktor' ||
-                                                props.item.type ===
-                                                    'Mähdrescher'
-                                            "
+                                            props.item.type === 'Traktor' ||
+                                            props.item.type === 'Mähdrescher'
+                                        "
                                     >
                                         <v-row>
                                             <v-col v-bind="props">
@@ -91,9 +88,7 @@
                                         </v-row>
                                     </template>
                                     <template
-                                        v-if="
-                                                props.item.type === 'Anhänger'
-                                            "
+                                        v-if="props.item.type === 'Anhänger'"
                                     >
                                         <v-row>
                                             <v-col>
@@ -178,7 +173,6 @@
                                 </v-row>
                             </CustomComponent>
 
-
                             <v-row justify="right">
                                 <v-col cols="6">
                                     <va-boolean-input
@@ -214,7 +208,7 @@ export default {
             startTime: null,
             formState: {
                 startTime: null,
-            }
+            },
         };
     },
     methods: {

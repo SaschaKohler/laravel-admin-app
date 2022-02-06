@@ -26,6 +26,7 @@
             type="password"
             v-model="form.password"
             required
+            :error-messages="errorMessages.password"
         ></v-text-field>
 
         <v-checkbox

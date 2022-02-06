@@ -9,7 +9,10 @@
                         </div>
                     </template>
                     <v-card-text>
-                        <va-radio-group-input source="status" row></va-radio-group-input>
+                        <va-radio-group-input
+                            source="status"
+                            row
+                        ></va-radio-group-input>
                         <va-rating-input source="rating"></va-rating-input>
                         <va-text-input source="body" multiline></va-text-input>
 
@@ -33,13 +36,12 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState } from 'vuex';
 
 export default {
     props: ['id', 'title', 'item'],
     data() {
-        return {}
-
+        return {};
     },
     computed: {
         ...mapState({

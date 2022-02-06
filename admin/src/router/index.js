@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import AuthLayout from '@/layouts/Auth'
-import Login from '@/views/auth/Login'
-import Register from '@/views/auth/Register'
-import ForgotPassword from '@/views/auth/ForgotPassword'
-import ResetPassword from '@/views/auth/ResetPassword'
-import i18n from '@/i18n'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import AuthLayout from '@/layouts/Auth';
+import Login from '@/views/auth/Login';
+import Register from '@/views/auth/Register';
+import ForgotPassword from '@/views/auth/ForgotPassword';
+import ResetPassword from '@/views/auth/ResetPassword';
+import i18n from '@/i18n';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -50,10 +50,10 @@ const routes = [
             },
         ],
     },
-]
+];
 
 export default new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes,
-})
+});

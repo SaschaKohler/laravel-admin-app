@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Input from "vuetify-admin/src/mixins/input";
+import Input from 'vuetify-admin/src/mixins/input';
 
 export default {
     mixins: [Input],

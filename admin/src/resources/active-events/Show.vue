@@ -29,7 +29,7 @@
                                         reference="customers"
                                         :label="$t('va.customer')"
                                         class="text-lg-h2"
-                                    >{{ item.customer.last }} /
+                                        >{{ item.customer.last }} /
                                         {{ item.customer.street }} /
                                         {{ item.customer.phone }}
                                     </va-field>
@@ -50,7 +50,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title
                                                         class="text-lg-h3"
-                                                    >{{ item.branding }}
+                                                        >{{ item.branding }}
                                                     </v-list-item-title>
                                                     Strecke :{{
                                                         item.pivot.kmSum
@@ -99,12 +99,11 @@
                                             <v-list-item
                                                 v-for="(item, i) in value"
                                                 :key="i"
-
                                             >
                                                 <v-list-item-content>
                                                     <v-list-item-title
                                                         class="text-lg-h3"
-                                                    >{{ item.name }}
+                                                        >{{ item.name }}
                                                     </v-list-item-title>
                                                     geleistet :
                                                     {{ item.pivot.hours }} h

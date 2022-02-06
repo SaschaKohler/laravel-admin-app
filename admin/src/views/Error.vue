@@ -9,11 +9,13 @@
             />
 
             <div class="display-4">
-        <span v-if="error">
-          {{ error.status }}
-          {{ error.message }}
-        </span>
-                <span v-else>404 {{ $t('routes.not_found').toLowerCase() }}</span>
+                <span v-if="error">
+                    {{ error.status }}
+                    {{ error.message }}
+                </span>
+                <span v-else
+                    >404 {{ $t('routes.not_found').toLowerCase() }}</span
+                >
             </div>
         </div>
     </div>
@@ -22,5 +24,5 @@
 <script>
 export default {
     props: ['error'],
-}
+};
 </script>

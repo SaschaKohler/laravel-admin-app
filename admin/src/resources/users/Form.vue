@@ -7,7 +7,11 @@
         <va-boolean-input source="active"></va-boolean-input>
         <va-password-input source="password"></va-password-input>
         <va-password-input source="password_confirmation"></va-password-input>
-        <va-select-input source="roles" multiple :choices="choices"></va-select-input>
+        <va-select-input
+            source="roles"
+            multiple
+            :choices="choices"
+        ></va-select-input>
 
         <va-save-button></va-save-button>
     </va-form>
@@ -19,11 +23,11 @@ export default {
     data() {
         return {
             choices: [
-                {value: 'admin', text: 'Admin'},
-                {value: 'employee', text: 'Mitarbeiter'},
-                {value: 'guest', text: 'Gast'},
-            ]
-        }
-    }
-}
+                { value: 'admin', text: 'Admin' },
+                { value: 'employee', text: 'Mitarbeiter' },
+                { value: 'guest', text: 'Gast' },
+            ],
+        };
+    },
+};
 </script>

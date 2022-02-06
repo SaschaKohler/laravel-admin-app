@@ -13,8 +13,8 @@ export default {
         return {
             filters: [],
             fields: [
-                {source: 'title', sortable: true},
-                {source: 'acquisitionDate', sortable: true, type: 'date'},
+                { source: 'title', sortable: true },
+                { source: 'acquisitionDate', sortable: true, type: 'date' },
                 {
                     source: 'acquisitionPrice',
                     sortable: true,
@@ -24,7 +24,7 @@ export default {
                     },
                 },
             ],
-        }
+        };
     },
-}
+};
 </script>

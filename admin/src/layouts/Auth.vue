@@ -11,10 +11,15 @@
                         </template>
                         <v-card-text>
                             <div class="text-center mb-4">
-                                <img src="../assets/skit.svg" width="220" height="220"/>
-                                <p class="text-caption">Lizensiert für Dirneder KG</p>
+                                <img
+                                    src="../assets/skit.svg"
+                                    width="220"
+                                    height="220"
+                                />
+                                <p class="text-caption">
+                                    Lizensiert für Dirneder KG
+                                </p>
                             </div>
-
 
                             <transition name="fade" mode="out-in">
                                 <router-view></router-view>

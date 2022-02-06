@@ -10,8 +10,14 @@
                     </template>
                     <v-card-text>
                         <va-text-input source="title" required></va-text-input>
-                        <va-date-input source="acquisitionDate" required></va-date-input>
-                        <va-text-input source="acquisitionPrice" required></va-text-input>
+                        <va-date-input
+                            source="acquisitionDate"
+                            required
+                        ></va-date-input>
+                        <va-text-input
+                            source="acquisitionPrice"
+                            required
+                        ></va-text-input>
                     </v-card-text>
                     <va-save-button></va-save-button>
                 </base-material-card>
@@ -23,5 +29,5 @@
 <script>
 export default {
     props: ['id', 'title', 'item'],
-}
+};
 </script>

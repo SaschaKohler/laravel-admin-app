@@ -25,5 +25,5 @@
 <script>
 export default {
     props: ['id', 'title', 'item'],
-}
+};
 </script>

@@ -13,14 +13,14 @@ export default {
         return {
             filters: ['id', 'city'],
             fields: [
-                {source: 'first', sortable: true},
-                {source: 'last', sortable: true},
-                {source: 'street', sortable: true},
-                {source: 'city', sortable: true},
+                { source: 'first', sortable: true },
+                { source: 'last', sortable: true },
+                { source: 'street', sortable: true },
+                { source: 'city', sortable: true },
                 'phone',
                 'notes',
             ],
-        }
+        };
     },
-}
+};
 </script>
