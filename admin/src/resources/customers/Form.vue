@@ -9,8 +9,14 @@
                         </div>
                     </template>
                     <v-card-text>
-                        <va-text-input source="first" required></va-text-input>
+
+                        <va-select-input source="prefix" required></va-select-input>
+                        <va-text-input source="title"></va-text-input>
+                        <va-text-input
+                            source="first"
+                            required></va-text-input>
                         <va-text-input source="last" required></va-text-input>
+                        <va-text-input source="email" required></va-text-input>
                         <va-text-input source="street" required></va-text-input>
                         <va-text-input source="city" required></va-text-input>
                         <va-text-input source="phone" required></va-text-input>

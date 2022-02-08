@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
 
 class EventDismiss extends Mailable
 {
@@ -30,8 +31,14 @@ class EventDismiss extends Mailable
      */
     public function build()
     {
+        $time = $this->event->start;
+        $date = Carbon::createFromDate($time)->format('d.m.y');
+
         return $this->subject('Auftragsänderung - ' . $this->event->type . ' Dirneder KG')
-            ->markdown('emails.events.dismiss');
+            ->markdown('emails.events.dismiss')
+            ->with([
+                'date' => $date
+            ]);
 
     }
 }

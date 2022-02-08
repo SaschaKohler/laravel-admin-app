@@ -48,6 +48,7 @@
     "va.messages.created": "Datensatz erstellt",
     "va.messages.deleted": "Datensatz gelöscht",
     "va.messages.deleted_many": "Datensätze gelöscht",
+    "va.messages.not_alid": "Daten nicht korrekt",
 
     "carparameter": "Fahrtenbuch",
 
@@ -120,7 +121,7 @@
         "users": "Mitarbeiter",
         "profile": "Profile",
         "dashboard": "Dashboard",
-        "events": "Aufträge bearbeiten",
+        "events": "Aufträge erstellen",
         "logbook": "Aufträge buchen",
         "act_events": "Aufträge bearbeiten",
         "act_logbook": "Aufträge buchen"
@@ -143,6 +144,7 @@
             "fields": {
                 "type": "Leistung",
                 "finished": "Baustelle fertig",
+                "fixed": "Termin fixiert",
                 "recurrence": "Intervall",
                 "event_id": "StartAuftrag",
                 "customer": "Kunde",
@@ -241,13 +243,23 @@
         "customers": {
             "name": "Kunde | Kunden",
             "fields": {
+                "prefix": "Anrede",
+                "title" : "Titel",
                 "first" : "Vorname",
                 "last" : "Nachname",
+                "email": "email",
                 "street": "Strasse",
                 "city": "Stadt/Ort",
                 "phone": "Telefon"
             },
-            "enums": {}
+            "enums": {
+                "prefix": {
+                    "-" : "-",
+                    "Mr." : "Herr",
+                    "Mrs." : "Frau",
+                    "Family" : "Familie"
+                }
+            }
         },
         "vehicles": {
             "name": "Fahrzeug | Fahrzeuge",

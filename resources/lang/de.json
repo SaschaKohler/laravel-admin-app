@@ -582,6 +582,7 @@
     "The :resource was updated!": "Die :resource wurde aktualisiert!",
     "The action ran successfully!": "Die Aktion wurde erfolgreich ausgeführt!",
     "The file was deleted!": "Die Datei wurde gelöscht!",
+    "The given data was invalid.": "Die Eingabe entspricht nicht den Anforderungen",
     "The given :attribute has appeared in a data leak. Please choose a different :attribute.": "Das :attribute ist bereits in einem Datenleck aufgetaucht. Bitte wähle ein anderes :attribute.",
     "The government won't let us show you what's behind these doors": "Wir dürfen Ihnen nicht zeigen, was sich hinter diesen Türen verbirgt",
     "The HasOne relationship has already been filled.": "Die HasOne-Beziehung wurde bereits befüllt.",

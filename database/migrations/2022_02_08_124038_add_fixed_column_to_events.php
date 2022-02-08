@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddEmailandTitleToCustomers extends Migration
+class AddFixedColumnToEvents extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddEmailandTitleToCustomers extends Migration
      */
     public function up()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            $table->string('prefix')->default('-')->nullable();
-            $table->string('email');
-            $table->string('title')->default('-')->nullable();
+        Schema::table('events', function (Blueprint $table) {
+            $table->boolean('fixed')->default(false)->nullable();
         });
     }
 
@@ -27,7 +25,7 @@ class AddEmailandTitleToCustomers extends Migration
      */
     public function down()
     {
-        Schema::table('customers', function (Blueprint $table) {
+        Schema::table('events', function (Blueprint $table) {
             //
         });
     }

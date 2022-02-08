@@ -4,7 +4,7 @@
 Hallo {{ $event->customer->title }} {{ $event->customer->last }}, <br><br>
 Wir bestätigen hiermit Ihren Termin: <br>
 <br>
-**{{ $event->type }} am {{ $event->start }}** <br>
+**{{ $event->type }} am {{ $date }}** <br>
 <br>
 *Mit kurzfristigen Terminverschiebungen sind wetterbedingt möglich*<br>
 

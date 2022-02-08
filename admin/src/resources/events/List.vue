@@ -36,26 +36,9 @@
                         </va-reference-field>
                     </v-chip-group>
                 </template>
-                <template v-slot:[`field.tools`]="{ value }">
-                    <v-chip-group column>
-                        <va-reference-field
-                            reference="tools"
-                            v-for="(item, i) in value"
-                            :key="i"
-                            color="amber lighten-3"
-                            chip
-                            :label="$t('va.tools')"
-                            small
-                            :item="item"
-                            action="show"
-                        >
-                            {{ item.title }}
-                        </va-reference-field>
-                    </v-chip-group>
-                </template>
                 <template v-slot:[`item.actions`]="{ item }">
-                    <send-mail-button :item="item" :confirm="true"></send-mail-button>
-                    <send-mail-button :item="item" :confirm="false"></send-mail-button>
+                    <send-mail-button :item="item"  :confirm="true"></send-mail-button>
+                    <send-mail-button :item="item"  :confirm="false"></send-mail-button>
                 </template>
             </va-data-table>
         </va-list>
@@ -82,6 +65,7 @@ export default {
                 {
                     source: 'event_id',
                     type: 'reference',
+                    sortable: false,
                     attributes: {
                         reference: 'events',
                     },
@@ -103,10 +87,9 @@ export default {
                 {
                     source: 'vehicles',
                 },
-                {
-                    source: 'tools',
-                },
                 { source: 'finished', type: 'boolean', sortable: true },
+                { source: 'fixed', type: 'boolean', sortable: true },
+
             ],
         };
     },

@@ -82,6 +82,7 @@
                     <v-card-text>
                         <p class="text-lg-subtitle-2">
                             {{ selectedEvent.start }}
+                            <span v-if="selectedEvent.fixed === true" class="red--text"> - Termin fixiert</span>
                         </p>
                         <v-row>
                             <p class="text-h5">
@@ -200,6 +201,7 @@ export default {
             this.events = this.data.data.map((n) => {
                 return {
                     name: n.type,
+                    fixed: n.fixed,
                     start: n.start,
                     color: n.color,
                     customer: n.customer,
@@ -220,6 +222,7 @@ export default {
 
                 this.selectedEvent.start = event.start;
                 this.selectedEvent.end = event.end;
+                this.selectedEvent.fixed = event.fixed;
                 this.selectedEvent.name = event.name;
 
                 this.selectedEvent.customer.lastName = event.customer.last;

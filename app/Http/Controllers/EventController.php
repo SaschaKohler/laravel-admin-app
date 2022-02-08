@@ -63,7 +63,7 @@ class EventController extends Controller
                     AllowedFilter::partial('type'),
                 ])
                 ->defaultSort('updated_at')
-                ->allowedSorts(['id', 'start', 'workingHours', 'type', 'customer', 'updated_at', 'finished'])
+                ->allowedSorts(['id', 'start','type', 'customer', 'updated_at', 'finished','fixed'])
                 ->allowedIncludes(['customer', 'vehicles', 'users', 'tools'])
                 ->get()
         );
@@ -212,7 +212,8 @@ class EventController extends Controller
 
         Mail::to($event->customer->email)->send(new EventConfirm($event));
 
-
+        $event->fixed = true;
+        $event->save();
         return response()->json(['message' => 'Email an ' . $event->customer->email . ' versendet'], 200);
     }
 
@@ -221,6 +222,8 @@ class EventController extends Controller
 
         Mail::to($event->customer->email)->send(new EventDismiss($event));
 
+        $event->fixed = false;
+        $event->save();
 
         return response()->json(['message' => 'Email an ' . $event->customer->email . ' versendet'], 200);
     }

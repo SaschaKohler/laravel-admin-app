@@ -29,7 +29,8 @@
                             reference="customers"
                             :label="$t('va.customer')"
                             required
-                        ></va-select-input>
+                        >
+                        </va-select-input>
                         <va-select-input
                             source="users"
                             model="users"

@@ -3,20 +3,20 @@
         v-if="item && confirm"
         :item="item"
         @click="sendConfirmMail"
-        :hide-label="icon"
+        hide-label
         :label="$t('va.actions.event.enable')"
-        icon="mdi-lock"
-        color="warning"
+        icon="mdi-mail"
+        color="success"
         text
     ></va-action-button>
     <va-action-button
         v-else
         :item="item"
         @click="sendDismissMail"
-        :hide-label="icon"
+        hide-label
         :label="$t('va.actions.event.disable')"
-        icon="mdi-lock"
-        color="warning"
+        icon="mdi-mail"
+        color="error"
         text
     ></va-action-button>
 </template>
