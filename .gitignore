@@ -19,3 +19,4 @@ _ide_helper.php
 .php_cs.cache
 /admin/dist/
 /resources/views/vendor/mail/
+/node_modules/
