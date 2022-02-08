@@ -82,7 +82,12 @@
                     <v-card-text>
                         <p class="text-lg-subtitle-2">
                             {{ selectedEvent.start }}
-                            <span v-if="selectedEvent.fixed === true" class="red--text"> - Termin fixiert</span>
+                            <span
+                                v-if="selectedEvent.fixed === true"
+                                class="red--text"
+                            >
+                                - Termin fixiert</span
+                            >
                         </p>
                         <v-row>
                             <p class="text-h5">

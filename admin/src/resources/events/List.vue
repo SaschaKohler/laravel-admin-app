@@ -37,8 +37,14 @@
                     </v-chip-group>
                 </template>
                 <template v-slot:[`item.actions`]="{ item }">
-                    <send-mail-button :item="item"  :confirm="true"></send-mail-button>
-                    <send-mail-button :item="item"  :confirm="false"></send-mail-button>
+                    <send-mail-button
+                        :item="item"
+                        :confirm="true"
+                    ></send-mail-button>
+                    <send-mail-button
+                        :item="item"
+                        :confirm="false"
+                    ></send-mail-button>
                 </template>
             </va-data-table>
         </va-list>
@@ -89,7 +95,6 @@ export default {
                 },
                 { source: 'finished', type: 'boolean', sortable: true },
                 { source: 'fixed', type: 'boolean', sortable: true },
-
             ],
         };
     },

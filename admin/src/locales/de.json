@@ -143,6 +143,7 @@
             "name": "Auftrag | Aufträge",
             "fields": {
                 "type": "Leistung",
+                "color": "Farbe / Kalendar",
                 "finished": "Baustelle fertig",
                 "fixed": "Termin fixiert",
                 "recurrence": "Intervall",

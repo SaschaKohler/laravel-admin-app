@@ -6,7 +6,7 @@ Wir bestätigen hiermit Ihren Termin: <br>
 <br>
 **{{ $event->type }} am {{ $date }}** <br>
 <br>
-*Mit kurzfristigen Terminverschiebungen sind wetterbedingt möglich*<br>
+*kurzfristige Terminverschiebungen sind wetterbedingt möglich*<br>
 
 Wir informieren Sie rechtzeitig<br>
 

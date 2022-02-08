@@ -39,7 +39,9 @@ export default [
         name: 'customers',
         icon: 'mdi-account-group',
         label: (customers) => {
-            return (customers.first + ' ' + customers.last + ' / ' + customers.city  );
+            return (
+                customers.first + ' ' + customers.last + ' / ' + customers.city
+            );
         },
         permissions: ['admin'],
     },
