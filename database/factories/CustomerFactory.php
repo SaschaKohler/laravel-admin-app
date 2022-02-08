@@ -13,11 +13,16 @@ class CustomerFactory extends Factory
      */
     public function definition()
     {
+        $first = $this->faker->firstName();
+        $last= $this->faker->lastName();
+        $domain = $this->faker->domainName();
+        $email = $first .'.'.$last .'@'. $domain;
         return [
-            'first' => $this->faker->firstName(),
+            'first' => $first,
 
-            'last' => $this->faker->lastName,
-
+            'last' => $last,
+            'email' => $this->faker->email(),
+            'title' => $this->faker->title($gender='male'|'female'),
             'street' => $this->faker->streetName,
             'city' => $this->faker->city,
             'phone' => $this->faker->phoneNumber,

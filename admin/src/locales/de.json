@@ -17,6 +17,8 @@
     "va.pages.edit": "{resource} {label} editieren",
     "va.pages.not_found": "{resource} #{id} nicht gefunden",
     "va.actions.list": "Liste",
+    "va.actions.event.enable": "Zusage",
+    "va.actions.event.disable": "Absage",
     "va.actions.create": "Erstellen",
     "va.actions.show": "Anzeigen",
     "va.actions.edit": "Editieren",

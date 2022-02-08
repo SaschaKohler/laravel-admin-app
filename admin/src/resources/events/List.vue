@@ -53,13 +53,20 @@
                         </va-reference-field>
                     </v-chip-group>
                 </template>
+                <template v-slot:[`item.actions`]="{ item }">
+                    <send-mail-button :item="item" :confirm="true"></send-mail-button>
+                    <send-mail-button :item="item" :confirm="false"></send-mail-button>
+                </template>
             </va-data-table>
         </va-list>
     </base-material-card>
 </template>
 
 <script>
+import SendMailButton from '@/components/buttons/SendMailButton';
+
 export default {
+    components: { SendMailButton },
     props: ['resource', 'title', 'item'],
     data() {
         return {
@@ -103,5 +110,6 @@ export default {
             ],
         };
     },
+    methods: {},
 };
 </script>

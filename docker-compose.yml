@@ -19,13 +19,13 @@ services:
 
 
   ### MAILHOG Server #########################################
-#  mailhog:
-#    image: mailhog/mailhog:latest
-#    restart: always
-#    ports:
-#      - "8025:8025"
-#    networks:
-#        - code-network
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - "8025:8025"
+    networks:
+        - code-network
     ### VUE Server #########################################
   vue:
       build:
