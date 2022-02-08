@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
-import de from './locales/de'
-import en from './locales/en'
+import Vue from 'vue';
+import VueI18n from 'vue-i18n';
+import de from './locales/de';
+import en from './locales/en';
 
-Vue.use(VueI18n)
+Vue.use(VueI18n);
 
 // function loadLocaleMessages() {
 //     const locales = require.context(
@@ -23,7 +23,7 @@ Vue.use(VueI18n)
 // }
 
 export default new VueI18n({
-  locale: process.env.VUE_APP_I18N_LOCALE || 'de',
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'de',
-  messages: { de, en },
-})
+    locale: process.env.VUE_APP_I18N_LOCALE || 'de',
+    fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'de',
+    messages: { de, en },
+});

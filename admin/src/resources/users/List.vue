@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import ImpersonateButton from '@/components/buttons/ImpersonateButton'
+import ImpersonateButton from '@/components/buttons/ImpersonateButton';
 
 export default {
     components: {
@@ -40,29 +40,29 @@ export default {
     data() {
         return {
             fields: [
-                {source: 'name', sortable: true},
-                {source: 'email', type: 'email'},
-                {source: 'address', type: 'text'},
-                {source: 'phone1', type: 'text'},
-                {source: 'roles', type: 'array'},
-                {source: 'active', type: 'boolean'},
+                { source: 'name', sortable: true },
+                { source: 'email', type: 'email' },
+                { source: 'address', type: 'text' },
+                { source: 'phone1', type: 'text' },
+                { source: 'roles', type: 'array' },
+                { source: 'active', type: 'boolean' },
             ],
             asideTitle: null,
             id: null,
             item: null,
             show: false,
-        }
+        };
     },
     methods: {
-        async onAction({title, id, item}) {
-            this.asideTitle = title
-            this.id = id
-            this.item = item
+        async onAction({ title, id, item }) {
+            this.asideTitle = title;
+            this.id = id;
+            this.item = item;
         },
         onSaved() {
-            this.asideTitle = null
-            this.$refs.list.fetchData()
+            this.asideTitle = null;
+            this.$refs.list.fetchData();
         },
     },
-}
+};
 </script>

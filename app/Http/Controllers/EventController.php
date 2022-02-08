@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEvent;
 use App\Http\Requests\UpdateEvent;
+use App\Http\Resources\Customer;
 use App\Http\Resources\Event as EventResource;
+use App\Mail\EventConfirm;
+use App\Mail\EventDismiss;
 use App\Models\Tool;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Okami101\LaravelAdmin\Filters\SearchFilter;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -39,13 +44,13 @@ class EventController extends Controller
                     }),
                     AllowedFilter::callback('vehicle_id', function (Builder $query, $value) {
                         $query->whereHas('vehicles', function (Builder $query) use ($value) {
-                            $query->where('vehicle_id', '=',  $value );
+                            $query->where('vehicle_id', '=', $value);
                         });
                     }),
                     AllowedFilter::callback('users', function (Builder $query, $value) {
                         $query->whereHas('users', function (Builder $query) use ($value) {
                             $query->where('name', 'LIKE', '%' . $value . '%')
-                            ->orWhere('user_id','=', $value);
+                                ->orWhere('user_id', '=', $value);
                         });
                     }),
                     AllowedFilter::callback('customer', function (Builder $query, $value) {
@@ -58,7 +63,7 @@ class EventController extends Controller
                     AllowedFilter::partial('type'),
                 ])
                 ->defaultSort('updated_at')
-                ->allowedSorts(['id', 'start', 'workingHours', 'type', 'customer', 'updated_at','finished'])
+                ->allowedSorts(['id', 'start', 'workingHours', 'type', 'customer', 'updated_at', 'finished'])
                 ->allowedIncludes(['customer', 'vehicles', 'users', 'tools'])
                 ->get()
         );
@@ -115,7 +120,7 @@ class EventController extends Controller
             if ($request->vehicles) {
                 $event->vehicles()->sync($request->vehicles);
             }
-            if($request->tools){
+            if ($request->tools) {
                 $event->tools()->sync($request->tools);
             }
             $event->users()->sync($request->users);
@@ -151,7 +156,7 @@ class EventController extends Controller
                     }
                 }
             }
-            if($request->tools) {
+            if ($request->tools) {
                 $toolSync = array();
 
                 foreach ($request->tools as $tool) {
@@ -166,7 +171,7 @@ class EventController extends Controller
                     $event->tools()->sync($toolSync);
                 }
             }
-            if($request->users) {
+            if ($request->users) {
                 $usersSync = array();
 
                 foreach ($request->users as $user) {
@@ -201,4 +206,24 @@ class EventController extends Controller
 
         return response()->noContent();
     }
+
+    public function sendConfirmMail(Event $event)
+    {
+
+        Mail::to($event->customer->email)->send(new EventConfirm($event));
+
+
+        return response()->json(['message' => 'Email an ' . $event->customer->email . ' versendet'], 200);
+    }
+
+    public function sendDismissMail(Event $event)
+    {
+
+        Mail::to($event->customer->email)->send(new EventDismiss($event));
+
+
+        return response()->json(['message' => 'Email an ' . $event->customer->email . ' versendet'], 200);
+    }
+
+
 }

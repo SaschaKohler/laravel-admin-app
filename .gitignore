@@ -1,4 +1,4 @@
-/node_modules
+/admin/node_modules/
 /public/hot
 /public/storage
 /storage/*.key
@@ -17,3 +17,5 @@ yarn-error.log
 .phpstorm.meta.php
 _ide_helper.php
 .php_cs.cache
+/admin/dist/
+/resources/views/vendor/mail/

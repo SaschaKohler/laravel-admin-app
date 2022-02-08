@@ -1,6 +1,6 @@
 <template>
     <base-material-card :icon="resource.icon" :title="title">
-        <va-list :filters="filters" :include="['event','user']">
+        <va-list :filters="filters" :include="['event', 'user']">
             <va-data-table :fields="fields" disable-clone>
                 <template v-slot:[`field.event`]="{ value }">
                     {{ value.type }}({{ value.start }})
@@ -29,18 +29,18 @@ export default {
                 {
                     source: 'event',
                     type: 'reference',
-                    attributes: {reference: 'events'},
+                    attributes: { reference: 'events' },
                 },
                 {
                     source: 'user',
                     type: 'reference',
-                    attributes: {reference: 'users'},
+                    attributes: { reference: 'users' },
                 },
-                {source: 'rating', type: 'rating', sortable: true},
+                { source: 'rating', type: 'rating', sortable: true },
                 {
                     source: 'body',
                     type: 'text',
-                    attributes: {truncate: 50, multiline: true},
+                    attributes: { truncate: 50, multiline: true },
                 },
             ],
         };

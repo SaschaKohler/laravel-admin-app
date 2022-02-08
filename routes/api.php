@@ -40,5 +40,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
      //   'statistics' => StatisticsController::class,
     ]);
 
- //   Route::post('reset-password',[LogbookController::class,'index'])->name('logbook.index')
+    Route::post('events/{event}/sendConfirmMail',[EventController::class,'sendConfirmMail'])->name('events.sendConfirmMail');
+    Route::post('events/{event}/sendDismissMail',[EventController::class,'sendDismissMail'])->name('events.sendDismissMail');
 });

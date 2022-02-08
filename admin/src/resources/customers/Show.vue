@@ -12,6 +12,8 @@
                         <v-card-text>
                             <va-field source="first"></va-field>
                             <va-field source="last"></va-field>
+                            <va-field source="title"></va-field>
+                            <va-field source="email"></va-field>
                             <va-field source="street"></va-field>
                             <va-field source="city"></va-field>
                             <va-field source="phone"></va-field>
@@ -26,5 +28,5 @@
 <script>
 export default {
     props: ['title', 'item'],
-}
+};
 </script>

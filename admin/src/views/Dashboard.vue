@@ -95,7 +95,7 @@
                             <ul>
                                 <span
                                     class="text-subtitle-1 text-decoration-underline"
-                                >Team:</span
+                                    >Team:</span
                                 >
                                 <li
                                     v-for="employee in selectedEvent.employees"
@@ -107,7 +107,7 @@
                             <ul>
                                 <span
                                     class="text-subtitle-1 text-decoration-underline"
-                                >Fahrzeuge:</span
+                                    >Fahrzeuge:</span
                                 >
                                 <li
                                     v-for="vehicle in selectedEvent.vehicles"
@@ -250,10 +250,10 @@ export default {
 
 <style>
 div
-.v-calendar-weekly__day
-.v-calendar-weekly__day-label
-.v-btn
-.v-btn__content {
+    .v-calendar-weekly__day
+    .v-calendar-weekly__day-label
+    .v-btn
+    .v-btn__content {
     color: #1a202c;
     font-size: 1.2em;
 }
@@ -270,21 +270,21 @@ div .v-calendar-daily .v-calendar-daily__head .v-calendar-daily_head-weekday {
 }
 
 div
-.v-calendar-daily
-.v-calendar-daily__head
-.v-calendar-daily_head-day
-.v-event {
+    .v-calendar-daily
+    .v-calendar-daily__head
+    .v-calendar-daily_head-day
+    .v-event {
     color: #1a202c;
     font-size: 1.5em;
     color: white;
 }
 
 div
-.v-calendar-daily
-.v-calendar-daily__head
-.v-calendar-daily_head-day-label
-.v-btn
-.v-btn__content {
+    .v-calendar-daily
+    .v-calendar-daily__head
+    .v-calendar-daily_head-day-label
+    .v-btn
+    .v-btn__content {
     color: #1a202c;
     font-size: 1.7em;
     font-weight: bolder;

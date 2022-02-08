@@ -53,24 +53,30 @@
                         </va-reference-field>
                     </v-chip-group>
                 </template>
+                <template v-slot:[`item.actions`]="{ item }">
+                    <send-mail-button :item="item" :confirm="true"></send-mail-button>
+                    <send-mail-button :item="item" :confirm="false"></send-mail-button>
+                </template>
             </va-data-table>
         </va-list>
     </base-material-card>
 </template>
 
 <script>
+import SendMailButton from '@/components/buttons/SendMailButton';
 
 export default {
+    components: { SendMailButton },
     props: ['resource', 'title', 'item'],
     data() {
         return {
             filters: ['customer', 'users', 'vehicles', 'type'],
             fields: [
-                {source: 'type', sortable: true},
+                { source: 'type', sortable: true },
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: {format: 'long'},
+                    attributes: { format: 'long' },
                     sortable: true,
                 },
                 {
@@ -100,10 +106,10 @@ export default {
                 {
                     source: 'tools',
                 },
-                {source: 'finished', type: 'boolean', sortable: true,},
+                { source: 'finished', type: 'boolean', sortable: true },
             ],
         };
     },
-
+    methods: {},
 };
 </script>

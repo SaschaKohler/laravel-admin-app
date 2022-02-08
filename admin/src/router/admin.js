@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import AdminLayout from '@/layouts/Admin'
-import Dashboard from '@/views/Dashboard'
-import Profile from '@/views/Profile'
-import Error from '@/views/Error'
-import i18n from '@/i18n'
+import Vue from 'vue';
+import AdminLayout from '@/layouts/Admin';
+import Dashboard from '@/views/Dashboard';
+import Profile from '@/views/Profile';
+import Error from '@/views/Error';
+import i18n from '@/i18n';
 
 /**
  * Error component
  */
-Vue.component('Error', Error)
+Vue.component('Error', Error);
 
 export default {
     path: '',
@@ -42,4 +42,4 @@ export default {
             },
         },
     ],
-}
+};

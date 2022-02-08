@@ -6,7 +6,11 @@
             :profile-menu="profileMenu"
             dense
             dark
-            @toggle="$vuetify.breakpoint.lgAndUp ? (mini = !mini) : (drawer = !drawer)"
+            @toggle="
+                $vuetify.breakpoint.lgAndUp
+                    ? (mini = !mini)
+                    : (drawer = !drawer)
+            "
         ></va-app-bar>
         <va-sidebar
             slot="sidebar"
@@ -20,19 +24,19 @@
         </template>
         <va-aside slot="aside"></va-aside>
         <va-footer slot="footer" :menu="footerMenu">
-            &copy; 2020,
+            &copy; 2022,
             <v-icon size="18"> mdi-xml</v-icon>
             with
             <v-icon size="18"> mdi-heart</v-icon>
             by
-            <a href="https://www.company.com">My Awesome Company</a> for a better web.
+            <a href="http://localhost:8000">SK.IT</a> individual web solutions.
         </va-footer>
     </va-layout>
 </template>
 
 <script>
-import ImpersonateMessage from '@/components/ImpersonateMessage'
-import nav from '../_nav'
+import ImpersonateMessage from '@/components/ImpersonateMessage';
+import nav from '../_nav';
 
 export default {
     name: 'App',
@@ -71,7 +75,7 @@ export default {
                 },
             ],
             sidebarMenu: nav(this.$i18n, this.$admin),
-        }
+        };
     },
-}
+};
 </script>

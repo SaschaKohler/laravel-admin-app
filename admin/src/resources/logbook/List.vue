@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
     props: ['resource', 'title', 'item'],
@@ -75,11 +75,11 @@ export default {
         return {
             filters: ['vehicles', 'type', 'users'],
             fields: [
-                {source: 'type', sortable: true},
+                { source: 'type', sortable: true },
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: {format: 'short'},
+                    attributes: { format: 'short' },
                     sortable: true,
                 },
                 'recurrence',

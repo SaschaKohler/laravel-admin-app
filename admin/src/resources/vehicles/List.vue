@@ -34,9 +34,9 @@ export default {
             filters: ['type', 'branding', 'events'],
             fields: [
                 'owner',
-                {source: 'type', sortable: true},
+                { source: 'type', sortable: true },
                 'branding',
-                {source: 'kmAll', sortable: true},
+                { source: 'kmAll', sortable: true },
                 {
                     source: 'permit',
                     type: 'date',
@@ -58,7 +58,7 @@ export default {
                 'insurance_company',
                 'insurance_manager',
             ],
-        }
+        };
     },
-}
+};
 </script>

@@ -32,7 +32,6 @@
                         user_id: user.id,
                     }"
                 >
-
                 </va-data-table>
             </va-list>
         </base-material-card>
@@ -40,7 +39,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
     props: ['id', 'title', 'item'],
@@ -56,19 +55,21 @@ export default {
                     },
                 },
                 {
-                    source: 'rating', type: 'rating', attributes: {
-                        halfIncrements: true
-                    }
+                    source: 'rating',
+                    type: 'rating',
+                    attributes: {
+                        halfIncrements: true,
+                    },
                 },
                 {
                     source: 'body',
                     type: 'text',
-                    attributes: {truncate: 100, multiline: true},
+                    attributes: { truncate: 100, multiline: true },
                 },
                 {
                     source: 'user',
                     type: 'reference',
-                    attributes: {reference: 'users'}
+                    attributes: { reference: 'users' },
                 },
             ],
         };
@@ -82,9 +83,8 @@ export default {
 </script>
 
 <style>
-
-div .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+div
+    .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
     background-color: transparent;
 }
-
 </style>

@@ -29,7 +29,7 @@
                                         reference="customers"
                                         :label="$t('va.customer')"
                                         class="text-lg-h2"
-                                    >{{ item.customer.last }} /
+                                        >{{ item.customer.last }} /
                                         {{ item.customer.street }} /
                                         {{ item.customer.phone }}
                                     </va-field>
@@ -50,7 +50,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title
                                                         class="text-lg-h3"
-                                                    >{{ item.branding }}
+                                                        >{{ item.branding }}
                                                     </v-list-item-title>
                                                     Strecke :{{
                                                         item.pivot.kmSum
@@ -99,12 +99,11 @@
                                             <v-list-item
                                                 v-for="(item, i) in value"
                                                 :key="i"
-
                                             >
                                                 <v-list-item-content>
                                                     <v-list-item-title
                                                         class="text-lg-h3"
-                                                    >{{ item.name }}
+                                                        >{{ item.name }}
                                                     </v-list-item-title>
                                                     geleistet :
                                                     {{ item.pivot.hours }} h
@@ -118,12 +117,70 @@
                     </base-material-card>
                 </v-col>
             </v-row>
+            <base-material-card
+                icon="mdi-comment"
+                :title="$admin.getResource('tickets').pluralName"
+            >
+                <va-list
+                    resource="tickets"
+                    disable-query-string
+                    :items-per-page="10"
+                    :filter="{
+                        event_id: id,
+                    }"
+                    disable-create
+                >
+                    <va-data-table
+                        :fields="fields"
+                        disable-clone
+                        disable-show
+                        row-create
+                        row-edit
+                        :create-data="{
+                            event_id: id,
+                            user_id: user.id,
+                        }"
+                    ></va-data-table>
+                </va-list>
+            </base-material-card>
         </va-show>
     </va-show-layout>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-    props: ['title', 'item'],
+    props: ['title', 'item', 'id'],
+    data() {
+        return {
+            fields: [
+                {
+                    source: 'status',
+                    type: 'select',
+                    attributes: {
+                        chip: true,
+                        color: (v) => this.$statusColor(v),
+                    },
+                },
+                { source: 'rating', type: 'rating' },
+                {
+                    source: 'body',
+                    type: 'text',
+                    attributes: { truncate: 100, multiline: true },
+                },
+                {
+                    source: 'user',
+                    type: 'reference',
+                    attributes: { reference: 'users' },
+                },
+            ],
+        };
+    },
+    computed: {
+        ...mapState({
+            user: (state) => state.auth.user,
+        }),
+    },
 };
 </script>

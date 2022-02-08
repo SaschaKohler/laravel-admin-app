@@ -17,6 +17,8 @@
     "va.pages.edit": "{resource} {label} editieren",
     "va.pages.not_found": "{resource} #{id} nicht gefunden",
     "va.actions.list": "Liste",
+    "va.actions.event.enable": "Zusage",
+    "va.actions.event.disable": "Absage",
     "va.actions.create": "Erstellen",
     "va.actions.show": "Anzeigen",
     "va.actions.edit": "Editieren",
@@ -47,7 +49,7 @@
     "va.messages.deleted": "Datensatz gelöscht",
     "va.messages.deleted_many": "Datensätze gelöscht",
 
-    "carparameter": "Fahrzeugparameter",
+    "carparameter": "Fahrtenbuch",
 
 
     "tabs.attributes": "Auftragsdaten",
@@ -118,10 +120,10 @@
         "users": "Mitarbeiter",
         "profile": "Profile",
         "dashboard": "Dashboard",
-        "events": "Aufträge",
-        "logbook": "Logbook",
+        "events": "Aufträge bearbeiten",
+        "logbook": "Aufträge buchen",
         "act_events": "Aufträge bearbeiten",
-        "act_logbook": "Aufträge abschliessen"
+        "act_logbook": "Aufträge buchen"
     },
     "resources": {
         "users": {
@@ -129,8 +131,10 @@
             "fields": {
                 "name": "Name",
                 "email": "Email",
-                "password": "Password",
-                "password_confirmation": "Password confirmation"
+                "active": "aktiv",
+                "password": "Passwort",
+                "password_confirmation": "Passwort bestätigen",
+                "roles": "Funktion"
             }
         },
 

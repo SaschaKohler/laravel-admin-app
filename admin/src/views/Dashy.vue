@@ -5,7 +5,9 @@
                 <base-material-chart-card
                     :data="emailsSubscriptionChart.data"
                     :options="emailsSubscriptionChart.options"
-                    :responsive-options="emailsSubscriptionChart.responsiveOptions"
+                    :responsive-options="
+                        emailsSubscriptionChart.responsiveOptions
+                    "
                     color="#E91E63"
                     hover-reveal
                     type="Bar"
@@ -13,7 +15,12 @@
                     <template v-slot:reveal-actions>
                         <v-tooltip bottom>
                             <template v-slot:activator="{ attrs, on }">
-                                <v-btn v-bind="attrs" color="info" icon v-on="on">
+                                <v-btn
+                                    v-bind="attrs"
+                                    color="info"
+                                    icon
+                                    v-on="on"
+                                >
                                     <v-icon color="info"> mdi-refresh</v-icon>
                                 </v-btn>
                             </template>
@@ -32,7 +39,9 @@
                         </v-tooltip>
                     </template>
 
-                    <h4 class="card-title font-weight-light mt-2 ml-2">Website Views</h4>
+                    <h4 class="card-title font-weight-light mt-2 ml-2">
+                        Website Views
+                    </h4>
 
                     <p class="d-inline-flex font-weight-light ml-2 mt-1">
                         Last Campaign Performance
@@ -41,7 +50,7 @@
                     <template v-slot:actions>
                         <v-icon class="mr-1" small> mdi-clock-outline</v-icon>
                         <span class="caption grey--text font-weight-light"
-                        >updated 10 minutes ago</span
+                            >updated 10 minutes ago</span
                         >
                     </template>
                 </base-material-chart-card>
@@ -58,7 +67,12 @@
                     <template v-slot:reveal-actions>
                         <v-tooltip bottom>
                             <template v-slot:activator="{ attrs, on }">
-                                <v-btn v-bind="attrs" color="info" icon v-on="on">
+                                <v-btn
+                                    v-bind="attrs"
+                                    color="info"
+                                    icon
+                                    v-on="on"
+                                >
                                     <v-icon color="info"> mdi-refresh</v-icon>
                                 </v-btn>
                             </template>
@@ -77,17 +91,20 @@
                         </v-tooltip>
                     </template>
 
-                    <h4 class="card-title font-weight-light mt-2 ml-2">Daily Sales</h4>
+                    <h4 class="card-title font-weight-light mt-2 ml-2">
+                        Daily Sales
+                    </h4>
 
                     <p class="d-inline-flex font-weight-light ml-2 mt-1">
                         <v-icon color="green" small> mdi-arrow-up</v-icon>
-                        <span class="green--text">55%</span>&nbsp; increase in today's sales
+                        <span class="green--text">55%</span>&nbsp; increase in
+                        today's sales
                     </p>
 
                     <template v-slot:actions>
                         <v-icon class="mr-1" small> mdi-clock-outline</v-icon>
                         <span class="caption grey--text font-weight-light"
-                        >updated 4 minutes ago</span
+                            >updated 4 minutes ago</span
                         >
                     </template>
                 </base-material-chart-card>
@@ -104,7 +121,12 @@
                     <template v-slot:reveal-actions>
                         <v-tooltip bottom>
                             <template v-slot:activator="{ attrs, on }">
-                                <v-btn v-bind="attrs" color="info" icon v-on="on">
+                                <v-btn
+                                    v-bind="attrs"
+                                    color="info"
+                                    icon
+                                    v-on="on"
+                                >
                                     <v-icon color="info"> mdi-refresh</v-icon>
                                 </v-btn>
                             </template>
@@ -134,7 +156,7 @@
                     <template v-slot:actions>
                         <v-icon class="mr-1" small> mdi-clock-outline</v-icon>
                         <span class="caption grey--text font-weight-light"
-                        >campaign sent 26 minutes ago</span
+                            >campaign sent 26 minutes ago</span
                         >
                     </template>
                 </base-material-chart-card>
@@ -188,14 +210,16 @@
             <v-col cols="12" md="6">
                 <base-material-card color="warning" class="px-5 py-3">
                     <template v-slot:heading>
-                        <div class="display-2 font-weight-light">Employees Stats</div>
+                        <div class="display-2 font-weight-light">
+                            Employees Stats
+                        </div>
 
                         <div class="subtitle-1 font-weight-light">
                             New employees on 15th September, 2016
                         </div>
                     </template>
                     <v-card-text>
-                        <v-data-table :headers="headers" :items="items"/>
+                        <v-data-table :headers="headers" :items="items" />
                     </v-card-text>
                 </base-material-card>
             </v-col>
@@ -208,11 +232,11 @@
                             background-color="transparent"
                             slider-color="white"
                         >
-              <span
-                  class="subheading font-weight-light mx-3"
-                  style="align-self: center"
-              >Tasks:</span
-              >
+                            <span
+                                class="subheading font-weight-light mx-3"
+                                style="align-self: center"
+                                >Tasks:</span
+                            >
                             <v-tab class="mr-3">
                                 <v-icon class="mr-2"> mdi-bug</v-icon>
                                 Bugs
@@ -235,17 +259,27 @@
                                     <v-row :key="i" align="center">
                                         <v-col cols="1">
                                             <v-list-item-action>
-                                                <v-checkbox v-model="task.value" color="secondary"/>
+                                                <v-checkbox
+                                                    v-model="task.value"
+                                                    color="secondary"
+                                                />
                                             </v-list-item-action>
                                         </v-col>
 
                                         <v-col cols="9">
-                                            <div class="font-weight-light" v-text="task.text"/>
+                                            <div
+                                                class="font-weight-light"
+                                                v-text="task.text"
+                                            />
                                         </v-col>
 
                                         <v-col cols="2" class="text-right">
-                                            <v-icon class="mx-1"> mdi-pencil</v-icon>
-                                            <v-icon color="error" class="mx-1"> mdi-close</v-icon>
+                                            <v-icon class="mx-1">
+                                                mdi-pencil</v-icon
+                                            >
+                                            <v-icon color="error" class="mx-1">
+                                                mdi-close</v-icon
+                                            >
                                         </v-col>
                                     </v-row>
                                 </template>
@@ -259,7 +293,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex';
 
 export default {
     data() {
@@ -286,7 +320,16 @@ export default {
             },
             dataCompletedTasksChart: {
                 data: {
-                    labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
+                    labels: [
+                        '12am',
+                        '3pm',
+                        '6pm',
+                        '9pm',
+                        '12pm',
+                        '3am',
+                        '6am',
+                        '9am',
+                    ],
                     series: [[230, 750, 450, 300, 280, 240, 200, 190]],
                 },
                 options: {
@@ -320,7 +363,10 @@ export default {
                         'De',
                     ],
                     series: [
-                        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
+                        [
+                            542, 443, 320, 780, 553, 453, 326, 434, 568, 610,
+                            756, 895,
+                        ],
                     ],
                 },
                 options: {
@@ -343,7 +389,7 @@ export default {
                             seriesBarDistance: 5,
                             axisX: {
                                 labelInterpolationFnc: function (value) {
-                                    return value[0]
+                                    return value[0];
                                 },
                             },
                         },
@@ -467,12 +513,12 @@ export default {
                 1: false,
                 2: false,
             },
-        }
+        };
     },
 
     methods: {
         complete(index) {
-            this.list[index] = !this.list[index]
+            this.list[index] = !this.list[index];
         },
         ...mapActions({
             getList: 'api/getList',
@@ -487,7 +533,7 @@ export default {
                     perPage: 1,
                 },
             },
-        })
+        });
     },
-}
+};
 </script>
