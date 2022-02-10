@@ -19,16 +19,18 @@
         </template>
 
         <v-card>
-            <v-card-title class="text-h3 grey lighten-2">
+            <v-card-title class="text-h4 grey lighten-2">
                 Kunden-Verständigung
             </v-card-title>
             <v-card-text>
-                Um den Kunden per Mail zu verständigen bitte wählen.
+                Um den Kunden per Mail zu verständigen ?
+                Bitte wählen.
             </v-card-text>
 
             <v-divider></v-divider>
 
             <v-card-actions>
+                <v-spacer></v-spacer>
                 <va-action-button
                     :item="item"
                     @click="sendConfirmMail"
@@ -37,7 +39,6 @@
                     color="success"
                     text
                 ></va-action-button>
-                <v-spacer></v-spacer>
                 <va-action-button
                     :item="item"
                     @click="sendDismissMail"
