@@ -41,7 +41,7 @@ export default new VuetifyAdmin({
     router,
     store,
     i18n,
-    title: 'Dirneder Admin',
+    title: 'sk.IT Manager',
     routes,
     locales: {
         de,

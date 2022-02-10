@@ -76,7 +76,7 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            <img src="../assets/skit.svg"
+            <img src="/img/skit.svg"
                  alt="S.K. IT"
                  width="300"
                  height="300">
