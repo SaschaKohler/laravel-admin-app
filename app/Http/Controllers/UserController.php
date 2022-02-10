@@ -28,7 +28,7 @@ class UserController extends Controller
         return UserResource::collection(
             QueryBuilder::for(User::class)
                 ->allowedFilters([
-                    AllowedFilter::custom('q', new SearchFilter(['name', 'email'])),
+                    AllowedFilter::custom('q', new SearchFilter(['name', 'email','address'])),
                     AllowedFilter::exact('id'),
                     AllowedFilter::partial('roles'),
                 ])

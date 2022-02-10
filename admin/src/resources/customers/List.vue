@@ -11,15 +11,15 @@ export default {
     props: ['resource', 'title'],
     data() {
         return {
-            filters: ['id', 'city'],
+            filters: ['id', 'city','last'],
             fields: [
                 { source: 'first', sortable: true },
                 { source: 'last', sortable: true },
                 { source: 'email', sortable: true },
                 { source: 'street', sortable: true },
                 { source: 'city', sortable: true },
-                'phone',
-                'notes',
+                { source:'phone',sortable:false },
+
             ],
         };
     },

@@ -80,6 +80,7 @@ export default {
                 {
                     source: 'event_id',
                     type: 'reference',
+                    sortable:false,
                     attributes: {
                         reference: 'events',
                     },
@@ -96,13 +97,15 @@ export default {
                 },
                 {
                     source: 'users',
-                    sortable: true,
+                    sortable: false,
                 },
                 {
                     source: 'vehicles',
+                    sortable: false,
                 },
                 {
                     source: 'tools',
+                    sortable: false,
                 },
                 { source: 'finished', type: 'boolean' },
                 {

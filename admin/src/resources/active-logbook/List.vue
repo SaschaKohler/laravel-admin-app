@@ -85,24 +85,27 @@ export default {
                     attributes: { format: 'short' },
                     sortable: true,
                 },
-                'recurrence',
+                { source: 'recurrence', sortable: false },
                 {
                     source: 'event_id',
                     type: 'reference',
+                    sortable: false,
                     attributes: {
                         reference: 'events',
                     },
                 },
                 {
                     source: 'users',
-                    sortable: true,
+                    sortable: false,
                 },
 
                 {
                     source: 'vehicles',
+                    sortable: false,
                 },
                 {
                     source: 'tools',
+                    sortable: false,
                 },
                 {
                     source: 'finished',

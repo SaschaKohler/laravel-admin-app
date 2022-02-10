@@ -3,6 +3,7 @@
         <va-list
             :filters="filters"
             :include="['customer', 'vehicles', 'users', 'tools']"
+            :sort-by="updated_at"
         >
             <va-data-table :fields="fields">
                 <template v-slot:[`field.vehicles`]="{ value }">
@@ -72,7 +73,7 @@ export default {
                 },
                 {
                     source: 'customer',
-                    sortable: true,
+                    sortable: false,
                     type: 'reference',
                     attributes: {
                         reference: 'customers',
@@ -82,10 +83,11 @@ export default {
                 },
                 {
                     source: 'users',
-                    sortable: true,
+                    sortable: false,
                 },
                 {
                     source: 'vehicles',
+                    sortable: false,
                 },
                 { source: 'finished', type: 'boolean', sortable: true },
                 { source: 'fixed', type: 'boolean', sortable: true },
