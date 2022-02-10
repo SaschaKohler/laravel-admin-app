@@ -15,6 +15,9 @@ class TicketPolicy
         if ($user->hasRole('employee')) {
             return true;
         }
+        if ($user->hasRole('admin')) {
+            return true;
+        }
     }
 
     /**

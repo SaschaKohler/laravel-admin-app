@@ -14,7 +14,7 @@ class UserPolicy
         if ($user->hasRole('admin'))
             return true;
         if($user->hasRole('employee'))
-            return true;
+            return false;
     }
 
     /**

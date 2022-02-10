@@ -24,7 +24,7 @@ class StoreTicket extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rating' => 'required'
         ];
     }
 }
