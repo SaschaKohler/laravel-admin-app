@@ -1,24 +1,57 @@
 <template>
-    <va-action-button
-        v-if="item && confirm"
-        :item="item"
-        @click="sendConfirmMail"
-        hide-label
-        :label="$t('va.actions.event.enable')"
-        icon="mdi-mail"
-        color="success"
-        text
-    ></va-action-button>
-    <va-action-button
-        v-else
-        :item="item"
-        @click="sendDismissMail"
-        hide-label
-        :label="$t('va.actions.event.disable')"
-        icon="mdi-mail"
-        color="error"
-        text
-    ></va-action-button>
+    <v-dialog
+        v-model="dialog"
+        width="500"
+    >
+        <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                color="orange lighten-2"
+                v-bind="attrs"
+                dark
+                small
+                fab
+                depressed
+                v-on="on"
+                text
+            >
+                Mail
+            </v-btn>
+        </template>
+
+        <v-card>
+            <v-card-title class="text-h3 grey lighten-2">
+                Kunden-Verständigung
+            </v-card-title>
+            <v-card-text>
+                Um den Kunden per Mail zu verständigen bitte wählen.
+            </v-card-text>
+
+            <v-divider></v-divider>
+
+            <v-card-actions>
+                <va-action-button
+                    :item="item"
+                    @click="sendConfirmMail"
+                    :label="$t('va.actions.event.enable')"
+                    icon="mdi-mail"
+                    color="success"
+                    text
+                ></va-action-button>
+                <v-spacer></v-spacer>
+                <va-action-button
+                    :item="item"
+                    @click="sendDismissMail"
+                    :label="$t('va.actions.event.disable')"
+                    icon="mdi-mail"
+                    color="error"
+                    text
+                ></va-action-button>
+                <v-btn @click="dialog = false" text>Abbrechen</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
+
+
 </template>
 
 <script>
@@ -30,6 +63,7 @@ export default {
         item: Object,
         icon: Boolean,
         confirm: Boolean,
+        dialog:Boolean,
     },
     computed: {
         ...mapState({
@@ -42,10 +76,8 @@ export default {
                 const resp = await this.$admin.http.post(
                     `/api/events/${this.item.id}/sendConfirmMail`
                 );
+                this.dialog=false;
                 this.$admin.toast.success(resp.data.message);
-                /**
-                 * Full reload to home
-                 */
             } catch ({ response }) {
                 this.$admin.toast.error(response.data.message);
             }
@@ -55,10 +87,8 @@ export default {
                 const resp = await this.$admin.http.post(
                     `/api/events/${this.item.id}/sendDismissMail`
                 );
+                this.dialog=false;
                 this.$admin.toast.success(resp.data.message);
-                /**
-                 * Full reload to home
-                 */
             } catch ({ response }) {
                 this.$admin.toast.error(response.data.message);
             }

@@ -21,7 +21,7 @@
                             ></va-date-field>
                             <va-field source="kmAll"></va-field>
                             <va-field source="insurance_company"></va-field>
-                            <va-field source="insurance_manger"></va-field>
+                            <va-field source="insurance_manager"></va-field>
                         </v-card-text>
                     </base-material-card>
                 </v-col>

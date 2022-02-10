@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EventStatusUpdated;
 use App\Http\Requests\StoreEvent;
 use App\Http\Requests\UpdateEvent;
 use App\Http\Resources\Customer;
@@ -214,6 +215,7 @@ class EventController extends Controller
 
         $event->fixed = true;
         $event->save();
+
         return response()->json(['message' => 'Email an ' . $event->customer->email . ' versendet'], 200);
     }
 

@@ -37,14 +37,7 @@
                     </v-chip-group>
                 </template>
                 <template v-slot:[`item.actions`]="{ item }">
-                    <send-mail-button
-                        :item="item"
-                        :confirm="true"
-                    ></send-mail-button>
-                    <send-mail-button
-                        :item="item"
-                        :confirm="false"
-                    ></send-mail-button>
+          <send-mail-button :item="item"></send-mail-button>
                 </template>
             </va-data-table>
         </va-list>
@@ -59,6 +52,7 @@ export default {
     props: ['resource', 'title', 'item'],
     data() {
         return {
+            dialog: false,
             filters: ['customer', 'users', 'vehicles', 'type'],
             fields: [
                 { source: 'type', sortable: true },
@@ -98,6 +92,10 @@ export default {
             ],
         };
     },
-    methods: {},
+    methods: {
+        onClick() {
+            this.dialog = false;
+        }
+    },
 };
 </script>

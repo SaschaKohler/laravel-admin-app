@@ -24,7 +24,7 @@ class EventConfirm extends Mailable
     public function __construct(Event $event)
     {
         $this->event = $event;
-        $this->locale= "de_AT";
+        $this->locale= "de";
     }
 
     /**

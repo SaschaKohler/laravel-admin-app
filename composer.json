@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "barryvdh/laravel-elfinder": "^0.4.7",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -15,10 +16,10 @@
         "laravel/sanctum": "^2.13",
         "laravel/tinker": "^2.5",
         "okami101/laravel-admin": "^0.5.3",
+        "pusher/pusher-php-server": "^7.0",
         "spatie/laravel-medialibrary": "^9.11",
         "spatie/laravel-query-builder": "^4.0",
-        "spatie/laravel-translatable": "^4.6",
-      "ext-json": "*"
+        "spatie/laravel-translatable": "^4.6"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",

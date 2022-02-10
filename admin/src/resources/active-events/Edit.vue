@@ -82,9 +82,3 @@ export default {
 };
 </script>
 
-<style>
-div
-    .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    background-color: transparent;
-}
-</style>
