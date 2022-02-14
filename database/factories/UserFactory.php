@@ -29,7 +29,7 @@ class UserFactory extends Factory
         ];
         $roles = [
             0 => 'admin',
-            1 => "employee", "outdoor",
+            1 => "employee",
             2 => "employee", "outdoor",
             3 => "employee", "outdoor",
             4 => "employee", "outdoor",

@@ -56,6 +56,12 @@ export default {
             dialog: false,
             filters: [
                 'customer',
+                { source: 'fixed',
+                    type: 'Boolean'
+                },
+                { source: 'finished',
+                    type: 'Boolean'
+                },
                 {
                     source: 'users',
                     type: 'select',
@@ -69,6 +75,7 @@ export default {
                     type: 'select',
                     attributes: {
                         reference: 'vehicles',
+                        chips:'false',
 
                     }
 

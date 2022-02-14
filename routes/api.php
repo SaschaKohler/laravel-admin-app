@@ -42,7 +42,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         'tickets' => TicketController::class,
         'report' => ReportController::class,
 
-        //   'statistics' => StatisticsController::class,
     ]);
 
     Route::post('events/{event}/sendConfirmMail', [EventController::class, 'sendConfirmMail'])->name('events.sendConfirmMail');

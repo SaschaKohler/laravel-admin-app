@@ -61,6 +61,8 @@ class EventController extends Controller
                     }),
 
                     AllowedFilter::exact('id'),
+                    AllowedFilter::exact('fixed'),
+                    AllowedFilter::exact('finished'),
                     AllowedFilter::partial('type'),
                 ])
                 ->defaultSort('updated_at')
