@@ -1,9 +1,13 @@
 <template>
-    <base-material-card :icon="resource.icon" :title="$i18n.t('Auftrags-Liste')">
+    <base-material-card
+        :icon="resource.icon"
+        :title="$i18n.t('Auftrags-Liste')"
+    >
         <va-list
             :filters="filters"
             :include="['customer', 'vehicles', 'users', 'tools']"
             :sort-by="updated_at"
+            disable-export
         >
             <va-data-table :fields="fields">
                 <template v-slot:[`field.vehicles`]="{ value }">
@@ -49,45 +53,58 @@
 import SendMailButton from '@/components/buttons/SendMailButton';
 
 export default {
-    components: {SendMailButton},
+    components: { SendMailButton },
     props: ['resource', 'title', 'item'],
     data() {
         return {
             dialog: false,
             filters: [
+                'type',
+                {
+                    source: 'starts_after',
+                    type: 'date',
+                    attributes: {
+                        format: 'short',
+                    },
+                },
+                {
+                    source: 'starts_before',
+                    type: 'date',
+                    attributes: {
+                        format: 'short',
+                    },
+                },
                 'customer',
-                { source: 'fixed',
-                    type: 'Boolean'
-                },
-                { source: 'finished',
-                    type: 'Boolean'
-                },
                 {
                     source: 'users',
                     type: 'select',
                     attributes: {
                         reference: 'users',
-                        itemValue: 'name'
-                    }
+                        itemValue: 'name',
+                    },
                 },
                 {
                     source: 'vehicles',
                     type: 'select',
                     attributes: {
                         reference: 'vehicles',
-                        chips:'false',
-
-                    }
-
+                    },
                 },
-                'type'
+                {
+                    source: 'finished',
+                    type: 'Boolean',
+                },
+                {
+                    source: 'fixed',
+                    type: 'Boolean',
+                },
             ],
             fields: [
-                {source: 'type', sortable: true},
+                { source: 'type', sortable: true },
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: {format: 'long'},
+                    attributes: { format: 'long' },
                     sortable: true,
                 },
                 {
@@ -116,15 +133,15 @@ export default {
                     source: 'vehicles',
                     sortable: false,
                 },
-                {source: 'finished', type: 'boolean', sortable: true},
-                {source: 'fixed', type: 'boolean', sortable: true},
+                { source: 'finished', type: 'boolean', sortable: true },
+                { source: 'fixed', type: 'boolean', sortable: true },
             ],
         };
     },
     methods: {
         onClick() {
             this.dialog = false;
-        }
+        },
     },
 };
 </script>

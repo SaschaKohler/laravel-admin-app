@@ -59,7 +59,8 @@ class EventController extends Controller
                             $query->where('last', 'LIKE', '%' . $value . '%');
                         });
                     }),
-
+                    AllowedFilter::scope('starts_after'),
+                    AllowedFilter::scope('starts_before'),
                     AllowedFilter::exact('id'),
                     AllowedFilter::exact('fixed'),
                     AllowedFilter::exact('finished'),

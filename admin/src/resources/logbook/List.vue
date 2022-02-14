@@ -73,7 +73,39 @@ export default {
     props: ['resource', 'title', 'item'],
     data() {
         return {
-            filters: ['vehicles', 'type', 'users'],
+            filters: [
+                'type',
+                {
+                    source: 'starts_after',
+                    type: 'date',
+                    attributes: {
+                        format: 'short',
+                    },
+                },
+                {
+                    source: 'starts_before',
+                    type: 'date',
+                    attributes: {
+                        format: 'short',
+                    },
+                },
+
+                {
+                    source: 'users',
+                    type: 'select',
+                    attributes: {
+                        reference: 'users',
+                        itemValue: 'name',
+                    },
+                },
+                {
+                    source: 'vehicles',
+                    type: 'select',
+                    attributes: {
+                        reference: 'vehicles',
+                    },
+                },
+            ],
             fields: [
                 { source: 'type', sortable: true },
                 {
@@ -93,12 +125,12 @@ export default {
                 },
                 {
                     source: 'users',
-                    sortable:false,
+                    sortable: false,
                 },
 
                 {
                     source: 'vehicles',
-                    sortable:false,
+                    sortable: false,
                 },
                 {
                     source: 'tools',

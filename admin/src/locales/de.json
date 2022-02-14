@@ -149,6 +149,8 @@
                 "vehicles": "Fahrzeuge",
                 "start": "Termin",
                 "users": "Mitarbeiter",
+                "starts_after" : "Termin ab",
+                "starts_before" : "Termin bis",
                 "updated_at": "zul. geändert"
             },
             "enums": {
@@ -219,6 +221,8 @@
                 "vehicles": "Fahrzeuge",
                 "start": "Termin",
                 "users": "Mitarbeiter",
+                "starts_after" : "Termin ab",
+                "starts_before" : "Termin bis",
                 "updated_at": "zul. geändert"
             }
         },

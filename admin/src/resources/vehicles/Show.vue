@@ -33,6 +33,7 @@
                 disable-query-string
                 :items-per-page="10"
                 disable-create
+                disable-export
                 :filter="{
                     vehicle_id: id,
                 }"

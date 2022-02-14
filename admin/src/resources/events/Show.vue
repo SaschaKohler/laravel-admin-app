@@ -124,6 +124,7 @@
                 <va-list
                     resource="tickets"
                     disable-query-string
+                    disable-export
                     :items-per-page="10"
                     :filter="{
                         event_id: id,

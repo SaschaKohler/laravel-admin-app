@@ -2,6 +2,7 @@
     <base-material-card :icon="resource.icon" :title="title">
         <va-list
             disable-query-string
+            disable-export
             :include="['customer', 'vehicles', 'users', 'tools']"
             :sort-by="['updated_at']"
             :filter="{
@@ -68,7 +69,16 @@ export default {
     props: ['resource', 'title', 'item'],
     data() {
         return {
-            //filters: ['customer', 'users', 'vehicles', 'type'],
+            filters: [
+                'type',
+                {
+                    source: 'vehicles',
+                    type: 'select',
+                    attributes: {
+                        reference: 'vehicles',
+                    },
+                },
+            ],
             fields: [
                 { source: 'type', sortable: true },
                 {
@@ -80,7 +90,7 @@ export default {
                 {
                     source: 'event_id',
                     type: 'reference',
-                    sortable:false,
+                    sortable: false,
                     attributes: {
                         reference: 'events',
                     },

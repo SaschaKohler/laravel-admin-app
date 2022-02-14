@@ -48,14 +48,6 @@ export default {
         return {
             filters: [
                 {
-                    source: 'users',
-                    type: 'select',
-                    attributes: {
-                        reference: 'users',
-                        itemValue: 'name',
-                    }
-                },
-                {
                     source: 'starts_after',
                     type: 'date',
                     attributes: {
@@ -68,6 +60,14 @@ export default {
                     attributes: {
                         format: 'short',
                     },
+                },
+                {
+                    source: 'users',
+                    type: 'select',
+                    attributes: {
+                        reference: 'users',
+                        itemValue: 'name',
+                    }
                 },
                 {
                     source: 'finished',
