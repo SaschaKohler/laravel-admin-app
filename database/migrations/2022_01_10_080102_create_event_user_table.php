@@ -22,9 +22,9 @@ class CreateEventUserTable extends Migration
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');;
-            $table->unsignedDecimal('hours')->nullable();
-            $table->time('startTime')->default(Carbon::parse('07:00')->format('H:I'));
-            $table->time('endTime')->nullable()->default(Carbon::parse('16:00')->format('H:I'));
+            $table->time('hours')->nullable();
+            $table->time('startTime')->default(Carbon::parse('07:00')->format('H:i'));
+            $table->time('endTime')->nullable()->default(Carbon::parse('16:00')->format('H:i'));
 
             $table->timestamps();
         });

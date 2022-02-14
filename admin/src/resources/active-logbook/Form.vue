@@ -76,7 +76,6 @@
                                                     v-bind="props"
                                                     :label="$t('pivot.hours')"
                                                     thumb-color="primary"
-                                                    thumb-label="always"
                                                     min="0.5"
                                                     max="24"
                                                     step="0.5"
@@ -157,18 +156,18 @@
                                     </v-col>
                                 </v-row>
                                 <v-row justify="center">
-                                    <v-col cols="8">
-                                        <v-slider
+                                    <v-col cols="12">
+                                        <v-time-picker
                                             v-bind="props"
-                                            :label="$t('pivot.workingHours')"
-                                            thumb-color="primary"
-                                            thumb-label="always"
-                                            min="0.5"
-                                            max="14"
-                                            step="0.5"
-                                            ticks
-                                            v-model="props.item.pivot.hours"
-                                        ></v-slider>
+                                            format="24h"
+                                            v-model="props.item.pivot.startTime"
+                                        ></v-time-picker>
+                                        <v-time-picker
+                                            v-bind="props"
+                                            format="24h"
+                                            v-model="props.item.pivot.endTime"
+                                        >
+                                        </v-time-picker>
                                     </v-col>
                                 </v-row>
                             </CustomComponent>

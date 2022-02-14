@@ -23,9 +23,9 @@ class UserFactory extends Factory
     public function definition()
     {
 
-        $users = ['Dirneder, Karl', 'Brunner, Gerald', 'Freinhofer,Martin', 'Holzer, Emanuel', 'Lettner, Birgit',
-            'Moser, Philip', 'Ortmayr, Stephan', 'Puehringer, Johann', 'Steinkellner, Günther', 'Pointer, Rudi',
-            'Steinbauer, Karl', 'Kohler, Sascha', 'Strasser, Franz', 'Schwaiger, Johann',
+        $users = ['Dirneder Karl', 'Brunner Gerald', 'Freinhofer Martin', 'Holzer Emanuel', 'Lettner Birgit',
+            'Moser Philip', 'Ortmayr Stephan', 'Puehringer Johann', 'Steinkellner Günther', 'Pointer Rudi',
+            'Steinbauer Karl', 'Kohler Sascha', 'Strasser Franz', 'Schwaiger Johann',
         ];
         $roles = [
             0 => 'admin',
@@ -49,7 +49,7 @@ class UserFactory extends Factory
 
 
         $user = $users[$this->counter];
-        $pieces = explode(",", $users[$this->counter]);
+        $pieces = explode(" ", $users[$this->counter]);
 
         $role = $roles[$this->counter];
         $email = strtolower($pieces[0]) . '@home.at';

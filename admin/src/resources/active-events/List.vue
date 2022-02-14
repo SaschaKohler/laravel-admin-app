@@ -5,7 +5,7 @@
             :include="['customer', 'vehicles', 'users', 'tools']"
             :sort-by="['updated_at']"
             :filter="{
-                users: user.id,
+                users_id: user.id,
             }"
         >
             <va-data-table :fields="fields">

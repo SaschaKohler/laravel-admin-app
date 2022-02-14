@@ -49,6 +49,15 @@ export default (i18n, admin) => [
         text: i18n.t('menu.tools'),
         link: '/tools',
     },
+    admin.getResourceLink('tickets'),
+
+    admin.can(['admin']) && { divider: true },
+    admin.can(['admin']) && { heading: i18n.t('menu.reports') },
+    admin.can(['admin']) && {
+        icon: 'mdi-stats',
+        text: i18n.t('menu.reports'),
+        link: '/report',
+    },
     admin.can(['employee']) && { divider: true },
     admin.can(['employee']) && { heading: i18n.t('menu.my-events') },
     admin.can(['employee']) && {
@@ -61,5 +70,6 @@ export default (i18n, admin) => [
         text: i18n.t('menu.act_logbook'),
         link: '/active-logbook',
     },
-    admin.getResourceLink('tickets'),
+
+
 ];

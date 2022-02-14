@@ -1,7 +1,7 @@
 <template>
     <va-form :id="id" :item="item">
         <v-row justify="center">
-            <v-col sm="6">
+            <v-col sm="10">
                 <base-material-tabs-card
                     :tabs="[
                         {
@@ -35,70 +35,92 @@
                                             <va-text-field
                                                 v-bind="props"
                                                 source="branding"
+                                                class="text-subtitle-1 text-decoration-underline"
                                             >
                                             </va-text-field>
                                         </v-col>
                                     </v-row>
 
-                                    <template
-                                        v-if="
-                                            props.item.type === 'Pickup' ||
-                                            props.item.type === 'Pritsche' ||
-                                            props.item.type === 'PKW'
-                                        "
-                                    >
-                                        <v-row>
-                                            <v-col v-bind="props">
-                                                <va-number-input
-                                                    v-bind="props"
-                                                    source="pivot.kmBegin"
-                                                    :label="$t('va.kmBegin')"
-                                                ></va-number-input>
-                                            </v-col>
-                                            <v-col>
-                                                <va-number-input
-                                                    v-bind="props"
-                                                    source="pivot.kmEnd"
-                                                    :label="$t('va.kmEnd')"
-                                                ></va-number-input>
-                                            </v-col>
-                                        </v-row>
-                                    </template>
-                                    <template
-                                        v-if="
-                                            props.item.type === 'Traktor' ||
-                                            props.item.type === 'Mähdrescher'
-                                        "
-                                    >
-                                        <v-row>
-                                            <v-col v-bind="props">
-                                                <v-slider
-                                                    v-bind="props"
-                                                    :label="$t('pivot.hours')"
-                                                    thumb-color="primary"
-                                                    thumb-label="always"
-                                                    min="0.5"
-                                                    max="24"
-                                                    step="0.5"
-                                                    v-model="
-                                                        props.item.pivot.hours
-                                                    "
-                                                ></v-slider>
-                                            </v-col>
-                                        </v-row>
-                                    </template>
-                                    <template
-                                        v-if="props.item.type === 'Anhänger'"
-                                    >
-                                        <v-row>
-                                            <v-col>
-                                                <p>
-                                                    Keine Einträge für dieses
-                                                    Fahrzeug
-                                                </p>
-                                            </v-col>
-                                        </v-row>
-                                    </template>
+                                    <v-row justify="center">
+                                        <v-col cols="8">
+                                            <template
+                                                v-if="
+                                                    props.item.type ===
+                                                        'Pickup' ||
+                                                    props.item.type ===
+                                                        'Pritsche' ||
+                                                    props.item.type === 'PKW'
+                                                "
+                                            >
+                                                <v-row>
+                                                    <v-col v-bind="props">
+                                                        <va-number-input
+                                                            v-bind="props"
+                                                            source="pivot.kmBegin"
+                                                            :label="
+                                                                $t('va.kmBegin')
+                                                            "
+                                                        ></va-number-input>
+                                                    </v-col>
+                                                    <v-col>
+                                                        <va-number-input
+                                                            v-bind="props"
+                                                            source="pivot.kmEnd"
+                                                            :label="
+                                                                $t('va.kmEnd')
+                                                            "
+                                                        ></va-number-input>
+                                                    </v-col>
+                                                </v-row>
+                                            </template>
+                                            <template
+                                                v-if="
+                                                    props.item.type ===
+                                                        'Traktor' ||
+                                                    props.item.type ===
+                                                        'Mähdrescher'
+                                                "
+                                            >
+                                                <v-row>
+                                                    <v-col v-bind="props">
+                                                        <v-slider
+                                                            v-bind="props"
+                                                            :label="
+                                                                $t(
+                                                                    'pivot.hours'
+                                                                )
+                                                            "
+                                                            thumb-color="primary"
+                                                            thumb-label="always"
+                                                            min="0.5"
+                                                            max="24"
+                                                            step="0.5"
+                                                            v-model="
+                                                                props.item.pivot
+                                                                    .hours
+                                                            "
+                                                        ></v-slider>
+                                                    </v-col>
+                                                </v-row>
+                                            </template>
+                                            <template
+                                                v-if="
+                                                    props.item.type ===
+                                                    'Anhänger'
+                                                "
+                                            >
+                                                <v-row>
+                                                    <v-col>
+                                                        <p>
+                                                            Kein Eintrag für
+                                                            diesen Fahrzeugtyp
+                                                            (Anhänger!)
+                                                        </p>
+                                                    </v-col>
+                                                </v-row>
+                                            </template>
+                                        </v-col>
+                                    </v-row>
                                 </v-card-text>
                             </CustomComponent>
                         </v-card-text>
@@ -117,12 +139,13 @@
                                         <va-text-field
                                             v-bind="props"
                                             source="title"
+                                            class="text-decoration-underline"
                                         >
                                         </va-text-field>
                                     </v-col>
                                 </v-row>
-                                <v-row>
-                                    <v-col>
+                                <v-row justify="center">
+                                    <v-col cols="8">
                                         <v-slider
                                             v-bind="props"
                                             :label="$t('pivot.hours')"
@@ -152,26 +175,31 @@
                                         <va-text-field
                                             v-bind="props"
                                             source="name"
+                                            class="text-decoration-underline"
                                         >
                                         </va-text-field>
                                     </v-col>
                                 </v-row>
                                 <v-row justify="center">
-                                    <v-col cols="8">
-                                        <v-slider
+                                    <v-col cols="12">
+                                        <v-time-picker
                                             v-bind="props"
-                                            :label="$t('pivot.workingHours')"
-                                            thumb-color="primary"
-                                            thumb-label="always"
-                                            min="0.5"
-                                            max="14"
-                                            step="0.5"
-                                            ticks
-                                            v-model="props.item.pivot.hours"
-                                        ></v-slider>
+                                            format="24h"
+                                            header-color="green darken-3"
+                                            :max="props.item.pivot.endTime"
+                                            v-model="props.item.pivot.startTime"
+                                        >Arbeitsbeginn</v-time-picker>
+                                        <v-time-picker
+                                            v-bind="props"
+                                            format="24h"
+                                            header-color="green darken-3"
+                                            :min="props.item.pivot.startTime"
+                                            v-model="props.item.pivot.endTime"
+                                        >Arbeitsende</v-time-picker>
                                     </v-col>
                                 </v-row>
                             </CustomComponent>
+
 
                             <v-row justify="right">
                                 <v-col cols="6">
@@ -225,3 +253,20 @@ export default {
     },
 };
 </script>
+
+<style>
+
+div .v-picker__title {
+   padding:2px;
+    margin:2px;
+}
+div .v-time-picker-title{
+    justify-content: center;
+}
+div .v-time-picker-title__time .v-picker__title__btn ,
+.v-time-picker-title__time span{
+    font-size: 30px;
+    padding: 0px;
+}
+
+</style>

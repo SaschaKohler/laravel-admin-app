@@ -10,6 +10,15 @@ class CustomerPolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user)
+    {
+        if ($user->hasRole('admin'))
+            return true;
+        if ($user->hasRole('employee'))
+            return false;
+
+    }
+
     /**
      * Determine whether the user can view any models.
      *

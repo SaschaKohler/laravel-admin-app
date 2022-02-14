@@ -15,6 +15,7 @@ use App\Models\Vehicle;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Okami101\LaravelAdmin\Filters\SearchFilter;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -180,9 +181,16 @@ class EventController extends Controller
                 $usersSync = array();
 
                 foreach ($request->users as $user) {
+                    $work = Carbon::parse($user['pivot']['endTime'])->diff(Carbon::parse($user['pivot']['startTime']))->format('%H:%i');
+                    $diff = Carbon::parse($user['pivot']['endTime'])->diffInHours(Carbon::parse($user['pivot']['startTime']));
+
                     $usersSync[$user['pivot']['user_id']] = [
-                        'hours' => $user['pivot']['hours'],
+                        'hours' => $work, //$user['pivot']['hours'],
+                        'startTime' => $user['pivot']['startTime'],
+                        'endTime' => $user['pivot']['endTime']
                     ];
+
+
 //                    $userModel = User::find($user['pivot']['user_id']);
 //                    $userModel->hoursAll += $user['pivot']['hours'];
 //                    $userModel->save();

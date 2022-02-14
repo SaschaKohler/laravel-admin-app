@@ -48,18 +48,14 @@
     "va.messages.created": "Datensatz erstellt",
     "va.messages.deleted": "Datensatz gelöscht",
     "va.messages.deleted_many": "Datensätze gelöscht",
-    "va.messages.not_alid": "Daten nicht korrekt",
-
+    "va.messages.not_valid": "Daten nicht korrekt",
     "carparameter": "Fahrtenbuch",
-
-
     "tabs.attributes": "Auftragsdaten",
     "tabs.vehicles": "Fahrzeuge",
     "tabs.tools": "Werkzeuge",
     "tabs.users": "Mitarbeiter",
-    "input.select.vehicles" : "Fahrzeuge",
-    "input.select.tools" : "Werkzeuge",
-
+    "input.select.vehicles": "Fahrzeuge",
+    "input.select.tools": "Werkzeuge",
     "va.finished": "Baustelle erledigt?",
     "va.vehicles": "Fahrzeuge",
     "va.kmBegin": "KM Abfahrt",
@@ -124,7 +120,8 @@
         "events": "Aufträge erstellen",
         "logbook": "Aufträge buchen",
         "act_events": "Aufträge bearbeiten",
-        "act_logbook": "Aufträge buchen"
+        "act_logbook": "Aufträge buchen",
+        "reports": "Report / Statistik"
     },
     "resources": {
         "users": {
@@ -138,7 +135,6 @@
                 "roles": "Funktion"
             }
         },
-
         "events": {
             "name": "Auftrag | Aufträge",
             "fields": {
@@ -245,9 +241,9 @@
             "name": "Kunde | Kunden",
             "fields": {
                 "prefix": "Anrede",
-                "title" : "Titel",
-                "first" : "Vorname",
-                "last" : "Nachname",
+                "title": "Titel",
+                "first": "Vorname",
+                "last": "Nachname",
                 "email": "email",
                 "street": "Strasse",
                 "city": "Stadt/Ort",
@@ -255,10 +251,10 @@
             },
             "enums": {
                 "prefix": {
-                    "-" : "-",
-                    "Mr." : "Herr",
-                    "Mrs." : "Frau",
-                    "Family" : "Familie"
+                    "-": "-",
+                    "Mr.": "Herr",
+                    "Mrs.": "Frau",
+                    "Family": "Familie"
                 }
             }
         },
@@ -284,6 +280,22 @@
                 }
             }
         },
+        "report": {
+            "name": "Report | Report",
+            "fields": {
+                "type": "Leistung",
+                "finished": "Baustelle fertig",
+                "fixed": "Termin fixiert",
+                "customer": "Kunde",
+                "vehicles": "Fahrzeuge",
+                "start": "Termin",
+                "users": "Mitarbeiter",
+                "updated_at": "zul. geändert",
+                "sumHours": "Stunden (gesamt)",
+                "starts_after" : "Termin ab",
+                "starts_before" : "Termin bis"
+            }
+        },
         "tools": {
             "name": "Werkzeug | Werkzeuge",
             "fields": {
@@ -295,8 +307,8 @@
         },
         "tickets": {
             "fields": {
-                "status" : "Status",
-                "rating" : "Dringlichkeit",
+                "status": "Status",
+                "rating": "Dringlichkeit",
                 "body": "Anforderung",
                 "user": "erstellt von"
             },

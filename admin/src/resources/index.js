@@ -40,7 +40,7 @@ export default [
         icon: 'mdi-account-group',
         label: (customers) => {
             return (
-                customers.first + ' ' + customers.last + ' / ' + customers.city
+                customers.first + ' ' + customers.last + ' ' + customers.city
             );
         },
         permissions: ['admin'],
@@ -65,4 +65,11 @@ export default [
         permissions: ['admin', 'employee'],
         include: ['event', 'user'],
     },
+    {
+        name: 'report',
+        icon: 'mdi-ticket',
+        permissions: ['admin'],
+
+    },
+
 ];

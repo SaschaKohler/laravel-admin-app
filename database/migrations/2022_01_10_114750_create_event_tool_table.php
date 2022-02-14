@@ -15,10 +15,10 @@ class CreateEventToolTable extends Migration
     {
         Schema::create('event_tool', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')
+            $table->foreignId('event_id')->nullable()
                 ->references('id')
                 ->on('events')->onDelete('cascade');
-            $table->foreignId('tool_id')
+            $table->foreignId('tool_id')->nullable()
                 ->references('id')
                 ->on('tools')->onDelete('cascade');;
             $table->unsignedDecimal('hours')->nullable();

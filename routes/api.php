@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\UserController;
@@ -20,6 +21,9 @@ use Okami101\LaravelAdmin\Http\Middleware\Impersonate;
 |
 */
 
+Route::get('report' , [ReportController::class,'index'])->name('report');
+
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::account();
     Route::impersonate();
@@ -36,10 +40,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         'vehicles' => VehicleController::class,
         'tools' => ToolController::class,
         'tickets' => TicketController::class,
+        'report' => ReportController::class,
 
-     //   'statistics' => StatisticsController::class,
+        //   'statistics' => StatisticsController::class,
     ]);
 
-    Route::post('events/{event}/sendConfirmMail',[EventController::class,'sendConfirmMail'])->name('events.sendConfirmMail');
-    Route::post('events/{event}/sendDismissMail',[EventController::class,'sendDismissMail'])->name('events.sendDismissMail');
+    Route::post('events/{event}/sendConfirmMail', [EventController::class, 'sendConfirmMail'])->name('events.sendConfirmMail');
+    Route::post('events/{event}/sendDismissMail', [EventController::class, 'sendDismissMail'])->name('events.sendDismissMail');
 });

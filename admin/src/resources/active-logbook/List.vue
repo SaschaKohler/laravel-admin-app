@@ -6,7 +6,7 @@
             disable-export
             disable-query-string
             :filter="{
-                users: user.id,
+                users_id: user.id,
             }"
         >
             <va-data-table

@@ -13,8 +13,10 @@ class UserPolicy
     {
         if ($user->hasRole('admin'))
             return true;
-        if($user->hasRole('employee'))
+        if ($user->hasRole('employee'))
             return false;
+
+
     }
 
     /**
