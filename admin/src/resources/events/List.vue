@@ -1,5 +1,5 @@
 <template>
-    <base-material-card :icon="resource.icon" :title="title">
+    <base-material-card :icon="resource.icon" :title="$i18n.t('Auftrags-Liste')">
         <va-list
             :filters="filters"
             :include="['customer', 'vehicles', 'users', 'tools']"
@@ -38,7 +38,7 @@
                     </v-chip-group>
                 </template>
                 <template v-slot:[`item.actions`]="{ item }">
-          <send-mail-button :item="item"></send-mail-button>
+                    <send-mail-button :item="item"></send-mail-button>
                 </template>
             </va-data-table>
         </va-list>
@@ -49,18 +49,38 @@
 import SendMailButton from '@/components/buttons/SendMailButton';
 
 export default {
-    components: { SendMailButton },
+    components: {SendMailButton},
     props: ['resource', 'title', 'item'],
     data() {
         return {
             dialog: false,
-            filters: ['customer', 'users', 'vehicles', 'type'],
+            filters: [
+                'customer',
+                {
+                    source: 'users',
+                    type: 'select',
+                    attributes: {
+                        reference: 'users',
+                        itemValue: 'name'
+                    }
+                },
+                {
+                    source: 'vehicles',
+                    type: 'select',
+                    attributes: {
+                        reference: 'vehicles',
+
+                    }
+
+                },
+                'type'
+            ],
             fields: [
-                { source: 'type', sortable: true },
+                {source: 'type', sortable: true},
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: { format: 'long' },
+                    attributes: {format: 'long'},
                     sortable: true,
                 },
                 {
@@ -89,8 +109,8 @@ export default {
                     source: 'vehicles',
                     sortable: false,
                 },
-                { source: 'finished', type: 'boolean', sortable: true },
-                { source: 'fixed', type: 'boolean', sortable: true },
+                {source: 'finished', type: 'boolean', sortable: true},
+                {source: 'fixed', type: 'boolean', sortable: true},
             ],
         };
     },
