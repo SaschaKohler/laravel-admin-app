@@ -66,9 +66,9 @@ class EventController extends Controller
                     AllowedFilter::exact('finished'),
                     AllowedFilter::partial('type'),
                 ])
-                ->defaultSort('updated_at')
                 ->allowedSorts(['id','start','type', 'customer', 'updated_at', 'finished','fixed'])
                 ->allowedIncludes(['customer', 'vehicles', 'users', 'tools'])
+                ->orderBy('start')
                 ->get()
         );
     }

@@ -42,7 +42,7 @@
                                     </v-row>
 
                                     <v-row justify="center">
-                                        <v-col cols="8">
+                                        <v-col cols="12">
                                             <template
                                                 v-if="
                                                     props.item.type ===
@@ -53,7 +53,7 @@
                                                 "
                                             >
                                                 <v-row>
-                                                    <v-col v-bind="props">
+                                                    <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
                                                             source="pivot.kmBegin"
@@ -62,7 +62,7 @@
                                                             "
                                                         ></va-number-input>
                                                     </v-col>
-                                                    <v-col>
+                                                    <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
                                                             source="pivot.kmEnd"
@@ -145,7 +145,7 @@
                                     </v-col>
                                 </v-row>
                                 <v-row justify="center">
-                                    <v-col cols="8">
+                                    <v-col cols="12">
                                         <v-slider
                                             v-bind="props"
                                             :label="$t('pivot.hours')"
