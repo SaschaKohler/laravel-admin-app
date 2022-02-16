@@ -74,27 +74,17 @@ class RecurrenceObserver
 
                 }
 
-//            $employeeIds = array();
-//            $vehicleIds = array();
-//
-//            if (static::$request->vehicles) {
-//                $event->vehicles()->sync(static::$request->vehicles);
-//            }
-//            if (static::$request->tools) {
-//                $event->tools()->sync(static::$request->tools);
-//            }
-//
-//            $event->users()->sync(static::$request->users);
-
 
             foreach ($event->events as $item) {  // iterate childEvents and sync the mana-to-many-relationships accordingly
-                if (static::$request->vehicles) {
-                    $item->vehicles()->sync(static::$request->vehicles);
+                if (is_array(static::$request->input('user_ids'))) {
+                    $item->users()->sync(static::$request->input('user_ids'));
                 }
-                if (static::$request->tools) {
-                    $item->tools()->sync(static::$request->tools);
+                if (is_array(static::$request->input('vehicle_ids'))) {
+                    $item->vehicles()->sync(static::$request->input('vehicle_ids'));
                 }
-                $item->users()->sync(static::$request->users);
+                if (is_array(static::$request->input('tool_ids'))) {
+                    $item->tools()->sync(static::$request->input('tool_ids'));
+                }
 
                 $item->save();
 

@@ -17,7 +17,6 @@ class Event extends Model
 
     protected $casts = ['start' => 'date:Y-m-d', 'end' => 'date'];   // in order to get right data format for vuetify calendar !
 
-
     public function events()
     {
         return $this->hasMany(Event::class);

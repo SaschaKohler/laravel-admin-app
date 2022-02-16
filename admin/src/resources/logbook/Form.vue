@@ -24,9 +24,9 @@
                     <template v-slot:vehicles>
                         <v-card-text>
                             <CustomComponent
-                                source="vehicles"
-                                model="vehicles"
                                 :label="$i18n.t('menu.vehicles')"
+                                source="vehicles"
+                                model="vehicle_ids"
                                 v-slot="props"
                             >
                                 <v-card-text>
@@ -127,10 +127,9 @@
                     </template>
                     <template v-slot:tools>
                         <CustomComponent
-                            source="tools"
-                            model="tools"
-                            reference="tools"
                             :label="$i18n.t('va.tools')"
+                            source="tools"
+                            model="tool_ids"
                             v-slot="props"
                         >
                             <v-card-text>
@@ -164,10 +163,9 @@
                     <template v-slot:users>
                         <v-card-text>
                             <CustomComponent
-                                source="users"
-                                model="users"
-                                reference="users"
                                 :label="$i18n.t('va.users')"
+                                source="users"
+                                model="user_ids"
                                 v-slot="props"
                             >
                                 <v-row>

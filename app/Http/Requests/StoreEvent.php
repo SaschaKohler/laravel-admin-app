@@ -24,7 +24,10 @@ class StoreEvent extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type' => 'required',
+            'color' => 'required',
+            'start' => 'required',
+            'customer_id' => 'required' ,
         ];
     }
 }

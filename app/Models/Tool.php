@@ -15,6 +15,6 @@ class Tool extends Model
 
     public function events()
     {
-        return $this->belongsToMany(Event::class)->withTimestamps();
+        return $this->belongsToMany(Event::class)->withDefault()->withTimestamps();
     }
 }

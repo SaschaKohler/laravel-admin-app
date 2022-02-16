@@ -24,9 +24,7 @@ class UpdateEvent extends FormRequest
     public function rules()
     {
         return [
-            'vehicles' => 'required',
-            'users' => 'sometimes|required',
-            'tools' => 'sometimes|required',
+
             'finished' => 'nullable|boolean'
         ];
     }

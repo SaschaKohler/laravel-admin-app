@@ -10,6 +10,8 @@ FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /admin/dist /usr/share/nginx/html
 
 COPY conf.d/site.conf /etc/nginx/conf.d/
+#COPY conf.d/cert.perm /etc/nginx/conf.d/
+#COPY conf.d/key.pem /etc/nginx/conf.d/
 
 RUN rm /etc/nginx/conf.d/default.conf
 
