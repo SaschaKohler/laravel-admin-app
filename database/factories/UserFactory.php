@@ -28,24 +28,23 @@ class UserFactory extends Factory
             'Steinbauer Karl', 'Kohler Sascha', 'Strasser Franz', 'Schwaiger Johann',
         ];
         $roles = [
-            0 => 'admin',
-            1 => "employee",
-            2 => "employee", "outdoor",
-            3 => "employee", "outdoor",
-            4 => "employee", "outdoor",
-            5 => "employee", "outdoor",
-            6 => "employee", "outdoor",
-            7 => "employee", "outdoor",
-            8 => "employee", "outdoor",
-            9 => 'employee', 'outdoor',
-            10 => "employee", "outdoor",
-            11 => "employee", "outdoor",
-            12 => "employee", "outdoor",
-            13 => "employee", "outdoor",
+            0 => ['admin'],
+            1 => ['employee'],
+            2 => ['employee'],
+            3 => ['employee'],
+            4 => ['employee'],
+            5 => ['employee'],
+            6 => ['employee'],
+            7 => ['employee'],
+            8 => ['employee'],
+            9 => ['employee'],
+            10 => ['employee'],
+            11 => ['employee'],
+            12 => ['employee'],
+            13 => ['employee'],
 
         ];
 
-        $role = $roles[$this->counter];
 
 
         $user = $users[$this->counter];
@@ -65,7 +64,7 @@ class UserFactory extends Factory
             'phone2' => $this->faker->phoneNumber(),
             'address' => $this->faker->address,
             'category_id' => random_int(1, 3),
-            'roles' => ['admin'],
+            'roles' => $role,
             'email_verified_at' => now(),
             'active' => true,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
