@@ -59,6 +59,11 @@ class EventController extends Controller
                             $query->where('user_id', '=', $value);
                         });
                     }),
+                   AllowedFilter::callback('vehicle_id', function (Builder $query, $value) {
+                        $query->whereHas('vehicles', function (Builder $query) use ($value) {
+                            $query->where('vehicle_id', '=', $value);
+                        });
+                    }),
                     AllowedFilter::callback('customer', function (Builder $query, $value) {
                         $query->whereHas('customer', function (Builder $query) use ($value) {
                             $query->where('last', 'LIKE', '%' . $value . '%');

@@ -56,7 +56,7 @@
                                                     <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
-                                                            source="pivot.kmBegin"
+                                                            v-model="props.item.pivot.kmBegin"
                                                             :label="
                                                                 $t('va.kmBegin')
                                                             "
@@ -65,7 +65,7 @@
                                                     <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
-                                                            source="pivot.kmEnd"
+                                                            v-model="props.item.pivot.kmEnd"
                                                             :label="
                                                                 $t('va.kmEnd')
                                                             "
