@@ -2,7 +2,6 @@
     <base-material-card :icon="resource.icon" :title="title">
         <va-list
             :filters="filters"
-            :include="['vehicles', 'tools', 'users']"
             disable-create
             disable-export
         >

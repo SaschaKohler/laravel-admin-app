@@ -1,7 +1,7 @@
 <template>
     <va-form :id="id" :item="item">
         <v-row justify="center">
-            <v-col sm="6">
+            <v-col sm="8">
                 <base-material-card>
                     <template v-slot:heading>
                         <div class="display-2">

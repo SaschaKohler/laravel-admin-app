@@ -22,8 +22,8 @@
         "spatie/laravel-translatable": "^4.6"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "barryvdh/laravel-ide-helper": "^2.10",
-        "beyondcode/laravel-dump-server": "^1.7",
         "doctrine/dbal": "^3.2",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",

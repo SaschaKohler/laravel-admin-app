@@ -5,8 +5,6 @@
     >
         <va-list
             :filters="filters"
-            :include="['customer', 'vehicles', 'users', 'tools']"
-            :sort-by="updated_at"
             disable-export
         >
             <va-data-table :fields="fields">

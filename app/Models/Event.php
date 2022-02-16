@@ -35,8 +35,8 @@ class Event extends Model
     public function vehicles()
     {
         return $this->belongsToMany(Vehicle::class)
-            ->withPivot(['kmBegin', 'kmEnd', 'kmSum', 'hours'])
-            ->withTimestamps();
+            ->withPivot(['kmBegin', 'kmEnd', 'kmSum', 'hours']);
+         //   ->withTimestamps();
     }
 
     public function users()
@@ -44,8 +44,8 @@ class Event extends Model
         return $this->belongsToMany(User::class)->using(EventUser::class)
             ->withPivot('startTime')
             ->withPivot('endTime')
-            ->withPivot('hours')
-            ->withTimestamps();
+            ->withPivot('hours');
+          //  ->withTimestamps();
     }
 
     public function allowedUsers($value)
@@ -66,8 +66,8 @@ class Event extends Model
     public function tools()
     {
         return $this->belongsToMany(Tool::class)
-            ->withPivot('hours')
-            ->withTimestamps();
+            ->withPivot('hours');
+          //  ->withTimestamps();
     }
 
     public function tickets()

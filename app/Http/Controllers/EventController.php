@@ -9,6 +9,7 @@ use App\Http\Resources\Customer;
 use App\Http\Resources\Event as EventResource;
 use App\Mail\EventConfirm;
 use App\Mail\EventDismiss;
+use App\Models\EventUser;
 use App\Models\Tool;
 use App\Models\User;
 use App\Models\Vehicle;
@@ -37,6 +38,10 @@ class EventController extends Controller
     {
         return EventResource::collection(
             QueryBuilder::for(Event::class)
+                ->with('vehicles:branding,type')
+                ->with('customer:id,first,last,city')
+                ->with('users:id,name')
+                ->with('tools:title')
                 ->allowedFilters([
                     AllowedFilter::custom('q', new SearchFilter(['type'])),
                     AllowedFilter::callback('vehicles', function (Builder $query, $value) {
@@ -67,7 +72,7 @@ class EventController extends Controller
                     AllowedFilter::partial('type'),
                 ])
                 ->allowedSorts(['id','start','type', 'customer', 'updated_at', 'finished','fixed'])
-                ->allowedIncludes(['customer', 'vehicles', 'users', 'tools'])
+                ->allowedIncludes(['customer', 'users', 'tools','vehicles'])
                 ->orderBy('start')
                 ->get()
         );
