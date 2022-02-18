@@ -13,10 +13,12 @@ class EventFactory extends Factory
      */
     public function definition()
     {
+        $dateTime = $this->faker->dateTimeBetween('-1 month','+2 month');
         return [
             'type' => $this->faker->randomElement(['Baumpflege','Zaunbau','Gartenpflege',
                     'Transport','pers. Termin','Winterdienst','Sonstiges']),
-            'start' => $this->faker->dateTimeBetween('-1 month','+2 month'),
+            'start' => $dateTime,
+            'end' => $dateTime,
 
         ];
     }

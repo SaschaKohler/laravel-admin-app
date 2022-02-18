@@ -10,8 +10,9 @@ import './plugins/base';
 import './plugins/chartist';
 import './sass/overrides.sass';
 import CustomComponent from './components/CustomComponent';
-
+import CustomTimePicker from "@/components/CustomTimePicker";
 Vue.component('CustomComponent', CustomComponent);
+Vue.component('CustomTimePicker', CustomTimePicker);
 
 Vue.config.productionTip = false;
 

@@ -1,5 +1,5 @@
 <template>
-    <va-form :id="id" :item="item">
+    <va-form :id="id" :item="item" :create="create">
         <v-row justify="center">
             <v-col sm="10">
                 <base-material-tabs-card
@@ -39,6 +39,29 @@
                                 format="short"
                                 v-model="picker"
                             ></va-date-input>
+
+                            <v-row justify="center">
+                                <v-col cols="4">
+                                    <h3>Start</h3>
+                                    <CustomTimePicker
+                                        v-bind="$props"
+                                        v-model="form.startTime"
+                                        model="startTime"
+                                        @change="update"
+                                    ></CustomTimePicker>
+                                    </v-col>
+                                <v-col cols="4">
+
+                                <h3>Ende</h3>
+                                    <CustomTimePicker
+                                        v-bind="$props"
+                                        v-model="form.endTime"
+                                        model="endTime"
+                                        @change="update"
+                                    >
+                                    </CustomTimePicker>
+                                </v-col>
+                            </v-row>
                             <va-select-input
                                 source="recurrence"
                                 :choices="recurrence_choices"
@@ -104,13 +127,20 @@
 </template>
 
 <script>
+import Input from 'vuetify-admin/src/mixins/input';
+
 export default {
-    props: ['id', 'title', 'item', 'date'],
+    mixins: [Input],
+    props: ['id', 'title', 'item', 'create'],
     data() {
         return {
             value: null,
             tools: [],
             vehicles: [],
+            form: {
+                startTime: '7:00',
+                endTime: '16:00',
+            },
             picker: new Date(
                 Date.now() - new Date().getTimezoneOffset() * 60000
             )
@@ -134,6 +164,7 @@ export default {
         show(val) {
             console.log(val);
         },
+
     },
 };
 </script>

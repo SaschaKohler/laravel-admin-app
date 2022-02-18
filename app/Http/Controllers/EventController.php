@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CustomFilters\FiltersCustomerName;
 use App\Events\EventStatusUpdated;
 use App\Http\Requests\StoreEvent;
 use App\Http\Requests\UpdateEvent;
@@ -38,12 +39,13 @@ class EventController extends Controller
     {
         return EventResource::collection(
             QueryBuilder::for(Event::class)
-                ->with('vehicles:branding,type')
+                ->with('vehicles:id,branding,type')
                 ->with('customer:id,first,last,city')
                 ->with('users:id,name')
-                ->with('tools:title')
+                ->with('tools:id,title')
                 ->allowedFilters([
                     AllowedFilter::custom('q', new SearchFilter(['type'])),
+
                     AllowedFilter::callback('vehicles', function (Builder $query, $value) {
                         $query->whereHas('vehicles', function (Builder $query) use ($value) {
                             $query->where('vehicle_id', '=',  $value );
@@ -66,9 +68,10 @@ class EventController extends Controller
                     }),
                     AllowedFilter::callback('customer', function (Builder $query, $value) {
                         $query->whereHas('customer', function (Builder $query) use ($value) {
-                            $query->where('last', 'LIKE', '%' . $value . '%');
-                        });
+                                $query->where('customers.id', '=',  $value );
+                         });
                     }),
+                    AllowedFilter::scope('where_has'),
                     AllowedFilter::scope('starts_after'),
                     AllowedFilter::scope('starts_before'),
                     AllowedFilter::exact('id'),

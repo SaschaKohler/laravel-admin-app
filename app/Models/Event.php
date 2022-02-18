@@ -15,7 +15,13 @@ class Event extends Model
     protected $guarded = ['id'];
     // protected $fillable = ['type', 'color', 'start', 'end', 'event_id', 'customer_id'];
 
-    protected $casts = ['start' => 'date:Y-m-d', 'end' => 'date'];   // in order to get right data format for vuetify calendar !
+    protected $casts = [
+        'start' => 'date:Y-m-d 07:00',
+        'end' => 'date:Y-m-d 16:00',
+        'startTime' => 'datetime:H:i',
+        'endTime' => 'datetime:H:i',
+
+    ];   // in order to get right data format for vuetify calendar !
 
     public function events()
     {
@@ -51,6 +57,16 @@ class Event extends Model
     public function allowedUsers($value)
     {
         return $this->users()->where('user_id','=', $value );
+    }
+
+    public function scopeWhereHas(Builder $query, $value)
+    {
+        $query->whereHas('customer', function (Builder $query) use ($value) {
+            $query->where(function ($query) use ($value) {
+                $query->where('last', 'LIKE', '%' . $value . '%')
+                    ->orWhere('first', 'LIKE', '%' . $value . '%');
+            });
+        });
     }
 
     public function scopeStartsAfter(Builder $query, $date): Builder

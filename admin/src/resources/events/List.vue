@@ -18,6 +18,7 @@
                             chip
                             small
                             :item="item"
+                            action="show"
                         >
                             {{ item.branding }}
                         </va-reference-field>
@@ -51,7 +52,7 @@
 import SendMailButton from '@/components/buttons/SendMailButton';
 
 export default {
-    components: { SendMailButton },
+    components: {SendMailButton},
     props: ['resource', 'title', 'item'],
     data() {
         return {
@@ -72,7 +73,13 @@ export default {
                         format: 'short',
                     },
                 },
-                'customer',
+                {
+                    source: 'customer',
+                    type: 'autocomplete', attributes: {
+                        optionText: 'last',
+                        reference: 'customers'
+                    }
+                },
                 {
                     source: 'users',
                     type: 'select',
@@ -98,11 +105,11 @@ export default {
                 },
             ],
             fields: [
-                { source: 'type', sortable: true },
+                {source: 'type', sortable: true},
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: { format: 'long' },
+                    attributes: {format: 'long'},
                     sortable: true,
                 },
                 {
@@ -131,8 +138,8 @@ export default {
                     source: 'vehicles',
                     sortable: false,
                 },
-                { source: 'finished', type: 'boolean', sortable: true },
-                { source: 'fixed', type: 'boolean', sortable: true },
+                {source: 'finished', type: 'boolean', sortable: true},
+                {source: 'fixed', type: 'boolean', sortable: true},
             ],
         };
     },

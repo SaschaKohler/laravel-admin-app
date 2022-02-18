@@ -230,11 +230,7 @@ export default {
     props: ['id', 'title', 'item', 'create'],
     data() {
         return {
-            dialog: false,
-            startTime: null,
-            formState: {
-                startTime: null,
-            },
+
         };
     },
     methods: {

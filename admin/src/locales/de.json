@@ -165,12 +165,12 @@
                 },
                 "color": {
                     "green lighten-2": "grün",
-                    "amber lighten-2": "amber",
+                    "cyan darken-1": "cyan",
                     "blue lighten-2": "blau",
-                    "brown lighten-3": "braun",
+                    "brown lighten-2": "braun",
                     "red lighten-2": "rot",
-                    "grey lighten-2": "grau",
-                    "orange lighten-1": "orange"
+                    "grey": "grau",
+                    "orange darken-1": "orange"
                 }
             }
         },

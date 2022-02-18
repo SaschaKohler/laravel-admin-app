@@ -1,6 +1,6 @@
 <template>
     <va-create-layout>
-        <events-form :title="title" :item="item"></events-form>
+        <events-form :title="title" :item="item" :create="true"></events-form>
     </va-create-layout>
 </template>
 

@@ -44,12 +44,16 @@
                 :type="type"
                 :weekdays="weekday"
                 :events="events"
+                event-overlap-mode="column"
                 :event-overlap-threshold="30"
                 @click:event="showEvent"
                 @click:date="viewDay"
+                interval-count="15"
+                first-time="6"
+                event-timed="timed"
             >
                 <template v-slot:event="{ event }">
-                    <p>{{ event.name }} / {{ event.customer.last }}</p>
+                    {{ event.name }} / {{ event.customer.last }}
                 </template>
             </v-calendar>
             <v-menu
@@ -179,7 +183,6 @@ export default {
                         page: 1,
                         perPage: 1000,
                     },
-                    include: ['customer', 'users', 'vehicles'],
                 },
             });
         } else {
@@ -208,6 +211,7 @@ export default {
                     name: n.type,
                     fixed: n.fixed,
                     start: n.start,
+                    end: n.end,
                     color: n.color,
                     customer: n.customer,
                     users: n.users,
