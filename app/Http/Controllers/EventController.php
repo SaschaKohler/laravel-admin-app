@@ -108,6 +108,8 @@ class EventController extends Controller
 
         $event = Event::create($request->all());
 
+        $event->end = $request->start;
+        $event->save();
 
         if (is_array($request->input('user_ids'))) {
             $event->users()->sync($request->input('user_ids'));
@@ -131,6 +133,11 @@ class EventController extends Controller
      */
     public function update(UpdateEvent $request, Event $event)
     {
+        if($request->timed) {
+            $event->timed = true;
+            $event->startTime = $request->startTime;
+            $event->endTime = $request->endTime;
+        }
 
         if (($request->has('vehicle_ids') || $request->has('tool_ids') || $request->has('user_ids')) &&
             (!is_array($request->input('vehicle_ids')[0]) || !is_array($request->input('tool_ids')[0]) || !is_array($request->input('user_ids')[0]))) {

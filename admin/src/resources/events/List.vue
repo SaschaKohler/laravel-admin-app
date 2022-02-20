@@ -103,6 +103,7 @@ export default {
                     source: 'fixed',
                     type: 'Boolean',
                 },
+
             ],
             fields: [
                 {source: 'type', sortable: true},
@@ -140,6 +141,11 @@ export default {
                 },
                 {source: 'finished', type: 'boolean', sortable: true},
                 {source: 'fixed', type: 'boolean', sortable: true},
+                {
+                    source: 'timed',
+                    type: 'Boolean',
+                },
+
             ],
         };
     },

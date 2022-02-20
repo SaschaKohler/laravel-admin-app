@@ -44,16 +44,15 @@
                 :type="type"
                 :weekdays="weekday"
                 :events="events"
-                event-overlap-mode="column"
-                :event-overlap-threshold="30"
+                :event-timed="timed"
                 @click:event="showEvent"
                 @click:date="viewDay"
-                interval-count="15"
-                first-time="6"
-                event-timed="timed"
             >
                 <template v-slot:event="{ event }">
-                    {{ event.name }} / {{ event.customer.last }}
+
+                 <span v-if="event.timed"><span class="text-bold">{{event.startTime}}</span> - {{event.customer.last }}</span>
+                 <span v-else><span class="text-bold">ganztägig</span> - {{event.customer.last }}</span>
+
                 </template>
             </v-calendar>
             <v-menu
@@ -102,7 +101,7 @@
                             </p>
                         </v-row>
                         <div class="d-flex justify-space-around">
-                            <ul>
+                            <ul class="pa-0 ma-0">
                                 <span
                                     class="text-subtitle-1 text-decoration-underline"
                                     >Team:</span
@@ -110,11 +109,13 @@
                                 <li
                                     v-for="employee in selectedEvent.employees"
                                     :key="employee.id"
+                                    class="pa-0"
+                                    style="list-style: none;"
                                 >
                                     {{ employee.name }}
                                 </li>
                             </ul>
-                            <ul>
+                            <ul class="pa-0 ma-0">
                                 <span
                                     class="text-subtitle-1 text-decoration-underline"
                                     >Fahrzeuge:</span
@@ -122,6 +123,8 @@
                                 <li
                                     v-for="vehicle in selectedEvent.vehicles"
                                     :key="vehicle.id"
+                                    class="pa-0"
+                                    style="list-style: none;"
                                 >
                                     {{ vehicle.branding }}
                                 </li>
@@ -211,7 +214,10 @@ export default {
                     name: n.type,
                     fixed: n.fixed,
                     start: n.start,
+                    startTime: (n.startTime).substring(0,5),
                     end: n.end,
+                    endTime: (n.endTime).substring(0,5),
+                    timed:n.timed,
                     color: n.color,
                     customer: n.customer,
                     users: n.users,
@@ -230,7 +236,10 @@ export default {
                 this.selectedEvent.vehicles = event.vehicles;
 
                 this.selectedEvent.start = event.start;
+                this.selectedEvent.startTime = event.startTime;
                 this.selectedEvent.end = event.end;
+                this.selectedEvent.endTime = event.endTime;
+                this.selectedEvent.timed= event.timed;
                 this.selectedEvent.fixed = event.fixed;
                 this.selectedEvent.name = event.name;
 

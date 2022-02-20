@@ -16,50 +16,93 @@ class Event extends Model
     // protected $fillable = ['type', 'color', 'start', 'end', 'event_id', 'customer_id'];
 
     protected $casts = [
-        'start' => 'date:Y-m-d 07:00',
-        'end' => 'date:Y-m-d 16:00',
-        'startTime' => 'datetime:H:i',
-        'endTime' => 'datetime:H:i',
+//        'startTime' => 'date:H:i:s',
+//        'endTime' => 'date:H:i:s',
+//        'start' => 'date:Y-m-d',
+//        'end' => 'date:Y-m-d',
 
-    ];   // in order to get right data format for vuetify calendar !
+    ];
 
-    public function events()
+
+    //    getting timed objects for vuetify calendar
+//    public function setStartAttribute($value)
+//    {
+//        return explode(' ', $value)[0];
+//        return $test;
+//    }
+//
+//    public function setEndAttribute($value)
+//    {
+//        return explode(' ', $value)[0];
+//        return $test;
+//    }
+
+    public function getStartAttribute($value)
+    {
+        $start = explode(' ',$value)[0];
+        if ($this->timed) {
+            $merged = $start . ' ' . $this->startTime;
+            return Carbon::createFromFormat('Y-m-d H:i:s', $merged)->format('Y-m-d H:i');
+        }
+        return $value;
+    }
+
+    public function getEndAttribute($value)
+    {
+        $end = explode(' ',$value)[0];
+
+        if ($this->timed) {
+            $merged = $end . ' ' . $this->endTime;
+            return Carbon::createFromFormat('Y-m-d H:i:s', $merged)->format('Y-m-d H:i');
+        }
+        return $value;
+    }
+
+
+    public
+    function events()
     {
         return $this->hasMany(Event::class);
     }
 
-    public function event()
+    public
+    function event()
     {
         return $this->belongsTo(Event::class);
     }
 
-    public function customer()
+    public
+    function customer()
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function vehicles()
+    public
+    function vehicles()
     {
         return $this->belongsToMany(Vehicle::class)
             ->withPivot(['kmBegin', 'kmEnd', 'kmSum', 'hours']);
-         //   ->withTimestamps();
+        //   ->withTimestamps();
     }
 
-    public function users()
+    public
+    function users()
     {
         return $this->belongsToMany(User::class)->using(EventUser::class)
             ->withPivot('startTime')
             ->withPivot('endTime')
             ->withPivot('hours');
-          //  ->withTimestamps();
+        //  ->withTimestamps();
     }
 
-    public function allowedUsers($value)
+    public
+    function allowedUsers($value)
     {
-        return $this->users()->where('user_id','=', $value );
+        return $this->users()->where('user_id', '=', $value);
     }
 
-    public function scopeWhereHas(Builder $query, $value)
+    public
+    function scopeWhereHas(Builder $query, $value)
     {
         $query->whereHas('customer', function (Builder $query) use ($value) {
             $query->where(function ($query) use ($value) {
@@ -69,24 +112,28 @@ class Event extends Model
         });
     }
 
-    public function scopeStartsAfter(Builder $query, $date): Builder
+    public
+    function scopeStartsAfter(Builder $query, $date): Builder
     {
         return $query->where('start', '>=', Carbon::parse($date));
     }
 
-    public function scopeStartsBefore(Builder $query, $date): Builder
+    public
+    function scopeStartsBefore(Builder $query, $date): Builder
     {
         return $query->where('start', '<=', Carbon::parse($date));
     }
 
-    public function tools()
+    public
+    function tools()
     {
         return $this->belongsToMany(Tool::class)
             ->withPivot('hours');
-          //  ->withTimestamps();
+        //  ->withTimestamps();
     }
 
-    public function tickets()
+    public
+    function tickets()
     {
         return $this->hasMany(Ticket::class);
     }

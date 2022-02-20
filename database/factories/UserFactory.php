@@ -23,13 +23,13 @@ class UserFactory extends Factory
     public function definition()
     {
 
-        $users = ['Dirneder Karl', 'Brunner Gerald', 'Freinhofer Martin', 'Holzer Emanuel', 'Lettner Birgit',
+        $users = ['Dirneder Karl', 'Bauernfeind Renate','Brunner Gerald', 'Freinhofer Martin', 'Holzer Emanuel', 'Lettner Birgit',
             'Moser Philip', 'Ortmayr Stephan', 'Puehringer Johann', 'Steinkellner Günther', 'Pointer Rudi',
             'Steinbauer Karl', 'Kohler Sascha', 'Strasser Franz', 'Schwaiger Johann',
         ];
         $roles = [
             0 => ['admin'],
-            1 => ['employee'],
+            1 => ['admin'],
             2 => ['employee'],
             3 => ['employee'],
             4 => ['employee'],
@@ -42,6 +42,7 @@ class UserFactory extends Factory
             11 => ['employee'],
             12 => ['employee'],
             13 => ['employee'],
+            14 => ['employee'],
 
         ];
 

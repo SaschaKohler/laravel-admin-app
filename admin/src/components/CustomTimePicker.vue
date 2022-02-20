@@ -2,8 +2,11 @@
     <va-input v-bind="$props">
         <v-time-picker
             format="24h"
+            use-seconds
             :value="value"
-            @change="update">
+            @change="update"
+            @input="update"
+        >
         </v-time-picker>
 
     </va-input>

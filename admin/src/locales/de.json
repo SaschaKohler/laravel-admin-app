@@ -147,6 +147,7 @@
                 "customer": "Kunde",
                 "tools": "Werkzeug / Maschinen",
                 "vehicles": "Fahrzeuge",
+                "wholeDay": "ganztägig",
                 "start": "Termin",
                 "users": "Mitarbeiter",
                 "starts_after" : "Termin ab",

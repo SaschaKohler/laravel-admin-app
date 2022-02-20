@@ -36,11 +36,13 @@
                             </va-select-input>
                             <va-date-input
                                 source="start"
-                                format="short"
                                 v-model="picker"
                             ></va-date-input>
-
-                            <v-row justify="center">
+                            <va-boolean-input
+                                source="timed"
+                                v-model="isTimed"
+                            ></va-boolean-input>
+                            <v-row v-if="isTimed" justify="center">
                                 <v-col cols="4">
                                     <h3>Start</h3>
                                     <CustomTimePicker
@@ -49,10 +51,10 @@
                                         model="startTime"
                                         @change="update"
                                     ></CustomTimePicker>
-                                    </v-col>
+                                </v-col>
                                 <v-col cols="4">
 
-                                <h3>Ende</h3>
+                                    <h3>Ende</h3>
                                     <CustomTimePicker
                                         v-bind="$props"
                                         v-model="form.endTime"
@@ -65,6 +67,7 @@
                             <va-select-input
                                 source="recurrence"
                                 :choices="recurrence_choices"
+                                required
                             ></va-select-input>
                             <va-select-input
                                 source="customer_id"
@@ -137,17 +140,18 @@ export default {
             value: null,
             tools: [],
             vehicles: [],
+            isTimed : false,
             form: {
-                startTime: '7:00',
-                endTime: '16:00',
+                startTime: '07:00',
+                endTime: '08:00',
             },
+
             picker: new Date(
                 Date.now() - new Date().getTimezoneOffset() * 60000
             )
-                .toISOString()
-                .substr(0, 10),
+                .toISOString().substring(0, 10),
             recurrence_choices: [
-                {value: 0, text: 'keine'},
+                {value: 10, text: 'kein'},
                 {value: 1, text: 'täglich'},
                 {value: 2, text: 'wöchentlich'},
                 {value: 3, text: '14 tägig'},
@@ -158,13 +162,36 @@ export default {
         };
     },
     methods: {
-        onChange() {
-            console.log(this.$props.item.vehicles);
+        updateTimed() {
         },
         show(val) {
             console.log(val);
         },
+        getDefaults() {
+            if (this.item.timed) {
+                this.timed = this.item.timed;
+            } else {
+                this.timed = false;
+            }
+            if (this.item.startTime) {
+                this.form.startTime = (this.item.startTime);//.substring(0,5);
+            } else {
+                this.form.startTime = '0:19';
+            }
+            if (this.item.endTime) {
+                this.form.endTime = (this.item.endTime);//.substring(0,5);
+            } else {
+                this.form.endTime = '0:39';
+            }
+        }
+    },
+    watch: {
 
     },
+        created(){
+        this.getDefaults();
+    }
+
+
 };
 </script>

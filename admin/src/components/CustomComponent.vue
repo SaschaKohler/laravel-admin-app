@@ -1,6 +1,5 @@
 <template>
     <va-input v-bind="$props" class="va-array-input" v-if="input">
-        {{ $props }}
         <div>
             <div v-for="(item, i) in input" :key="item.id" class="item">
                 <!--
