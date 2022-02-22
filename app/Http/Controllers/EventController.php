@@ -40,7 +40,7 @@ class EventController extends Controller
         return EventResource::collection(
             QueryBuilder::for(Event::class)
                 ->with('vehicles:id,branding,type')
-                ->with('customer:id,first,last,city')
+                ->with('customer:id,first,last,street,city')
                 ->with('users:id,name')
                 ->with('tools:id,title')
                 ->allowedFilters([
