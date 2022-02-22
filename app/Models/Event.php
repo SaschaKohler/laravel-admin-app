@@ -28,7 +28,7 @@ class Event extends Model
     public function getStartAttribute($value)
     {
         $start = explode(' ',$value)[0];
-        if (!$this->allDay) {
+        if (!$this->allDay ) {
             $merged = $start . ' ' . $this->startTime;
             return Carbon::createFromFormat('Y-m-d H:i:s', $merged)->format('Y-m-d H:i');
         }

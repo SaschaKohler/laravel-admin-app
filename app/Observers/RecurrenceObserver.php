@@ -59,10 +59,15 @@ class RecurrenceObserver
             $notes = $event->notes;
             $allDay = $event->allDay;
 
-            if(!$allDay)
+            if(!$allDay) {
                 $startTime = Carbon::parse($event->startTime);//->format('H:i:s');
                 $endTime = Carbon::parse($event->endTime);//->format('H:i:s');
+            }
+            else{
+                $startTime = Carbon::parse('07:00:00');//->format('H:i:s');
+                $endTime = Carbon::parse('16:00:00');//->format('H:i:s');
 
+            }
 
             if ($recurrence)
                 for ($i = 0; $i < $recurrence['times']; $i++) {

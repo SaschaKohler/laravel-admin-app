@@ -143,8 +143,8 @@ export default {
             vehicles: [],
             isTimed: false,
             form: {
-                startTime: '07:00',
-                endTime: '08:00',
+                startTime: '07:00:00',
+                endTime: '08:00:00',
             },
 
             picker: new Date(

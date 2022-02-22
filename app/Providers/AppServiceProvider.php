@@ -25,10 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        ResetPassword::createUrlUsing(function($notifiable,$token){
+        ResetPassword::createUrlUsing(function ($notifiable, $token) {
             return "http://localhost:8080/reset-password/{$token}?email={$notifiable->getEmailForPasswordReset()}";
         });
-        setlocale(LC_TIME, 'fr_FR', 'fr', 'FR', 'French', 'fr_FR.UTF-8');
-        Carbon::setLocale('fr'); // T
     }
 }
