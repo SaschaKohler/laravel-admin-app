@@ -51,24 +51,32 @@ class RecurrenceObserver
                 ],
 
             ];
-            $startTime = Carbon::parse($event->start);
+            $start = Carbon::parse(explode(' ',$event->start)[0]);
             $recurrence = $recurrences[$event->recurrence] ?? null;
             $color = $event->color;
             $type = $event->type;
             $customer_id = $event->customer_id;
             $notes = $event->notes;
+            $allDay = $event->allDay;
+
+            if(!$allDay)
+                $startTime = Carbon::parse($event->startTime);//->format('H:i:s');
+                $endTime = Carbon::parse($event->endTime);//->format('H:i:s');
+
 
             if ($recurrence)
                 for ($i = 0; $i < $recurrence['times']; $i++) {
-                    $startTime->{$recurrence['function']}($recurrence['value']);
+                    $start->{$recurrence['function']}($recurrence['value']);
                     $event->events()->create([                 // create child events of parent event
                         'name' => $event->name,
-                        'start' => $startTime,                 // whole day not over days
-                        'end' => $startTime,
+                        'start' => $start,                 // whole day not over days
+                        'startTime' => $startTime,                 // whole day not over days
+                        'endTime' => $endTime,
                         'color' => $color,
                         'type' => $type,
                         'customer_id' => $customer_id,
                         'notes' => $notes,
+                        'allDay' => $allDay,
                         'recurrence' => $event->recurrence,
                     ]);
 

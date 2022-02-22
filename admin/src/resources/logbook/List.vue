@@ -123,6 +123,17 @@ export default {
                     },
                 },
                 {
+                    source: 'customer',
+                    sortable: false,
+                    type: 'reference',
+                    attributes: {
+                        reference: 'customers',
+                        chip: true,
+                        color: 'amber lighten-2',
+                    },
+                },
+
+                {
                     source: 'users',
                     sortable: false,
                 },

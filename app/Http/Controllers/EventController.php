@@ -48,7 +48,7 @@ class EventController extends Controller
 
                     AllowedFilter::callback('vehicles', function (Builder $query, $value) {
                         $query->whereHas('vehicles', function (Builder $query) use ($value) {
-                            $query->where('vehicle_id', '=',  $value );
+                            $query->where('vehicle_id', '=', $value);
                         });
                     }),
                     AllowedFilter::callback('users', function (Builder $query, $value) {
@@ -61,15 +61,15 @@ class EventController extends Controller
                             $query->where('user_id', '=', $value);
                         });
                     }),
-                   AllowedFilter::callback('vehicle_id', function (Builder $query, $value) {
+                    AllowedFilter::callback('vehicle_id', function (Builder $query, $value) {
                         $query->whereHas('vehicles', function (Builder $query) use ($value) {
                             $query->where('vehicle_id', '=', $value);
                         });
                     }),
                     AllowedFilter::callback('customer', function (Builder $query, $value) {
                         $query->whereHas('customer', function (Builder $query) use ($value) {
-                                $query->where('customers.id', '=',  $value );
-                         });
+                            $query->where('customers.id', '=', $value);
+                        });
                     }),
                     AllowedFilter::scope('where_has'),
                     AllowedFilter::scope('starts_after'),
@@ -79,8 +79,8 @@ class EventController extends Controller
                     AllowedFilter::exact('finished'),
                     AllowedFilter::partial('type'),
                 ])
-                ->allowedSorts(['id','start','type', 'customer', 'updated_at', 'finished','fixed'])
-                ->allowedIncludes(['customer', 'users', 'tools','vehicles'])
+                ->allowedSorts(['id', 'start', 'type', 'customer', 'updated_at', 'finished', 'fixed'])
+                ->allowedIncludes(['customer', 'users', 'tools', 'vehicles'])
                 ->orderBy('start')
                 ->get()
         );
@@ -114,7 +114,7 @@ class EventController extends Controller
         if (is_array($request->input('user_ids'))) {
             $event->users()->sync($request->input('user_ids'));
         }
-        if (is_array($request->input('vehicle_ids')) ) {
+        if (is_array($request->input('vehicle_ids'))) {
             $event->vehicles()->sync($request->input('vehicle_ids'));
         }
         if (is_array($request->input('tool_ids'))) {
@@ -133,11 +133,24 @@ class EventController extends Controller
      */
     public function update(UpdateEvent $request, Event $event)
     {
-        if(!$request->allDay) {
-            $event->allDay = false;
-            $event->startTime = $request->startTime;
-            $event->endTime = $request->endTime;
+        if ($request->has('allDay') ) {
+            if (!$request->allDay) {
+                $event->allDay = false;
+                $event->startTime = $request->startTime;
+                $event->endTime = $request->endTime;
+            } else {
+                $event->allDay = true;
+                $event->startTime = Carbon::parse('07:00:00')->format('H:i:s');
+                $event->endTime = Carbon::parse('16:00:00')->format('H:i:s');
+
+            }
         }
+
+        if($event->allDay) {
+            $event->startTime = Carbon::parse('07:00:00')->format('H:i:s');
+            $event->endTime = Carbon::parse('16:00:00')->format('H:i:s');
+        }
+
 
         if (($request->has('vehicle_ids') || $request->has('tool_ids') || $request->has('user_ids')) &&
             (!is_array($request->input('vehicle_ids')[0]) || !is_array($request->input('tool_ids')[0]) || !is_array($request->input('user_ids')[0]))) {

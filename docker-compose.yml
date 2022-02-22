@@ -32,8 +32,10 @@ services:
           context: ./admin/
       volumes:
         - ./admin/dist:/srv/api/admin
+
       ports:
-          - "${VUE_HTTP_PORT}:80"
+#          - "${VUE_HTTP_PORT}:80"
+          - "8080:80"
 
       depends_on:
           - laravel
