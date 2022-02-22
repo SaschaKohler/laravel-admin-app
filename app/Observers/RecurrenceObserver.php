@@ -99,15 +99,15 @@ class RecurrenceObserver
     {
         if ($event->events()->exists() || $event->event) {
             $startTime = Carbon::parse($event->getOriginal('start'))->diffInRealSeconds($event->start, false);
-            $endTime = Carbon::parse($event->getOriginal('end'))->diffInRealSeconds($event->end, false);
-            if ($event->event)
-                $childEvents = $event->event->events()->whereDate('start', '>', $event->getOriginal('start'))->get();
+//            $endTime = Carbon::parse($event->getOriginal('end'))->diffInRealSeconds($event->end, false);
+            if ($event->event)   // event is a childEvent so call all events with start bigger than this child
+                $childEvents = $event->event->events()->whereDate('start', '>', $event->getAttribute('start'))->get();
             else
                 $childEvents = $event->events;
 
             foreach ($childEvents as $childEvent) {
                 if ($startTime)
-                    $childEvent->start = Carbon::parse($childEvent->start)->addSeconds($startTime);
+                    $childEvent->start = Carbon::parse($childEvent->start)->addSeconds($startTime)->format('Y-m-d');
                 //if($endTime)
                 $childEvent->end = $childEvent->start;//Carbon::parse($childEvent->end)->addSeconds($endTime);
                 if ($event->isDirty('name') && $childEvent->name == $event->getOriginal('name'))

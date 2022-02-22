@@ -26,7 +26,6 @@ class CreateEventUserTable extends Migration
             $table->time('startTime')->default(Carbon::parse('07:00')->format('H:i'));
             $table->time('endTime')->nullable()->default(Carbon::parse('16:00')->format('H:i'));
 
-            $table->timestamps();
         });
     }
 

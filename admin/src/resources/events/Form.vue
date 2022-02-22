@@ -38,11 +38,12 @@
                                 source="start"
                                 v-model="picker"
                             ></va-date-input>
+
                             <va-boolean-input
-                                source="timed"
+                                source="allDay"
                                 v-model="isTimed"
                             ></va-boolean-input>
-                            <v-row v-if="isTimed" justify="center">
+                            <v-row v-if="!isTimed" justify="center">
                                 <v-col cols="4">
                                     <h3>Start</h3>
                                     <CustomTimePicker
@@ -140,7 +141,7 @@ export default {
             value: null,
             tools: [],
             vehicles: [],
-            isTimed : false,
+            isTimed: false,
             form: {
                 startTime: '07:00',
                 endTime: '08:00',
@@ -151,13 +152,13 @@ export default {
             )
                 .toISOString().substring(0, 10),
             recurrence_choices: [
-                {value: 10, text: 'kein'},
-                {value: 1, text: 'täglich'},
-                {value: 2, text: 'wöchentlich'},
-                {value: 3, text: '14 tägig'},
-                {value: 4, text: 'monatlich'},
-                {value: 5, text: 'alle 3 Monate'},
-                {value: 6, text: 'halbjährlich'},
+                { value: 10, text: 'keine'},
+                { value: 1,  text: 'täglich'},
+                { value: 2,  text: 'wöchentlich'},
+                { value: 3,  text: '14 tägig'},
+                { value: 4,  text: 'monatlich'},
+                { value: 5,  text: 'alle 3 Monate'},
+                { value: 6,  text: 'halbjährlich'},
             ],
         };
     },
@@ -185,10 +186,8 @@ export default {
             }
         }
     },
-    watch: {
-
-    },
-        created(){
+    watch: {},
+    created() {
         this.getDefaults();
     }
 

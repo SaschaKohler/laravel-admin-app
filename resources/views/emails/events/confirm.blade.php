@@ -1,7 +1,8 @@
+
 @component('mail::message')
 # Termin-Bestätigung {{ $event->type }}
 
-Hallo {{ $event->customer->title }} {{ $event->customer->last }}, <br><br>
+Hallo {{$event->customer->prefix}} {{ $event->customer->title }} {{ $event->customer->last }}, <br><br>
 Wir bestätigen hiermit Ihren Termin: <br>
 <br>
 **{{ $event->type }} am {{ $date }}** <br>

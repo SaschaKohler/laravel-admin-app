@@ -25,7 +25,7 @@ class EventFactory extends Factory
             'end' => $dateTime,
             'startTime' => $timeStart,
             'endTime' => $timeEnd,
-            'timed' => (bool) random_int(0,1),
+            'allDay' => (bool) random_int(0,1),
 
         ];
     }

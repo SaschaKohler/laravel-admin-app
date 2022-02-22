@@ -106,6 +106,7 @@ export default {
 
             ],
             fields: [
+                { source:'id' , sortable: true},
                 {source: 'type', sortable: true},
                 {
                     source: 'start',
@@ -142,7 +143,7 @@ export default {
                 {source: 'finished', type: 'boolean', sortable: true},
                 {source: 'fixed', type: 'boolean', sortable: true},
                 {
-                    source: 'timed',
+                    source: 'allDay',
                     type: 'Boolean',
                 },
 

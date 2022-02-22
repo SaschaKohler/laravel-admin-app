@@ -2,10 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
-class AddStartEndTimeToEvents extends Migration
+class AddAllDayColumnToEvents extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +14,7 @@ class AddStartEndTimeToEvents extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->time('startTime',4)->default(Carbon::parse('07:00')->format('H:i'));
-            $table->time('endTime',4)->default(Carbon::parse('16:00')->format('H:i'));
-
+            $table->Boolean('allDay')->default('false');
         });
     }
 

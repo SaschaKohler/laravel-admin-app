@@ -31,8 +31,7 @@ class EventDismiss extends Mailable
      */
     public function build()
     {
-        $time = $this->event->start;
-        $date = Carbon::createFromDate($time)->format('d.m.y');
+        $date = Carbon::parse($this->event->start)->translatedFormat('l\, d.F.Y');  // z.B Freitag,25.Oktober 2022
 
         return $this->subject('Auftragsänderung - ' . $this->event->type . ' Dirneder KG')
             ->markdown('emails.events.dismiss')

@@ -1,7 +1,7 @@
 @component('mail::message')
 # Termin-Änderung {{ $event->type }}
 
-Hallo {{ $event->customer->title }} {{ $event->customer->last }}, <br><br>
+Hallo {{ $event->customer->prefix }} {{ $event->customer->title }} {{ $event->customer->last }}, <br><br>
 Leider müssen wir folgenden Termin: <br>
 <br>
 **{{ $event->type }} am {{ $date }}** <br>

@@ -25,22 +25,10 @@ class Event extends Model
 
 
     //    getting timed objects for vuetify calendar
-//    public function setStartAttribute($value)
-//    {
-//        return explode(' ', $value)[0];
-//        return $test;
-//    }
-//
-//    public function setEndAttribute($value)
-//    {
-//        return explode(' ', $value)[0];
-//        return $test;
-//    }
-
     public function getStartAttribute($value)
     {
         $start = explode(' ',$value)[0];
-        if ($this->timed) {
+        if (!$this->allDay) {
             $merged = $start . ' ' . $this->startTime;
             return Carbon::createFromFormat('Y-m-d H:i:s', $merged)->format('Y-m-d H:i');
         }
@@ -51,7 +39,7 @@ class Event extends Model
     {
         $end = explode(' ',$value)[0];
 
-        if ($this->timed) {
+        if (!$this->allDay) {
             $merged = $end . ' ' . $this->endTime;
             return Carbon::createFromFormat('Y-m-d H:i:s', $merged)->format('Y-m-d H:i');
         }
@@ -82,7 +70,6 @@ class Event extends Model
     {
         return $this->belongsToMany(Vehicle::class)
             ->withPivot(['kmBegin', 'kmEnd', 'kmSum', 'hours']);
-        //   ->withTimestamps();
     }
 
     public
@@ -92,7 +79,6 @@ class Event extends Model
             ->withPivot('startTime')
             ->withPivot('endTime')
             ->withPivot('hours');
-        //  ->withTimestamps();
     }
 
     public
@@ -129,7 +115,6 @@ class Event extends Model
     {
         return $this->belongsToMany(Tool::class)
             ->withPivot('hours');
-        //  ->withTimestamps();
     }
 
     public

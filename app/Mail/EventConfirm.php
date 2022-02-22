@@ -34,8 +34,8 @@ class EventConfirm extends Mailable
      */
     public function build()
     {
-        $time = $this->event->start;
-        $date = Carbon::createFromDate($time)->format('d.m.y');
+        $date = Carbon::parse($this->event->start)->translatedFormat('l\, d.F.Y');
+
 
         return $this->subject('Auftragsbestätigung - ' . $this->event->type . ' Dirneder KG')
             ->markdown('emails.events.confirm')

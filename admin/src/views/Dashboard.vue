@@ -50,8 +50,8 @@
             >
                 <template v-slot:event="{ event }">
 
-                 <span v-if="event.timed"><span class="text-bold">{{event.startTime}}</span> - {{event.customer.last }}</span>
-                 <span v-else><span class="text-bold">ganztägig</span> - {{event.customer.last }}</span>
+                 <span v-if="event.allDay"><span class="text-bold">ganztägig</span> - {{event.customer.last }}</span>
+                 <span v-else><span class="text-bold">{{event.startTime}}</span> - {{event.customer.last }}</span>
 
                 </template>
             </v-calendar>
@@ -217,7 +217,7 @@ export default {
                     startTime: (n.startTime).substring(0,5),
                     end: n.end,
                     endTime: (n.endTime).substring(0,5),
-                    timed:n.timed,
+                    allDay:n.allDay,
                     color: n.color,
                     customer: n.customer,
                     users: n.users,
@@ -239,7 +239,7 @@ export default {
                 this.selectedEvent.startTime = event.startTime;
                 this.selectedEvent.end = event.end;
                 this.selectedEvent.endTime = event.endTime;
-                this.selectedEvent.timed= event.timed;
+                this.selectedEvent.allDay= event.allDay;
                 this.selectedEvent.fixed = event.fixed;
                 this.selectedEvent.name = event.name;
 

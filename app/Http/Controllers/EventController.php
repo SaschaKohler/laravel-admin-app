@@ -133,8 +133,8 @@ class EventController extends Controller
      */
     public function update(UpdateEvent $request, Event $event)
     {
-        if($request->timed) {
-            $event->timed = true;
+        if(!$request->allDay) {
+            $event->allDay = false;
             $event->startTime = $request->startTime;
             $event->endTime = $request->endTime;
         }
