@@ -29,7 +29,7 @@ class EventSeeder extends Seeder
         $users = User::all();
         $tools = Tool::all();
 
-        Event::factory(10)->make()->each(function (Event $event) use ($customers, $vehicles, $users, $tools) {
+        Event::factory(300)->make()->each(function (Event $event) use ($customers, $vehicles, $users, $tools) {
             $event->customer()->associate($customers->random());
 
             $event->color = $this->colors[random_int(0, 6)];
