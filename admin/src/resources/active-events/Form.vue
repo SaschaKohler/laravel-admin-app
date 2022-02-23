@@ -86,7 +86,7 @@ export default {
                 .toISOString()
                 .substr(0, 10),
             recurrence_choices: [
-                { value: 0, text: 'keine' },
+                { value: 10, text: 'keine' },
                 { value: 1, text: 'täglich' },
                 { value: 2, text: 'wöchentlich' },
                 { value: 3, text: '14 tägig' },

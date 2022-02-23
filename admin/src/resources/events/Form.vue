@@ -85,7 +85,6 @@
                                 :label="$t('va.users')"
                                 source="users"
                                 reference="users"
-                                model="user_ids"
                                 required
                                 multiple
                                 clearable
@@ -98,7 +97,6 @@
                                 :label="$i18n.t('input.select.vehicles')"
                                 source="vehicles"
                                 reference="vehicles"
-                                model="vehicle_ids"
                                 multiple
                                 clearable
                                 required
@@ -111,7 +109,6 @@
                                 :label="$i18n.t('input.select.tools')"
                                 source="tools"
                                 reference="tools"
-                                model="tool_ids"
                                 required
                                 multiple
                                 clearable

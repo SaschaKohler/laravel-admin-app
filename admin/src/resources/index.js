@@ -39,7 +39,7 @@ export default [
                 customers.first + ' ' + customers.last + ' ' + customers.city
             );
         },
-        permissions: ['admin'],
+        permissions: ['admin','employee'],
     },
     {
         name: 'vehicles',

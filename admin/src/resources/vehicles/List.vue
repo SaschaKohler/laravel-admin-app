@@ -5,7 +5,7 @@
                 <va-list :filters="filters" :include="['events']">
                     <va-data-table :fields="fields">
                         <template v-slot:[`field.events`]="{ value }">
-                            <v-chip-group column>
+                            <v-chip-group column >
                                 <va-reference-field
                                     reference="events"
                                     v-for="(item, i) in value"

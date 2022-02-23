@@ -89,14 +89,14 @@ class RecurrenceObserver
 
 
             foreach ($event->events as $item) {  // iterate childEvents and sync the mana-to-many-relationships accordingly
-                if (is_array(static::$request->input('user_ids'))) {
-                    $item->users()->sync(static::$request->input('user_ids'));
+                if (is_array(static::$request->input('users'))) {
+                    $item->users()->sync(static::$request->input('users'));
                 }
-                if (is_array(static::$request->input('vehicle_ids'))) {
-                    $item->vehicles()->sync(static::$request->input('vehicle_ids'));
+                if (is_array(static::$request->input('vehicles'))) {
+                    $item->vehicles()->sync(static::$request->input('vehicles'));
                 }
-                if (is_array(static::$request->input('tool_ids'))) {
-                    $item->tools()->sync(static::$request->input('tool_ids'));
+                if (is_array(static::$request->input('tools'))) {
+                    $item->tools()->sync(static::$request->input('tools'));
                 }
 
                 $item->save();

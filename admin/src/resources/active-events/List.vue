@@ -3,6 +3,7 @@
         <va-list
             disable-query-string
             disable-export
+            disable-create
             :include="['customer', 'vehicles', 'users', 'tools']"
             :sort-by="['updated_at']"
             :filter="{
@@ -10,7 +11,8 @@
             }"
         >
             <va-data-table :fields="fields"
-                           disable-delete>
+                           disable-delete
+                           disable-clone>
                 <template v-slot:[`field.vehicles`]="{ value }">
                     <v-chip-group column>
                         <va-reference-field

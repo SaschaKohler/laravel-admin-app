@@ -26,7 +26,6 @@
                             <CustomComponent
                                 :label="$i18n.t('menu.vehicles')"
                                 source="vehicles"
-                                model="vehicle_ids"
                                 v-slot="props"
                             >
                                 <v-card-text>
@@ -129,7 +128,6 @@
                         <CustomComponent
                             :label="$i18n.t('va.tools')"
                             source="tools"
-                            model="tool_ids"
                             v-slot="props"
                         >
                             <v-card-text>
@@ -165,7 +163,6 @@
                             <CustomComponent
                                 :label="$i18n.t('va.users')"
                                 source="users"
-                                model="user_ids"
                                 v-slot="props"
                             >
                                 <v-row>

@@ -15,7 +15,7 @@ class CustomerPolicy
         if ($user->hasRole('admin'))
             return true;
         if ($user->hasRole('employee'))
-            return false;
+            return true;
 
     }
 

@@ -111,14 +111,14 @@ class EventController extends Controller
         $event->end = $request->start;
         $event->save();
 
-        if (is_array($request->input('user_ids'))) {
-            $event->users()->sync($request->input('user_ids'));
+        if (is_array($request->input('users'))) {
+            $event->users()->sync($request->input('users'));
         }
-        if (is_array($request->input('vehicle_ids'))) {
-            $event->vehicles()->sync($request->input('vehicle_ids'));
+        if (is_array($request->input('vehicles'))) {
+            $event->vehicles()->sync($request->input('vehicles'));
         }
-        if (is_array($request->input('tool_ids'))) {
-            $event->tools()->sync($request->input('tool_ids'));
+        if (is_array($request->input('tools'))) {
+            $event->tools()->sync($request->input('tools'));
         }
 
         return new EventResource($event);
@@ -152,25 +152,25 @@ class EventController extends Controller
         }
 
 
-        if (($request->has('vehicle_ids') || $request->has('tool_ids') || $request->has('user_ids')) &&
-            (!is_array($request->input('vehicle_ids')[0]) || !is_array($request->input('tool_ids')[0]) || !is_array($request->input('user_ids')[0]))) {
+        if (($request->has('vehicles') || $request->has('tools') || $request->has('users')) &&
+            (!is_array($request->input('vehicles')[0]) || !is_array($request->input('tools')[0]) || !is_array($request->input('users')[0]))) {
 
-            if ($request->has('vehicle_ids')) {
-                $event->vehicles()->sync($request->input('vehicle_ids'));
+            if ($request->has('vehicles')) {
+                $event->vehicles()->sync($request->input('vehicles'));
             }
-            if ($request->has('tool_ids')) {
-                $event->tools()->sync($request->input('tool_ids'));
+            if ($request->has('tools')) {
+                $event->tools()->sync($request->input('tools'));
             }
-            if ($request->has('user_ids')) {
-                $event->users()->sync($request->input('user_ids'));
+            if ($request->has('users')) {
+                $event->users()->sync($request->input('users'));
             }
         } else {
 
-            if ($request->has('vehicle_ids')) {
+            if ($request->has('vehicles')) {
 
                 $vehicleSync = array();
 
-                foreach ($request->input('vehicle_ids') as $vehicle) {
+                foreach ($request->input('vehicles') as $vehicle) {
 
                     if ($vehicle['pivot']['kmEnd'] || $vehicle['pivot']['kmBegin'] || $vehicle['pivot']['hours']) {
                         $sum = $vehicle['pivot']['kmEnd'] - $vehicle['pivot']['kmBegin'];
@@ -196,10 +196,10 @@ class EventController extends Controller
                     }
                 }
             }
-            if ($request->has('tool_ids')) {
+            if ($request->has('tools')) {
                 $toolSync = array();
 
-                foreach ($request->input('tool_ids') as $tool) {
+                foreach ($request->input('tools') as $tool) {
                     $toolSync[$tool['pivot']['tool_id']] = [
                         'hours' => $tool['pivot']['hours'],
                     ];
@@ -211,10 +211,10 @@ class EventController extends Controller
                     $event->tools()->sync($toolSync);
                 }
             }
-            if ($request->has('user_ids')) {
+            if ($request->has('users')) {
                 $usersSync = array();
 
-                foreach ($request->input('user_ids') as $user) {
+                foreach ($request->input('users') as $user) {
                     $work = Carbon::parse($user['pivot']['endTime'])->diff(Carbon::parse($user['pivot']['startTime']))->format('%H:%i');
                     $diff = Carbon::parse($user['pivot']['endTime'])->diffInHours(Carbon::parse($user['pivot']['startTime']));
 
