@@ -13,7 +13,7 @@ export default {
     props: ['resource', 'title'],
     data() {
         return {
-            filters: ['id', 'city', 'last','first','brand',
+            filters: ['id', 'city', 'last','first','county',
                 { source: 'offer', type: 'boolean' }
             ],
             fields: [

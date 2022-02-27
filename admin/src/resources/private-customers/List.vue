@@ -15,7 +15,7 @@ export default {
     props: ['resource', 'title'],
     data() {
         return {
-            filters: ['id', 'city', 'last','first','brand',
+            filters: ['id', 'city', 'last','first',
                 { source: 'offer', type: 'boolean' }
             ],
 
