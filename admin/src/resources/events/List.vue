@@ -162,17 +162,22 @@ export default {
 span.v-chip.theme--light.v-size--default.blue
 {
     color: #fffffb;
-    font-size: medium;
+    font-size: large;
  }
 span.v-chip.theme--light.v-size--default.purple
 {
     color: #fffffb;
-    font-size: medium;
+    font-size: large;
  }
 span.v-chip.theme--light.v-size--default.grey
 {
     color: #fffffb;
-    font-size: medium;
+    font-size: large;
+ }
+span.v-chip.theme--light.v-size--default.brown
+{
+    color: #fffffb;
+    font-size: large;
  }
 
 </style>
