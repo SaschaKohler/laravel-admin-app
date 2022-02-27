@@ -1,7 +1,7 @@
 export default [
     {
         name: 'users',
-        icon: 'mdi-account-hard-hat',
+        icon: 'mdi-hand-saw',
         label: 'name',
         routes: ['list', 'show'],
     },
@@ -34,6 +34,39 @@ export default [
     {
         name: 'customers',
         icon: 'mdi-account-group',
+        label: (customers) => {
+            return (
+                customers.first + ' ' + customers.last + ' ' + customers.city
+            );
+        },
+        permissions: ['admin','employee'],
+    },
+    {
+        name: 'private-customers',
+        api: 'customers',
+        icon: 'mdi-account',
+        label: (customers) => {
+            return (
+                customers.first + ' ' + customers.last + ' ' + customers.city
+            );
+        },
+        permissions: ['admin','employee'],
+    },
+    {
+        name: 'brand-customers',
+        api: 'customers',
+        icon: 'mdi-account-hard-hat',
+        label: (customers) => {
+            return (
+                customers.first + ' ' + customers.last + ' ' + customers.city
+            );
+        },
+        permissions: ['admin','employee'],
+    },
+    {
+        name: 'county-customers',
+        api: 'customers',
+        icon: 'mdi-account-tie',
         label: (customers) => {
             return (
                 customers.first + ' ' + customers.last + ' ' + customers.city

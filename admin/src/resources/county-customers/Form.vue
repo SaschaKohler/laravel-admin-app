@@ -9,8 +9,6 @@
                         </div>
                     </template>
                     <v-card-text>
-                        <v-row>
-                        <v-col cols="6">
                         <va-radio-group-input
                             source="type"
                             v-model="customerType"
@@ -18,12 +16,7 @@
                             row
                             required
                         ></va-radio-group-input>
-                        </v-col>
-                            <v-spacer></v-spacer>
-                        <v-col cols="3">
-                            <va-boolean-input source="offer"></va-boolean-input>
-                        </v-col>
-                        </v-row>
+
                         <template v-if="customerType === 1">
                             <va-select-input
                                 source="prefix"
@@ -32,42 +25,13 @@
                             <va-text-input source="title"></va-text-input>
                             <va-text-input source="first" required></va-text-input>
                             <va-text-input source="last" required></va-text-input>
-                            <v-divider></v-divider>
                         </template>
-
                         <template v-if="customerType === 2">
                             <va-text-input source="brand" required></va-text-input>
-                            <v-card class="mb-4">
 
-                                <v-card-title>Ansprechpartner</v-card-title>
-                                <v-card-text>
-                                    <va-select-input
-                                        source="prefix"
-                                        required
-                                    ></va-select-input>
-                                    <va-text-input source="title"></va-text-input>
-                                    <va-text-input source="first" required></va-text-input>
-                                    <va-text-input source="last" required></va-text-input>
-                                </v-card-text>
-                            </v-card>
+                            <va-text-input source="manager" required></va-text-input>
                         </template>
 
-                        <template v-if="customerType === 3" class="mt-6">
-                            <va-text-input source="county" required></va-text-input>
-                            <v-card class="mb-4">
-
-                            <v-card-title>Ansprechpartner</v-card-title>
-                            <v-card-text>
-                                <va-select-input
-                                source="prefix"
-                                required
-                            ></va-select-input>
-                            <va-text-input source="title"></va-text-input>
-                            <va-text-input source="first" required></va-text-input>
-                            <va-text-input source="last" required></va-text-input>
-                            </v-card-text>
-                            </v-card>
-                        </template>
 
                         <va-text-input source="email"></va-text-input>
                         <va-text-input source="street" required></va-text-input>

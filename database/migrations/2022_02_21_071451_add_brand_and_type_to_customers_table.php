@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBrandAndManagerToCustomersTable extends Migration
+class AddBrandAndTypeToCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddBrandAndManagerToCustomersTable extends Migration
     public function up()
     {
         Schema::table('customers', function (Blueprint $table) {
-            //
+            $table->string('brand')->nullable();
+            $table->unsignedInteger('type')->default(1);
+
         });
     }
 

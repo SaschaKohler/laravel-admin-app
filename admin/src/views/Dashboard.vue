@@ -44,7 +44,6 @@
                 :type="type"
                 :weekdays="weekday"
                 :events="events"
-                :event-timed="timed"
                 @click:event="showEvent"
                 @click:date="viewDay"
             >
@@ -89,7 +88,7 @@
                                 v-if="selectedEvent.fixed === true"
                                 class="red--text"
                             >
-                                - Termin fixiert</span
+                                - Termin fixiert -</span
                             >
                         </p>
                         <v-row>

@@ -51,6 +51,9 @@
     "va.messages.not_valid": "Daten nicht korrekt",
     "carparameter": "Fahrtenbuch",
     "tabs.attributes": "Auftragsdaten",
+    "tabs.brand-customers": "Firmenkunden",
+    "tabs.private-customers": "Privatkunden",
+    "tabs.county-customers": "Gemeinden",
     "tabs.vehicles": "Fahrzeuge",
     "tabs.tools": "Werkzeuge",
     "tabs.users": "Mitarbeiter",
@@ -111,6 +114,9 @@
         "business": "Verwaltung",
         "garage": "Werkstätte",
         "customers": "Kunden",
+        "private-customers": "Privatkunden",
+        "brand-customers": "Firmenkunden",
+        "county-customers": "Gemeinden",
         "vehicles": "Fahrzeuge",
         "tools": "Geräte",
         "employees": "Belegschaft",
@@ -150,8 +156,8 @@
                 "allDay": "ganztägig",
                 "start": "Termin",
                 "users": "Mitarbeiter",
-                "starts_after" : "Termin ab",
-                "starts_before" : "Termin bis",
+                "starts_after": "Termin ab",
+                "starts_before": "Termin bis",
                 "updated_at": "zul. geändert"
             },
             "enums": {
@@ -222,8 +228,8 @@
                 "vehicles": "Fahrzeuge",
                 "start": "Termin",
                 "users": "Mitarbeiter",
-                "starts_after" : "Termin ab",
-                "starts_before" : "Termin bis",
+                "starts_after": "Termin ab",
+                "starts_before": "Termin bis",
                 "updated_at": "zul. geändert"
             }
         },
@@ -246,6 +252,11 @@
             "name": "Kunde | Kunden",
             "fields": {
                 "prefix": "Anrede",
+                "type": "Kundenart",
+                "offer": "Angebot erstellen",
+                "county": "Gemeinde",
+                "brand": "Firma",
+                "manager": "Ansprechpartner",
                 "title": "Titel",
                 "first": "Vorname",
                 "last": "Nachname",
@@ -257,9 +268,84 @@
             "enums": {
                 "prefix": {
                     "-": "-",
-                    "Mr.": "Herr",
-                    "Mrs.": "Frau",
-                    "Family": "Familie"
+                    "Herr": "Herr",
+                    "Frau": "Frau",
+                    "Familie": "Familie"
+                }
+            }
+        },
+        "private-customers": {
+            "name": "Privatkunde | Privatkunden",
+            "fields": {
+                "prefix": "Anrede",
+                "type": "Kundenart",
+                "offer": "Angebot erstellen",
+                "county": "Gemeinde",
+                "brand": "Firma",
+                "manager": "Ansprechpartner",
+                "title": "Titel",
+                "first": "Vorname",
+                "last": "Nachname",
+                "email": "email",
+                "street": "Strasse",
+                "city": "Stadt/Ort",
+                "phone": "Telefon"
+            },
+            "enums": {
+                "prefix": {
+                    "-": "-",
+                    "Herr": "Herr",
+                    "Frau": "Frau"
+                }
+            }
+        },
+        "brand-customers": {
+            "name": "Firmenkunde | Firmenkunden",
+            "fields": {
+                "prefix": "Anrede",
+                "offer": "Angebot erstellen",
+                "county": "Gemeinde",
+                "type": "Kundenart",
+                "brand": "Firma",
+                "manager": "Ansprechpartner",
+                "title": "Titel",
+                "first": "Vorname",
+                "last": "Nachname",
+                "email": "email",
+                "street": "Strasse",
+                "city": "Stadt/Ort",
+                "phone": "Telefon"
+            },
+            "enums": {
+                "prefix": {
+                    "-": "-",
+                    "Herr": "Herr",
+                    "Frau": "Frau"
+                }
+            }
+        },
+        "county-customers": {
+            "name": "Gemeinde | Gemeinden",
+            "fields": {
+                "prefix": "Anrede",
+                "county": "Gemeinde",
+                "type": "Kundenart",
+                "offer": "Angebot erstellen",
+                "brand": "Firma",
+                "manager": "Ansprechpartner",
+                "title": "Titel",
+                "first": "Vorname",
+                "last": "Nachname",
+                "email": "email",
+                "street": "Strasse",
+                "city": "Stadt/Ort",
+                "phone": "Telefon"
+            },
+            "enums": {
+                "prefix": {
+                    "-": "-",
+                    "Herr": "Herr",
+                    "Frau": "Frau"
                 }
             }
         },
@@ -297,8 +383,8 @@
                 "users": "Mitarbeiter",
                 "updated_at": "zul. geändert",
                 "sumHours": "Stunden (gesamt)",
-                "starts_after" : "Termin ab",
-                "starts_before" : "Termin bis"
+                "starts_after": "Termin ab",
+                "starts_before": "Termin bis"
             }
         },
         "tools": {

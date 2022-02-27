@@ -27,11 +27,15 @@ class CustomerController extends Controller
         $resource = CustomerResource::collection(
             QueryBuilder::for(Customer::class)
                 ->allowedFilters([
-                    AllowedFilter::custom('q', new SearchFilter(['first', 'last', 'street', 'city'])),
+                    AllowedFilter::custom('q', new SearchFilter(['brand','first', 'last', 'street', 'city'])),
                     AllowedFilter::exact('id'),
-                    AllowedFilter::exact('city'),
+                    AllowedFilter::partial('city'),
                     AllowedFilter::partial('last'),
+                    AllowedFilter::partial('brand'),
                     AllowedFilter::partial('first'),
+                    AllowedFilter::exact('type'),
+                    AllowedFilter::exact('offer'),
+
 
 
                 ])

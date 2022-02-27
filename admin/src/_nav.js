@@ -23,15 +23,31 @@ export default (i18n, admin) => [
     admin.can(['admin']) && {
         icon: 'mdi-account-group',
         text: i18n.t('menu.customers'),
-        link: '/customers',
+        children: [
+            {
+                icon: 'mdi-account',
+                text: i18n.t('menu.private-customers'),
+                link: '/private-customers',
+            },
+            {
+                icon: 'mdi-account-hard-hat',
+                text: i18n.t('menu.brand-customers'),
+                link: '/brand-customers',
+            },
+            {
+                icon: 'mdi-account-tie',
+                text: i18n.t('menu.county-customers'),
+                link: '/county-customers',
+            },
+        ],
     },
 
     admin.can(['admin']) && {
-        icon: 'mdi-account',
+        icon: 'mdi-account-multiple',
         text: i18n.t('menu.employees'),
         children: [
             {
-                icon: 'mdi-account-hard-hat',
+                icon: 'mdi-hand-saw',
                 text: i18n.t('menu.users'),
                 link: '/users',
             },
