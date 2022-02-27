@@ -15,7 +15,7 @@ class AddEmailandTitleToCustomers extends Migration
     {
         Schema::table('customers', function (Blueprint $table) {
             $table->string('prefix')->default('-')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('title')->default('-')->nullable();
         });
     }
