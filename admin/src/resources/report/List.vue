@@ -80,7 +80,7 @@ export default {
                 {
                     source: 'customer',
                     type: 'reference',
-                    attributes: {reference: 'customers', action: 'show', itemText: 'last'},
+                    attributes: {reference: 'customers', chip: true ,action: 'show'},
                 },
                 {
                     source: 'users',
