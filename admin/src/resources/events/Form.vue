@@ -32,8 +32,6 @@
                                 source="type"
                                 required
                             ></va-select-input>
-                            <va-select-input source="color" required>
-                            </va-select-input>
                             <va-date-input
                                 source="start"
                                 v-model="picker"

@@ -25,7 +25,6 @@ class StoreEvent extends FormRequest
     {
         return [
             'type' => 'required',
-            'color' => 'required',
             'start' => 'required',
             'customer_id' => 'required' ,
             'recurrence' => 'required|min:0',

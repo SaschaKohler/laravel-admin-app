@@ -14,7 +14,6 @@
                             reference="vehicles"
                             v-for="(item, i) in value"
                             :key="i"
-                            color="grey lighten-2"
                             chip
                             small
                             :item="item"
@@ -30,7 +29,6 @@
                             reference="users"
                             v-for="(item, i) in value"
                             :key="i"
-                            color="green lighten-2"
                             chip
                             small
                             :item="item"
@@ -75,8 +73,7 @@ export default {
                 },
                 {
                     source: 'customer',
-                    type: 'autocomplete', attributes: {
-                        optionText: 'last',
+                    type: 'reference', attributes: {
                         reference: 'customers'
                     }
                 },
@@ -107,7 +104,11 @@ export default {
             ],
             fields: [
                 { source:'id' , sortable: true},
-                {source: 'type', sortable: true},
+                { source: 'type', type: 'chip' ,sortable: true , attributes:{
+                      color: (v) => this.$eventTypeColor(v),
+                    }
+                },
+
                 {
                     source: 'start',
                     type: 'date',
@@ -129,7 +130,6 @@ export default {
                     attributes: {
                         reference: 'customers',
                         chip: true,
-                        color: 'amber lighten-2',
                     },
                 },
                 {
@@ -157,3 +157,22 @@ export default {
     },
 };
 </script>
+<style>
+
+span.v-chip.theme--light.v-size--default.blue
+{
+    color: #fffffb;
+    font-size: medium;
+ }
+span.v-chip.theme--light.v-size--default.purple
+{
+    color: #fffffb;
+    font-size: medium;
+ }
+span.v-chip.theme--light.v-size--default.grey
+{
+    color: #fffffb;
+    font-size: medium;
+ }
+
+</style>

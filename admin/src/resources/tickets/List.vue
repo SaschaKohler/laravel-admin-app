@@ -47,3 +47,9 @@ export default {
     },
 };
 </script>
+<style scoped>
+
+div{
+    color: white;
+}
+</style>

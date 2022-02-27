@@ -19,9 +19,9 @@ export default (i18n, admin) => [
         text: i18n.t('menu.logbook'),
         link: '/logbook',
     },
+    admin.can(['admin']) && { divider: true },
 
     admin.can(['admin']) && {
-        icon: 'mdi-account-group',
         text: i18n.t('menu.customers'),
         children: [
             {
@@ -41,9 +41,9 @@ export default (i18n, admin) => [
             },
         ],
     },
+    admin.can(['admin']) && { divider: true },
 
     admin.can(['admin']) && {
-        icon: 'mdi-account-multiple',
         text: i18n.t('menu.employees'),
         children: [
             {

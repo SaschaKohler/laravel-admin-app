@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\CustomFilters\FiltersCustomerName;
-use App\Events\EventStatusUpdated;
 use App\Http\Requests\StoreEvent;
 use App\Http\Requests\UpdateEvent;
-use App\Http\Resources\Customer;
 use App\Http\Resources\Event as EventResource;
 use App\Mail\EventConfirm;
 use App\Mail\EventDismiss;
-use App\Models\EventUser;
 use App\Models\Tool;
-use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Okami101\LaravelAdmin\Filters\SearchFilter;
@@ -40,7 +34,7 @@ class EventController extends Controller
         return EventResource::collection(
             QueryBuilder::for(Event::class)
                 ->with('vehicles:id,branding,type')
-                ->with('customer:id,first,last,street,city')
+                ->with('customer:id,first,last,brand,county,type,street,city')
                 ->with('users:id,name')
                 ->with('tools:id,title')
                 ->allowedFilters([
@@ -106,7 +100,32 @@ class EventController extends Controller
     public function store(StoreEvent $request)
     {
 
+
         $event = Event::create($request->all());
+
+        switch ($request->type) {
+            case 'Baumpflege':
+                $event->color = "brown lighten-1";
+                break;
+            case 'Zaunbau':
+                $event->color = "purple";
+                break;
+            case 'Gartenpflege':
+                $event->color = "green";
+                break;
+            case 'Transport':
+                $event->color = "blue";
+                break;
+            case 'pers_Termin':
+                $event->color = "red";
+                break;
+            case 'Winterdienst':
+                $event->color = "grey";
+                break;
+            case 'Sonstiges':
+                $event->color = "orange";
+                break;
+        }
 
         $event->end = $request->start;
         $event->save();
@@ -133,7 +152,7 @@ class EventController extends Controller
      */
     public function update(UpdateEvent $request, Event $event)
     {
-        if ($request->has('allDay') ) {
+        if ($request->has('allDay')) {
             if (!$request->allDay) {
                 $event->allDay = false;
                 $event->startTime = $request->startTime;
@@ -146,7 +165,7 @@ class EventController extends Controller
             }
         }
 
-        if($event->allDay) {
+        if ($event->allDay) {
             $event->startTime = Carbon::parse('07:00:00')->format('H:i:s');
             $event->endTime = Carbon::parse('16:00:00')->format('H:i:s');
         }

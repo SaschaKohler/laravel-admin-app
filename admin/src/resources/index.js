@@ -35,11 +35,17 @@ export default [
         name: 'customers',
         icon: 'mdi-account-group',
         label: (customers) => {
-            return (
-                customers.first + ' ' + customers.last + ' ' + customers.city
-            );
-        },
-        permissions: ['admin','employee'],
+            switch (customers.type) {
+                case 1 :
+                    return  'Privat: ' + customers.last + ', ' + customers.first + ' / ' + customers.city;
+                case 2:
+                     return 'Firma: ' + customers.brand + ' (' + (customers.city) + ') | ' + customers.last + ', ' + customers.first;
+
+                case 3:
+                     return 'Gemeinde: ' + customers.county + ' | '+ + customers.last + ', ' + customers.first;
+        }
+      },
+        permissions: ['admin', 'employee'],
     },
     {
         name: 'private-customers',
@@ -50,7 +56,7 @@ export default [
                 customers.first + ' ' + customers.last + ' ' + customers.city
             );
         },
-        permissions: ['admin','employee'],
+        permissions: ['admin', 'employee'],
     },
     {
         name: 'brand-customers',
@@ -58,10 +64,10 @@ export default [
         icon: 'mdi-account-hard-hat',
         label: (customers) => {
             return (
-                customers.first + ' ' + customers.last + ' ' + customers.city
+                customers.brand + ' ' + customers.last + ' ' + customers.city
             );
         },
-        permissions: ['admin','employee'],
+        permissions: ['admin', 'employee'],
     },
     {
         name: 'county-customers',
@@ -72,7 +78,7 @@ export default [
                 customers.first + ' ' + customers.last + ' ' + customers.city
             );
         },
-        permissions: ['admin','employee'],
+        permissions: ['admin', 'employee'],
     },
     {
         name: 'vehicles',

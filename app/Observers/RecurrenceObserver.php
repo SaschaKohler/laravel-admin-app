@@ -13,10 +13,12 @@ class RecurrenceObserver
     public function __construct(Request $request)
     {
         static::$request = $request;
+
     }
 
     public static function created(Event $event)
     {
+
         if (!$event->event()->exists()) {
             $recurrences = [
                 1 => [   // weekly
@@ -53,7 +55,33 @@ class RecurrenceObserver
             ];
             $start = Carbon::parse(explode(' ',$event->start)[0]);
             $recurrence = $recurrences[$event->recurrence] ?? null;
-            $color = $event->color;
+            $color = '';
+
+            switch (static::$request->type) {
+                case 'Baumpflege':
+                    $color = "brown lighten-1";
+                    break;
+                case 'Zaunbau':
+                    $color = "purple";
+                    break;
+                case 'Gartenpflege':
+                    $color = "green";
+                    break;
+                case 'Transport':
+                    $color = "blue";
+                    break;
+                case 'pers_Termin':
+                    $color = "red";
+                    break;
+                case 'Winterdienst':
+                    $color = "grey";
+                    break;
+                case 'Sonstiges':
+                    $color = "orange";
+                    break;
+            }
+
+
             $type = $event->type;
             $customer_id = $event->customer_id;
             $notes = $event->notes;

@@ -13,8 +13,6 @@ class EventSeeder extends Seeder
 {
 
 
-    protected $colors = ['green lighten-2', 'cyan darken-1', 'blue lighten-2',
-        'brown lighten-2', 'red lighten-2', 'grey', 'orange darken-1'];
 
 
     /**
@@ -32,7 +30,6 @@ class EventSeeder extends Seeder
         Event::factory(50)->make()->each(function (Event $event) use ($customers, $vehicles, $users, $tools) {
             $event->customer()->associate($customers->random());
 
-            $event->color = $this->colors[random_int(0, 6)];
             $event->save();
 
             $event->vehicles()->sync($vehicles->random(random_int(1, 3)));

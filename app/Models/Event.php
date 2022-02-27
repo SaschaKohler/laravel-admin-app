@@ -16,10 +16,6 @@ class Event extends Model
     // protected $fillable = ['type', 'color', 'start', 'end', 'event_id', 'customer_id'];
 
     protected $casts = [
-//        'startTime' => 'date:H:i:s',
-//        'endTime' => 'date:H:i:s',
-//        'start' => 'date:Y-m-d',
-//        'end' => 'date:Y-m-d',
 
     ];
 

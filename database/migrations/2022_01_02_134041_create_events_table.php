@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
-            $table->string('color');
+            $table->string('color')->nullable();
             $table->date('start');
             $table->date('end')->nullable()->default(null);
             $table->foreignId('event_id')->nullable()->references('id')

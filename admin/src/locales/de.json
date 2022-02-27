@@ -166,18 +166,9 @@
                     "Zaunbau": "Zaunbau",
                     "Gartenpflege": "Gartenpflege",
                     "Transport": "Transport",
-                    "pers. Termin": "persönlicher Termin",
+                    "pers_Termin": "persönlicher Termin",
                     "Winterdienst": "Winterdienst",
                     "Sonstiges": "Sonstiges"
-                },
-                "color": {
-                    "green lighten-2": "grün",
-                    "cyan darken-1": "cyan",
-                    "blue lighten-2": "blau",
-                    "brown lighten-2": "braun",
-                    "red lighten-2": "rot",
-                    "grey": "grau",
-                    "orange darken-1": "orange"
                 }
             }
         },
@@ -252,7 +243,7 @@
             "name": "Kunde | Kunden",
             "fields": {
                 "prefix": "Anrede",
-                "type": "Kundenart",
+                "type": "Kundentyp",
                 "offer": "Angebot erstellen",
                 "county": "Gemeinde",
                 "brand": "Firma",
@@ -278,7 +269,7 @@
             "name": "Privatkunde | Privatkunden",
             "fields": {
                 "prefix": "Anrede",
-                "type": "Kundenart",
+                "type": "Kundentyp",
                 "offer": "Angebot erstellen",
                 "county": "Gemeinde",
                 "brand": "Firma",
@@ -305,7 +296,7 @@
                 "prefix": "Anrede",
                 "offer": "Angebot erstellen",
                 "county": "Gemeinde",
-                "type": "Kundenart",
+                "type": "Kundentyp",
                 "brand": "Firma",
                 "manager": "Ansprechpartner",
                 "title": "Titel",
@@ -329,7 +320,7 @@
             "fields": {
                 "prefix": "Anrede",
                 "county": "Gemeinde",
-                "type": "Kundenart",
+                "type": "Kundentyp",
                 "offer": "Angebot erstellen",
                 "brand": "Firma",
                 "manager": "Ansprechpartner",

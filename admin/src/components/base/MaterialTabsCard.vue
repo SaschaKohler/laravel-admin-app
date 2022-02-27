@@ -23,7 +23,7 @@
             >
                 <v-card flat>
                     <v-card-text>
-                        <slot :name="tab.id"></slot>
+                        <slot :name="tab.id" ></slot>
                     </v-card-text>
                 </v-card>
             </v-tab-item>

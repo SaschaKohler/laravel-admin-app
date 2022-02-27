@@ -27,6 +27,21 @@ Vue.prototype.$statusColor = (s) => {
     return colors[s];
 };
 
+Vue.prototype.$eventTypeColor = (s) => {
+    const colors = {
+        Baumpflege : 'brown lighten-1',
+        Zaunbau : 'purple',
+        Gartenpflege: 'green',
+        Transport: 'blue',
+        pers_Termin : 'red',
+        Winterdienst : 'grey',
+        Sonstiges : 'orange',
+
+    };
+
+    return colors[s];
+}
+
 new Vue({
     router,
     store,
