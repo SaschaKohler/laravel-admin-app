@@ -5,6 +5,7 @@ import store from './store';
 import i18n from './i18n';
 import vuetify from './plugins/vuetify';
 import admin from './plugins/admin';
+import { format, parseISO } from 'date-fns'
 import './plugins/i18n';
 import './plugins/base';
 import './plugins/chartist';
@@ -15,6 +16,12 @@ Vue.component('CustomComponent', CustomComponent);
 Vue.component('CustomTimePicker', CustomTimePicker);
 
 Vue.config.productionTip = false;
+
+Vue.filter('formatDate', function(value) {
+    if (value) {
+        return format(parseISO(value), 'dd.MM.yyyy');
+    }
+});
 
 Vue.prototype.$statusColor = (s) => {
     const colors = {

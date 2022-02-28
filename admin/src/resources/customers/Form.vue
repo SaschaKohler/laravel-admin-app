@@ -78,6 +78,9 @@
                                 </v-expansion-panel>
                             </v-expansion-panels>
                         </template>
+                        <input type="week" name="week" id="camp-week"
+                               min="2018-W18" max="2018-W26" required>
+
 
                         <va-text-input source="street" required></va-text-input>
                         <va-text-input source="city" required></va-text-input>

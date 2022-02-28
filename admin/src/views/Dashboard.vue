@@ -69,28 +69,28 @@
                         <v-toolbar-title
                             class="white--text"
                             v-html="selectedEvent.name"
-                        ></v-toolbar-title>
-                        <div class="flex-grow-1"></div>
-                        <v-spacer />
-                        <v-btn
-                            fab
-                            color="white"
-                            outlined
-                            @click="selectedOpen = false"
                         >
-                            <v-icon>mdi-close</v-icon>
-                        </v-btn>
+                        </v-toolbar-title>
+                        <div class="flex-grow-1"></div>
+
                     </v-toolbar>
                     <v-card-text>
-                        <p class="text-lg-subtitle-2">
-                            {{ selectedEvent.start }}
+
+                            <v-row>
+                                <v-col cols="8">
+                            {{ selectedEvent.start | formatDate }}
                             <span
                                 v-if="selectedEvent.fixed === true"
                                 class="red--text"
                             >
                                 - Termin fixiert -</span
                             >
-                        </p>
+                                </v-col>
+                                <v-col cols="2" class="pt-0">
+                                    <send-mail-button :item="selectedEvent"></send-mail-button>
+                                </v-col>
+
+                            </v-row>
                         <v-row>
                             <p class="text-h5">
                                 {{ selectedEvent.customer.firstName }}
@@ -138,8 +138,10 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import SendMailButton from "@/components/buttons/SendMailButton";
 
 export default {
+    components: {SendMailButton},
     data() {
         return {
             data: [],
@@ -210,6 +212,7 @@ export default {
         getEvents() {
             this.events = this.data.data.map((n) => {
                 return {
+                    id:n.id,
                     name: n.type,
                     fixed: n.fixed,
                     start: n.start,
@@ -230,6 +233,7 @@ export default {
         },
         showEvent({ nativeEvent, event }) {
             const open = () => {
+                this.selectedEvent.id = event.id;
                 this.selectedEvent.color = event.color;
                 this.selectedEvent.employees = event.users;
                 this.selectedEvent.vehicles = event.vehicles;

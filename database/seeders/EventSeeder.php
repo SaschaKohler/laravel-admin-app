@@ -27,7 +27,7 @@ class EventSeeder extends Seeder
         $users = User::all();
         $tools = Tool::all();
 
-        Event::factory(250)->make()->each(function (Event $event) use ($customers, $vehicles, $users, $tools) {
+        Event::factory(30)->make()->each(function (Event $event) use ($customers, $vehicles, $users, $tools) {
             $event->customer()->associate($customers->random());
 
             $event->save();

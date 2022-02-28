@@ -5,14 +5,15 @@
     >
         <template v-slot:activator="{ on, attrs }">
             <v-btn
-                color="orange lighten-1"
+                color="black lighten-1"
                 v-bind="attrs"
                 dark
-                small
+
                 fab
                 depressed
                 v-on="on"
                 text
+                class="text-decoration-underline text-h4"
             >
                 Mail
             </v-btn>
