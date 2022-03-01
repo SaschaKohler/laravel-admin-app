@@ -41,22 +41,23 @@
                                 source="allDay"
                                 v-model="isTimed"
                             ></va-boolean-input>
-                            <v-row v-if="!isTimed" justify="center">
-                                <v-col cols="4">
+                            <v-row v-if="!isTimed">
+                                <v-col>
                                     <h3>Start</h3>
                                     <CustomTimePicker
                                         v-bind="$props"
+                                        headercolor="green darken-1"
                                         v-model="form.startTime"
                                         model="startTime"
                                         @change="update"
                                     ></CustomTimePicker>
-                                </v-col>
-                                <v-col cols="4">
-
+                                    </v-col>
+                                    <v-col>
                                     <h3>Ende</h3>
                                     <CustomTimePicker
                                         v-bind="$props"
                                         v-model="form.endTime"
+                                        headercolor="green darken-1"
                                         model="endTime"
                                         @change="update"
                                     >

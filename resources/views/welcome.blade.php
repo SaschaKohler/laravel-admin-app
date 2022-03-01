@@ -83,11 +83,11 @@
         </div>
 
         <div class="links">
-            <a href="{{ config('admin.url') }}">Admin</a>
+            <a href="{{ config('admin.url') }}">sk.IT -Manager</a>
         </div>
 
         <div class="m-t-lg">
-            * No front-end pages are provided in this demo. Only the admin panel.
+            * sk.IT - Manager * is a product of sk.IT software - Sascha Kohler / Furth 6 / 4311 Schwertberg -
         </div>
     </div>
 </div>

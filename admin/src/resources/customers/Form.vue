@@ -10,7 +10,7 @@
                     </template>
                     <v-card-text>
                         <v-row>
-                            <v-col cols="5">
+                            <v-col cols="8">
                                 <va-radio-group-input
                                     source="type"
                                     v-model="customerType"
@@ -20,7 +20,7 @@
                                 ></va-radio-group-input>
                             </v-col>
                             <v-spacer></v-spacer>
-                            <v-col cols="4">
+                            <v-col cols="3">
                                 <va-boolean-input source="offer"></va-boolean-input>
                             </v-col>
                         </v-row>
@@ -78,9 +78,6 @@
                                 </v-expansion-panel>
                             </v-expansion-panels>
                         </template>
-                        <input type="week" name="week" id="camp-week"
-                               min="2018-W18" max="2018-W26" required>
-
 
                         <va-text-input source="street" required></va-text-input>
                         <va-text-input source="city" required></va-text-input>
@@ -93,6 +90,7 @@
 </template>
 
 <script>
+
 export default {
     props: ['id', 'title', 'item'],
     data() {

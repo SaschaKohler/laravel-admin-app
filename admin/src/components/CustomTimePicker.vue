@@ -2,6 +2,7 @@
     <va-input v-bind="$props">
         <v-time-picker
             format="24h"
+            :header-color="headercolor"
             use-seconds
             :value="value"
             @change="update"
@@ -20,6 +21,9 @@ export default {
     props: {
         value: {
             default: 0,
+        },
+        headercolor: {
+            default: 'green',
         }
     },
 

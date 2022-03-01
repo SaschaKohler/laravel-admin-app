@@ -19,7 +19,6 @@
                             reference="users"
                             v-for="(item, i) in value"
                             :key="i"
-                            color="green lighten-2"
                             chip
                             small
                             :item="item"
@@ -51,7 +50,6 @@
                             reference="tools"
                             v-for="(item, i) in value"
                             :key="i"
-                            color="amber lighten-2"
                             chip
                             small
                             :item="item"
@@ -106,7 +104,10 @@ export default {
                 },
             ],
             fields: [
-                { source: 'type', sortable: true },
+                { source: 'type', type: 'chip' ,sortable: true , attributes:{
+                        color: (v) => this.$eventTypeColor(v),
+                    }
+                },
                 {
                     source: 'start',
                     type: 'date',
@@ -129,7 +130,6 @@ export default {
                     attributes: {
                         reference: 'customers',
                         chip: true,
-                        color: 'amber lighten-2',
                     },
                 },
 
