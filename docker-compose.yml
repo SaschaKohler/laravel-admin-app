@@ -62,51 +62,30 @@ services:
     ports:
         - 5432:5432
     environment:
-        POSTGRES_USER: user
-        POSTGRES_PASSWORD: password
-        POSTGRES_DB: 'laravel-admin-app' # configure postgres
+        POSTGRES_USER: "${DB_USERNAME}"
+        POSTGRES_PASSWORD: "${DB_PASSWORD}"
+        POSTGRES_DB: "${DB_DATABASE}"
     volumes:
         - pgsql-admin-data:/var/lib/postgresql/data/ # persist data even if container shuts down
     networks:
         - code-network
 
+############################################################
+  pgadmin:
+      image: dpage/pgadmin4
+      restart: always
+      environment:
+          PGADMIN_DEFAULT_EMAIL: "${PGADMIN_EMAIL}"
+          PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_PASSWORD}"
+      ports:
+          - "5050:80"
+      networks:
+          - code-network
 
+############################################################
 volumes:
     pgsql-admin-data: # named volumes can be managed easier using docker-compose
 
 networks:
     code-network:
         driver: bridge
-
-
-
-
-  ### MySQL ################################################
-#  mysql:
-#    build:
-#      context: ./docker/mysql
-#    environment:
-#      - MYSQL_DATABASE=${DB_DATABASE}
-#      - MYSQL_USER=${DB_USERNAME}
-#      - MYSQL_PASSWORD=${DB_PASSWORD}
-#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-#      - TZ=${APP_TIMEZONE}
-#
-  ### phpMyAdmin ###########################################
-#  phpmyadmin:
-#    build:
-#      context: ./docker/phpmyadmin
-#    environment:
-#      - PMA_ARBITRARY=1
-#      - MYSQL_USER=pma
-#      - MYSQL_PASSWORD=pmapass
-#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-#    ports:
-#      - "${PMA_PORT}:80"
-#    depends_on:
-#      - mysql
-
-  ### Redis ################################################
-#  redis:
-#    build:
-#      context: ./docker/redis

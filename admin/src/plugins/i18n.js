@@ -6,6 +6,10 @@ import i18n from '@/i18n';
 
 ['en', 'de'].forEach((locale) => {
     i18n.setDateTimeFormat(locale, {
+        x_short: {
+          year: 'numeric',
+          month: "short",
+        },
         short: {
             year: 'numeric',
             month: 'short',
