@@ -26,21 +26,6 @@ services:
       - "8025:8025"
     networks:
         - code-network
-    ### VUE Server #########################################
-#  vue:
-#      build:
-#          context: ./admin/
-#      volumes:
-#        - ./admin/dist:/srv/api/admin
-#
-#      ports:
-#          - "${VUE_HTTP_PORT}:80"
-#
-#      depends_on:
-#          - laravel
-#      networks:
-#        - code-network
-
   ### NGINX Server #########################################
   nginx:
     build:
@@ -48,13 +33,24 @@ services:
     volumes:
       - ./:/srv/api
       - ./admin/dist:/srv/api/admin
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./certbot/www:/var/www/certbot:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
     ports:
-#      - "${NGINX_HTTP_PORT}:80"
-      - "80:80"
+      - "${NGINX_HTTP_PORT}:80"
+      - "443:443"
+    restart: always
     depends_on:
       - laravel
     networks:
         - code-network
+
+##########################################################
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+        - ./certbot/www:/var/www/certbot/:rw
 
 ##########################################################
   pgsql:
