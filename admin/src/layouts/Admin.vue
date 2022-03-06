@@ -29,7 +29,7 @@
             with
             <v-icon size="18"> mdi-heart</v-icon>
             by
-            <a href="http://localhost:8000">SK.IT</a> individual web solutions.
+            <a href="https://skit-software.at">sk.IT</a> individual web solutions.
         </va-footer>
     </va-layout>
 </template>
