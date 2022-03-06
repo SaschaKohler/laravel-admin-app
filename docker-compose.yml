@@ -89,7 +89,7 @@ volumes:
         driver: local
         driver_opts:
             type: none
-            device: /src/api/public/
+            device: /var/www/html
             o: bind
 
 networks:
