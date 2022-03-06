@@ -17,7 +17,6 @@ services:
     networks:
       - code-network
 
-
   ### MAILHOG Server #########################################
   mailhog:
     image: mailhog/mailhog:latest
@@ -26,6 +25,7 @@ services:
       - "8025:8025"
     networks:
         - code-network
+
   ### NGINX Server #########################################
   nginx:
     build:
@@ -45,7 +45,7 @@ services:
     networks:
         - code-network
 
-##########################################################
+### CERT_BOT #######################################################
   certbot:
     image: certbot/certbot:latest
     volumes:
@@ -53,7 +53,8 @@ services:
         - ./certbot/conf/:/etc/letsencrypt/
 #    command: certonly --webroot --webroot-path=/var/www/certbot/ --email sascha.cloud01@gmail.com  --agree-tos --no-eff-email --staging -d skit-software.at  -d www.skit-software.at
 
-    ##########################################################
+
+#### PG_SQL ################################################
   pgsql:
     image: "postgres" # use latest official postgres version
     ports:
@@ -67,7 +68,7 @@ services:
     networks:
         - code-network
 
-############################################################
+### PG_ADMIN #########################################################
   pgadmin:
       image: dpage/pgadmin4
       restart: always
@@ -79,13 +80,9 @@ services:
       networks:
           - code-network
 
-############################################################
+### Volumes & Network #########################################################
 volumes:
     pgsql-admin-data: # named volumes can be managed easier using docker-compose
-    certbot-etc:
-    certbot-var:
-    web-root:
-
 
 networks:
     code-network:

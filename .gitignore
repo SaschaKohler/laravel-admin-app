@@ -23,3 +23,6 @@ _ide_helper.php
 /admin/generators/
 /admin/conf.d/cert.pem
 /admin/conf.d/key.pem
+/certbot/
+/nginx/conf.d/local.conf
+local.yml
