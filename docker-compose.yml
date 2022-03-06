@@ -32,14 +32,12 @@ services:
       context: ./docker/nginx
     ports:
       - "${NGINX_HTTP_PORT}:80"
-#      - "443:443"
+      - "443:443"
     volumes:
       - ./:/srv/api
       - ./admin/dist:/srv/api/admin
       - ./docker/nginx/conf.d:/etc/nginx/conf.d/:ro
-      - web-root:/
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
+      - ./certbot/www:/var/www/certbot/:ro
     restart: unless-stopped
     depends_on:
       - laravel
@@ -50,8 +48,7 @@ services:
   certbot:
     image: certbot/certbot:latest
     volumes:
-        - certbot-etc:/etc/letsencrypt
-        - certbot-var:/var/lib/letsencrypt
+        - ./certbot/www:/var/www/certbot/:ro
     command: certonly --webroot --webroot-path=/ --email sascha.cloud01@gmail.com  --agree-tos --no-eff-email --staging -d skit-software.at  -d www.skit-software.at
 
     ##########################################################
