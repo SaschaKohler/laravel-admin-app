@@ -85,6 +85,7 @@ volumes:
     pgsql-admin-data: # named volumes can be managed easier using docker-compose
     certbot-etc:
     certbot-var:
+    web-root:
 
 networks:
     code-network:
