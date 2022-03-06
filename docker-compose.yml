@@ -37,7 +37,7 @@ services:
       - ./:/srv/api
       - ./admin/dist:/srv/api/admin
       - ./docker/nginx/conf.d:/etc/nginx/conf.d/:ro
-      - web-root:./
+      - web-root:/
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     restart: unless-stopped
@@ -52,7 +52,7 @@ services:
     volumes:
         - certbot-etc:/etc/letsencrypt
         - certbot-var:/var/lib/letsencrypt
-    command: certonly --webroot --webroot-path=./ --email sascha.cloud01@gmail.com  --agree-tos --no-eff-email --staging -d skit-software.at  -d www.skit-software.at
+    command: certonly --webroot --webroot-path=/ --email sascha.cloud01@gmail.com  --agree-tos --no-eff-email --staging -d skit-software.at  -d www.skit-software.at
 
     ##########################################################
   pgsql:
