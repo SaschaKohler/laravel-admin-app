@@ -86,11 +86,6 @@ volumes:
     certbot-etc:
     certbot-var:
     web-root:
-        driver: local
-        driver_opts:
-            type: none
-            device: /var/www/html
-            o: bind
 
 networks:
     code-network:
