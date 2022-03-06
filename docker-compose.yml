@@ -48,8 +48,8 @@ services:
   certbot:
     image: certbot/certbot:latest
     volumes:
-        - ./certbot/www:/var/www/certbot/:ro
-    command: certonly --webroot --webroot-path=/ --email sascha.cloud01@gmail.com  --agree-tos --no-eff-email --staging -d skit-software.at  -d www.skit-software.at
+        - ./certbot/www:/var/www/certbot/:rw
+#    command: certonly --webroot --webroot-path=/ --email sascha.cloud01@gmail.com  --agree-tos --no-eff-email --staging -d skit-software.at  -d www.skit-software.at
 
     ##########################################################
   pgsql:
