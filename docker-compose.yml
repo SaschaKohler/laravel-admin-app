@@ -36,7 +36,7 @@ services:
     volumes:
       - ./:/srv/api
       - ./admin/dist:/srv/api/admin
-      - ./docker/nginx/conf.d/site.conf:/etc/nginx/conf.d/site.conf
+#      - ./docker/nginx/conf.d/site.conf:/etc/nginx/conf.d/site.conf
       - ./certbot/www:/var/www/certbot/
       - ./certbot/conf/:/etc/letsencrypt/ssl/
     restart: unless-stopped
