@@ -112,6 +112,11 @@
                                 multiple
                                 clearable
                             ></va-select-input>
+                            <va-file-input
+                                source="images"
+                                multiple
+                            ></va-file-input>
+
                         </v-card-text>
                     </template>
                     <template v-slot:footer>

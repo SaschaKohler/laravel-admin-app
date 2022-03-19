@@ -54,7 +54,8 @@ export default new VuetifyAdmin({
     options: {
         dateFormat: 'long',
         tinyMCE: {
-            language: navigator.language.replace('-', '_'),
+            //language: navigator.language.replace('-', '_'),
+            language: 'de',
             imageUploadUrl: '/api/upload',
             fileBrowserUrl: `${trimEnd(baseURL, '/')}/elfinder/tinymce5`,
         },

@@ -40,7 +40,7 @@ class CustomerController extends Controller
 
 
                 ])
-                ->allowedSorts(['county','brand','offer','first', 'last', 'street', 'city','email'])
+                ->allowedSorts(['county','brand','offer','offerType','first', 'last', 'street', 'city','email'])
                 ->allowedIncludes('events')
                 ->get()
         );

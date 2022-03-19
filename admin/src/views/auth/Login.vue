@@ -23,10 +23,12 @@
         <v-text-field
             :label="$t('auth.password')"
             prepend-icon="mdi-lock"
-            type="password"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show1 ? 'text' : 'password'"
             v-model="form.password"
             required
             :error-messages="errorMessages.password"
+            @click:append="show1 = !show1"
         ></v-text-field>
 
         <v-checkbox
@@ -61,6 +63,7 @@ export default {
             },
             errorMessages: {},
             loading: false,
+            show1: false,
         };
     },
     methods: {

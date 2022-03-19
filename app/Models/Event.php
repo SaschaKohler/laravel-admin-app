@@ -2,15 +2,21 @@
 
 namespace App\Models;
 
-use App\Observers\RecurrenceObserver;
+use App\Models\Traits\MyMediaTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Okami101\LaravelAdmin\Traits\RequestMediaTrait;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Event extends Model
+class Event extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $guarded = ['id'];
     // protected $fillable = ['type', 'color', 'start', 'end', 'event_id', 'customer_id'];
@@ -117,6 +123,27 @@ class Event extends Model
     function tickets()
     {
         return $this->hasMany(Ticket::class);
+    }
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('images');
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('small')
+            ->fit(Manipulations::FIT_CROP, 120, 80)
+            ->nonOptimized();
+
+        $this->addMediaConversion('medium')
+            ->width(400)
+            ->height(300)
+            ->nonOptimized();
+
+        $this->addMediaConversion('large')
+            ->width(800)
+            ->height(600)
+            ->nonOptimized();
     }
 
 }

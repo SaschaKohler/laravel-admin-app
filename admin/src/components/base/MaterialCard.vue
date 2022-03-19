@@ -4,7 +4,7 @@
             <v-avatar
                 v-if="avatar"
                 size="128"
-                class="mx-auto v-card--material__avatar elevation-6"
+                class="mx-auto v-card--material__avatar elevation-5"
                 color="grey"
             >
                 <v-img :src="avatar" />

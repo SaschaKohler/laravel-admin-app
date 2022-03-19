@@ -14,6 +14,7 @@ class Customer extends Model
         'type',
         'prefix',
         'offer',
+        'offerType',
         'brand',
         'county',
         'title',

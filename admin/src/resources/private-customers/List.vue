@@ -26,6 +26,7 @@ export default {
                 {source: 'phone', sortable: false},
                 {source: 'street', sortable: true},
                 {source: 'city', sortable: true},
+                {source: 'offerType', sortable: true},
                 {source: 'offer',type: 'boolean', sortable: true},
 
             ],

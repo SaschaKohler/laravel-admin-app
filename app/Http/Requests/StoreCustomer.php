@@ -28,7 +28,7 @@ class StoreCustomer extends FormRequest
             'last' => 'sometimes|nullable|min:3|max:150',
             'brand' => 'sometimes|nullable|min:3|max:150',
             'county' => 'sometimes|nullable|min:3|max:150',
-            'email' => 'sometimes|email',
+            'email' => 'sometimes|nullable|email',
             'phone' => 'required|numeric'
         ];
     }

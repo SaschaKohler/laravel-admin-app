@@ -15,6 +15,12 @@
                             icon: 'mdi-hammer-screwdriver',
                         },
                         {
+                            id: 'material',
+                            label: $i18n.t('tabs.material'),
+                            icon: 'mdi-hammer-screwdriver',
+                        },
+
+                        {
                             id: 'users',
                             label: $i18n.t('tabs.users'),
                             icon: 'mdi-account',
@@ -158,6 +164,12 @@
                             </v-card-text>
                         </CustomComponent>
                     </template>
+
+                    <template v-slot:material>
+                        <va-rich-text-input source="material">
+
+                        </va-rich-text-input>
+                    </template>
                     <template v-slot:users>
                         <v-card-text>
                             <CustomComponent
@@ -183,14 +195,16 @@
                                             header-color="green darken-3"
                                             :max="props.item.pivot.endTime"
                                             v-model="props.item.pivot.startTime"
-                                        >Arbeitsbeginn</v-time-picker>
+                                        >Arbeitsbeginn
+                                        </v-time-picker>
                                         <v-time-picker
                                             v-bind="props"
                                             format="24h"
                                             header-color="green darken-3"
                                             :min="props.item.pivot.startTime"
                                             v-model="props.item.pivot.endTime"
-                                        >Arbeitsende</v-time-picker>
+                                        >Arbeitsende
+                                        </v-time-picker>
                                     </v-col>
                                 </v-row>
                             </CustomComponent>
@@ -226,9 +240,7 @@
 export default {
     props: ['id', 'title', 'item', 'create'],
     data() {
-        return {
-
-        };
+        return {};
     },
     methods: {
         onChange() {
@@ -248,14 +260,16 @@ export default {
 <style>
 
 div .v-picker__title {
-   padding:2px;
-    margin:2px;
+    padding: 2px;
+    margin: 2px;
 }
-div .v-time-picker-title{
+
+div .v-time-picker-title {
     justify-content: center;
 }
-div .v-time-picker-title__time .v-picker__title__btn ,
-.v-time-picker-title__time span{
+
+div .v-time-picker-title__time .v-picker__title__btn,
+.v-time-picker-title__time span {
     font-size: 30px;
     padding: 0px;
 }

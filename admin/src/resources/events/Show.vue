@@ -29,7 +29,7 @@
                                         reference="customers"
                                         :label="$t('va.customer')"
                                         class="text-lg-h2"
-                                        >{{ item.customer.last }} /
+                                    >{{ item.customer.last }} /
                                         {{ item.customer.street }} /
                                         {{ item.customer.phone }}
                                     </va-field>
@@ -50,7 +50,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title
                                                         class="text-lg-h3"
-                                                        >{{ item.branding }}
+                                                    >{{ item.branding }}
                                                     </v-list-item-title>
                                                     Strecke :{{
                                                         item.pivot.kmSum
@@ -86,6 +86,8 @@
                                             </v-list-item>
                                         </v-list>
                                     </va-field>
+
+
                                 </v-col>
                             </v-row>
                             <v-row>
@@ -103,7 +105,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title
                                                         class="text-lg-h3"
-                                                        >{{ item.name }}
+                                                    >{{ item.name }}
                                                     </v-list-item-title>
                                                     geleistet :
                                                     {{ item.pivot.hours }} h
@@ -112,6 +114,16 @@
                                         </v-list>
                                     </va-field>
                                 </v-col>
+                            </v-row>
+                            <v-row justify="center">
+                                <va-image-field
+                                    class="justify-center"
+                                    source="images"
+                                    type="image"
+                                    src="thumbnails.medium"
+                                    lg="5"
+                                    height="200"
+                                ></va-image-field>
                             </v-row>
                         </v-card-text>
                     </base-material-card>
@@ -149,7 +161,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import {mapState} from 'vuex';
 
 export default {
     props: ['title', 'item', 'id'],
@@ -164,16 +176,16 @@ export default {
                         color: (v) => this.$statusColor(v),
                     },
                 },
-                { source: 'rating', type: 'rating' },
+                {source: 'rating', type: 'rating'},
                 {
                     source: 'body',
                     type: 'text',
-                    attributes: { truncate: 100, multiline: true },
+                    attributes: {truncate: 100, multiline: true},
                 },
                 {
                     source: 'user',
                     type: 'reference',
-                    attributes: { reference: 'users' },
+                    attributes: {reference: 'users'},
                 },
             ],
         };
