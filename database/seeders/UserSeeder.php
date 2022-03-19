@@ -15,33 +15,35 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'roles' => ['admin'],
-        ]);
+        User::factory(14)->create();
 
-        User::factory()->create([
-            'name' => 'Demo',
-            'email' => 'demo@example.com',
-            'roles' => ['admin'],
-        ]);
-
-        for ($i = 1; $i <= 50; $i++) {
-            User::factory()->create([
-                'name' => "Editor $i",
-                'email' => "editor-$i@example.com",
-                'roles' => ['editor'],
-            ]);
-        }
-
-        for ($i = 1; $i <= 200; $i++) {
-            User::factory()->create([
-                'name' => "Author $i",
-                'email' => "author-$i@example.com",
-                'roles' => ['author'],
-            ]);
-        }
+//        User::factory()->create([
+//            'name' => 'Admin',
+//            'email' => 'admin@example.com',
+//            'roles' => ['admin'],
+//        ]);
+//
+//        User::factory()->create([
+//            'name' => 'Demo',
+//            'email' => 'demo@example.com',
+//            'roles' => ['admin'],
+//        ]);
+//
+//        for ($i = 1; $i <= 50; $i++) {
+//            User::factory()->create([
+//                'name' => "Editor $i",
+//                'email' => "editor-$i@example.com",
+//                'roles' => ['editor'],
+//            ]);
+//        }
+//
+//        for ($i = 1; $i <= 200; $i++) {
+//            User::factory()->create([
+//                'name' => "Author $i",
+//                'email' => "author-$i@example.com",
+//                'roles' => ['author'],
+//            ]);
+//        }
     }
 
 }

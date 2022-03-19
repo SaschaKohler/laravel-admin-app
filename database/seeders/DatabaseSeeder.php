@@ -23,15 +23,12 @@ class DatabaseSeeder extends Seeder
             Storage::disk('public')->deleteDirectory($dir);
         }
 
-        User::factory(14)->create();
-//        $this->call(BookSeeder::class);
-//        $this->call(MonsterSeeder::class);
-//        $this->call(UserSeeder::class);
-        $this->call(CustomerSeeder::class);
+        $this->call(UserSeeder::class);
+//        $this->call(CustomerSeeder::class);
         $this->call(VehicleSeeder::class);
         $this->call(ToolSeeder::class);
-        $this->call(EventSeeder::class);
-        $this->call(TicketSeeder::class);
+//        $this->call(EventSeeder::class);
+//        $this->call(TicketSeeder::class);
     }
 
     public static function randomMedia($type, $max, $extension = 'jpg'): string
