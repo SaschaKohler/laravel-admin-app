@@ -17,7 +17,7 @@
                         {
                             id: 'material',
                             label: $i18n.t('tabs.material'),
-                            icon: 'mdi-hammer-screwdriver',
+                            icon: 'mdi-human-dolly',
                         },
 
                         {
@@ -164,7 +164,6 @@
                             </v-card-text>
                         </CustomComponent>
                     </template>
-
                     <template v-slot:material>
                         <va-rich-text-input source="material">
 

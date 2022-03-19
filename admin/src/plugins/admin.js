@@ -15,7 +15,7 @@ import store from '@/store';
 import i18n from '@/i18n';
 import resources from '@/resources';
 import axios from 'axios';
-import trimEnd from 'lodash/trimEnd';
+//import trimEnd from 'lodash/trimEnd';
 
 /**
  * Load Admin UI components
@@ -56,8 +56,10 @@ export default new VuetifyAdmin({
         tinyMCE: {
             //language: navigator.language.replace('-', '_'),
             language: 'de',
-            imageUploadUrl: '/api/upload',
-            fileBrowserUrl: `${trimEnd(baseURL, '/')}/elfinder/tinymce5`,
+            selector: 'textarea',  // change this value according to the HTML
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
+            // imageUploadUrl: '/api/upload',
+            // fileBrowserUrl: `${trimEnd(baseURL, '/')}/elfinder/tinymce5`,
         },
     },
 });

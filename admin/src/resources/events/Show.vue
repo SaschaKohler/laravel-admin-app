@@ -14,6 +14,7 @@
                             <v-row justify="center">
                                 <v-col>
                                     <va-field source="type"></va-field>
+                                    <va-field v-if="type === 'Sonstiges'" source="special"></va-field>
                                 </v-col>
                                 <v-col>
                                     <va-field
@@ -167,6 +168,7 @@ export default {
     props: ['title', 'item', 'id'],
     data() {
         return {
+            type: this.$props.item.type,
             fields: [
                 {
                     source: 'status',

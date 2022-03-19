@@ -24,6 +24,12 @@
                             label: $i18n.t('tabs.tools'),
                             icon: 'mdi-hammer-screwdriver',
                         },
+                        {
+                            id: 'images',
+                            label: $i18n.t('tabs.images'),
+                            icon: 'mdi-image-multiple',
+                        },
+
                     ]"
                 >
                     <template v-slot:attributes>
@@ -31,7 +37,9 @@
                             <va-select-input
                                 source="type"
                                 required
+                                v-model="typeSelected"
                             ></va-select-input>
+                            <va-text-input v-if="typeSelected === 'Sonstiges'" source="special"></va-text-input>
                             <va-date-input
                                 source="start"
                                 v-model="picker"
@@ -51,8 +59,8 @@
                                         model="startTime"
                                         @change="update"
                                     ></CustomTimePicker>
-                                    </v-col>
-                                    <v-col>
+                                </v-col>
+                                <v-col>
                                     <h3>Ende</h3>
                                     <CustomTimePicker
                                         v-bind="$props"
@@ -69,6 +77,7 @@
                                 :choices="recurrence_choices"
                                 required
                             ></va-select-input>
+
                             <va-select-input
                                 source="customer_id"
                                 reference="customers"
@@ -112,11 +121,27 @@
                                 multiple
                                 clearable
                             ></va-select-input>
+                        </v-card-text>
+
+                        <v-divider></v-divider>
+                        <v-card>
+                            <v-card-title>Material / Hilfsmittel</v-card-title>
+                            <v-card-text>
+                                <va-rich-text-input source="material"></va-rich-text-input>
+
+                            </v-card-text>
+                        </v-card>
+                    </template>
+                    <template v-slot:images>
+                        <v-card-text>
                             <va-file-input
+                                :label="$i18n.t('input.select.images')"
                                 source="images"
                                 multiple
+                                preview
+                                src="thumbnails.medium"
+                                color="success"
                             ></va-file-input>
-
                         </v-card-text>
                     </template>
                     <template v-slot:footer>
@@ -143,6 +168,7 @@ export default {
             tools: [],
             vehicles: [],
             isTimed: false,
+            typeSelected: null,
             form: {
                 startTime: '07:00:00',
                 endTime: '08:00:00',
@@ -153,13 +179,13 @@ export default {
             )
                 .toISOString().substring(0, 10),
             recurrence_choices: [
-                { value: 10, text: 'keine'},
-                { value: 1,  text: 'täglich'},
-                { value: 2,  text: 'wöchentlich'},
-                { value: 3,  text: '14 tägig'},
-                { value: 4,  text: 'monatlich'},
-                { value: 5,  text: 'alle 3 Monate'},
-                { value: 6,  text: 'halbjährlich'},
+                {value: 10, text: 'keine'},
+                {value: 1, text: 'täglich'},
+                {value: 2, text: 'wöchentlich'},
+                {value: 3, text: '14 tägig'},
+                {value: 4, text: 'monatlich'},
+                {value: 5, text: 'alle 3 Monate'},
+                {value: 6, text: 'halbjährlich'},
             ],
         };
     },
