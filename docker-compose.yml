@@ -39,6 +39,7 @@ services:
 #      - ./docker/nginx/conf.d/site.conf:/etc/nginx/conf.d/site.conf
       - ./certbot/www:/var/www/certbot/
       - ./certbot/conf/:/etc/letsencrypt/ssl/
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     restart: unless-stopped
     depends_on:
       - laravel
@@ -51,6 +52,7 @@ services:
     volumes:
         - ./certbot/www:/var/www/certbot/
         - ./certbot/conf/:/etc/letsencrypt/
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 #    command: certonly --webroot --webroot-path=/var/www/certbot/ --email sascha.cloud01@gmail.com  --agree-tos --no-eff-email --staging -d skit-software.at  -d www.skit-software.at
 
 
