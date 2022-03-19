@@ -40,7 +40,7 @@ class UserFactory extends Factory
             9 => ['employee'],
             10 => ['employee'],
             11 => ['employee'],
-            12 => ['employee'],
+            12 => ['admin','employee'],
             13 => ['employee'],
             14 => ['employee'],
 
