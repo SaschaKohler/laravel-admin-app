@@ -23,7 +23,7 @@
             <impersonate-message></impersonate-message>
         </template>
         <va-aside slot="aside"></va-aside>
-        <va-footer slot="footer" :menu="footerMenu">
+        <va-footer slot="footer" >
             &copy; 2022,
             <v-icon size="18"> mdi-xml</v-icon>
             with
@@ -55,15 +55,7 @@ export default {
             ],
             footerMenu: [
                 {
-                    href: '#',
-                    text: 'About Us',
-                },
-                {
-                    href: '#',
-                    text: 'Blog',
-                },
-                {
-                    href: '#',
+                    href: '/',
                     text: 'License',
                 },
             ],
