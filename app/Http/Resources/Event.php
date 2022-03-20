@@ -16,9 +16,9 @@ class Event extends BaseResource
     {
         $attributes = parent::toArray($request);
 
-        $attributes['pivot'] = $this->whenPivotLoaded('event_vehicle', function(){
-            return $this->pivot->kmSum;
-        });
+//        $attributes['pivot'] = $this->whenPivotLoaded('event_vehicle', function(){
+//            return $this->pivot->kmSum;
+//        });
         return $attributes;
 
     }

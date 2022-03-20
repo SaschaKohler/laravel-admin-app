@@ -61,19 +61,15 @@
                                                     <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
-                                                            v-model="props.item.pivot.kmBegin"
-                                                            :label="
-                                                                $t('va.kmBegin')
-                                                            "
+                                                            source="pivot.kmBegin"
+                                                            :label="$t('va.kmBegin')"
                                                         ></va-number-input>
                                                     </v-col>
                                                     <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
-                                                            v-model="props.item.pivot.kmEnd"
-                                                            :label="
-                                                                $t('va.kmEnd')
-                                                            "
+                                                            source="pivot.kmEnd"
+                                                            :label="$t('va.kmEnd')"
                                                         ></va-number-input>
                                                     </v-col>
                                                 </v-row>
@@ -100,10 +96,7 @@
                                                             min="0.5"
                                                             max="24"
                                                             step="0.5"
-                                                            v-model="
-                                                                props.item.pivot
-                                                                    .hours
-                                                            "
+                                                            v-model="props.item.pivot.hours"
                                                         ></v-slider>
                                                     </v-col>
                                                 </v-row>
@@ -242,16 +235,6 @@ export default {
         return {};
     },
     methods: {
-        onChange() {
-            console.log(this.$props.item.vehicles);
-        },
-        show(val) {
-            console.log(val);
-        },
-        editItem(item) {
-            this.editedId = item.id;
-            this.dialog = true;
-        },
     },
 };
 </script>

@@ -2,7 +2,7 @@
     <va-show-layout>
         <va-show :item="item">
             <v-row justify="center">
-                <v-col sm="6" lg="8">
+                <v-col sm="6" lg="10">
                     <base-material-card>
                         <template v-slot:heading>
                             <div class="display-2">
@@ -116,14 +116,11 @@
                                     </va-field>
                                 </v-col>
                             </v-row>
-                            <v-row justify="center">
+                            <v-row >
                                 <va-image-field
-                                    class="justify-center"
                                     source="images"
                                     type="image"
-                                    src="thumbnails.medium"
-                                    lg="5"
-                                    height="200"
+                                    src="thumbnails.small"
                                 ></va-image-field>
                             </v-row>
                         </v-card-text>
