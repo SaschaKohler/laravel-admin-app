@@ -44,7 +44,7 @@
                                     </va-field>
                                 </v-col>
                             </v-row>
-                            <v-row>
+                            <v-row v-if="item.order_by_id">
                                 <v-col>
                                     <va-field source="customerOrder"
                                               :label="$t('va.job_for_customer')"

@@ -25,6 +25,8 @@ class CustomerFactory extends Factory
         $email = $first . '.' . $last . '@' . $domain;
         $customerType = random_int(1, 3);
         $prefix = $pref[random_int(1, 3)];
+        $brand = $this->faker->company();
+        if($customerType = 1) $brand = '';
 
         return [
             'first' => $first,
@@ -38,7 +40,7 @@ class CustomerFactory extends Factory
             'city' => $this->faker->city,
             'phone' => $this->faker->phoneNumber,
             'county' => $this->faker->city,
-            'brand' => $this->faker->company(),
+            'brand' => $brand,
             'type' => $customerType,
 
         ];
