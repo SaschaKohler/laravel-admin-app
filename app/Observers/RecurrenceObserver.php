@@ -89,6 +89,8 @@ class RecurrenceObserver
             $customer_id = $event->customer_id;
             $notes = $event->notes;
             $allDay = $event->allDay;
+            $order_by_id = $event->order_by_id;
+            $location = $event->location;
 
             if(!$allDay) {
                 $startTime = Carbon::parse($event->startTime);//->format('H:i:s');
@@ -111,6 +113,8 @@ class RecurrenceObserver
                         'color' => $color,
                         'type' => $type,
                         'customer_id' => $customer_id,
+                        'order_by_id' => $order_by_id,
+                        'location' => $location,
                         'notes' => $notes,
                         'allDay' => $allDay,
                         'recurrence' => $event->recurrence,
