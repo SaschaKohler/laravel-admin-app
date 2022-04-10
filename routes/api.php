@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ToolController;
@@ -42,6 +43,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         'tickets' => TicketController::class,
         'report' => ReportController::class,
 
+        'offers' => OfferController::class,
     ]);
 
     Route::post('events/{event}/sendConfirmMail', [EventController::class, 'sendConfirmMail'])->name('events.sendConfirmMail');

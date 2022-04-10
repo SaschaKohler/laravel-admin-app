@@ -48,10 +48,14 @@
                 @click:date="viewDay"
             >
                 <template v-slot:event="{ event }">
-
-                 <span v-if="event.allDay"><span class="text-bold">ganztägig</span> - {{event.customer.last }}</span>
-                 <span v-else><span class="text-bold">{{event.startTime}}</span> - {{event.customer.last }}</span>
-
+                    <span v-if="event.allDay"
+                        ><span class="text-bold">ganztägig</span> -
+                        {{ event.customer.last }}</span
+                    >
+                    <span v-else
+                        ><span class="text-bold">{{ event.startTime }}</span> -
+                        {{ event.customer.last }}</span
+                    >
                 </template>
             </v-calendar>
             <v-menu
@@ -72,25 +76,24 @@
                         >
                         </v-toolbar-title>
                         <div class="flex-grow-1"></div>
-
                     </v-toolbar>
                     <v-card-text>
-
-                            <v-row>
-                                <v-col cols="8">
-                            {{ selectedEvent.start | formatDate }}
-                            <span
-                                v-if="selectedEvent.fixed === true"
-                                class="red--text"
-                            >
-                                - Termin fixiert -</span
-                            >
-                                </v-col>
-                                <v-col cols="2" class="pt-0">
-                                    <send-mail-button :item="selectedEvent"></send-mail-button>
-                                </v-col>
-
-                            </v-row>
+                        <v-row>
+                            <v-col cols="8">
+                                {{ selectedEvent.start | formatDate }}
+                                <span
+                                    v-if="selectedEvent.fixed === true"
+                                    class="red--text"
+                                >
+                                    - Termin fixiert -</span
+                                >
+                            </v-col>
+                            <v-col cols="2" class="pt-0">
+                                <send-mail-button
+                                    :item="selectedEvent"
+                                ></send-mail-button>
+                            </v-col>
+                        </v-row>
                         <v-row>
                             <p class="text-h5">
                                 {{ selectedEvent.customer.firstName }}
@@ -109,7 +112,7 @@
                                     v-for="employee in selectedEvent.employees"
                                     :key="employee.id"
                                     class="pa-0"
-                                    style="list-style: none;"
+                                    style="list-style: none"
                                 >
                                     {{ employee.name }}
                                 </li>
@@ -123,7 +126,7 @@
                                     v-for="vehicle in selectedEvent.vehicles"
                                     :key="vehicle.id"
                                     class="pa-0"
-                                    style="list-style: none;"
+                                    style="list-style: none"
                                 >
                                     {{ vehicle.branding }}
                                 </li>
@@ -138,10 +141,10 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import SendMailButton from "@/components/buttons/SendMailButton";
+import SendMailButton from '@/components/buttons/SendMailButton';
 
 export default {
-    components: {SendMailButton},
+    components: { SendMailButton },
     data() {
         return {
             data: [],
@@ -169,9 +172,8 @@ export default {
             ],
             mode: 'stack',
             modes: ['stack', 'column'],
-            weekday: [0, 1, 2, 3, 4, 5, 6],
+            weekday: [1, 2, 3, 4, 5, 6, 0],
             weekdays: [
-                { text: 'So - Sa', value: [0, 1, 2, 3, 4, 5, 6] },
                 { text: 'Mo - So', value: [1, 2, 3, 4, 5, 6, 0] },
                 { text: 'Mo - Fr', value: [1, 2, 3, 4, 5] },
             ],
@@ -212,14 +214,14 @@ export default {
         getEvents() {
             this.events = this.data.data.map((n) => {
                 return {
-                    id:n.id,
+                    id: n.id,
                     name: n.type,
                     fixed: n.fixed,
                     start: n.start,
-                    startTime: (n.startTime).substring(0,5),
+                    startTime: n.startTime.substring(0, 5),
                     end: n.end,
-                    endTime: (n.endTime).substring(0,5),
-                    allDay:n.allDay,
+                    endTime: n.endTime.substring(0, 5),
+                    allDay: n.allDay,
                     color: n.color,
                     customer: n.customer,
                     users: n.users,
@@ -242,7 +244,7 @@ export default {
                 this.selectedEvent.startTime = event.startTime;
                 this.selectedEvent.end = event.end;
                 this.selectedEvent.endTime = event.endTime;
-                this.selectedEvent.allDay= event.allDay;
+                this.selectedEvent.allDay = event.allDay;
                 this.selectedEvent.fixed = event.fixed;
                 this.selectedEvent.name = event.name;
 

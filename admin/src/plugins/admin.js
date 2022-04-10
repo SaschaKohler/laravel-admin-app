@@ -56,8 +56,9 @@ export default new VuetifyAdmin({
         tinyMCE: {
             //language: navigator.language.replace('-', '_'),
             language: 'de',
-            selector: 'textarea',  // change this value according to the HTML
-            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
+            selector: 'textarea', // change this value according to the HTML
+            toolbar:
+                'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
             // imageUploadUrl: '/api/upload',
             // fileBrowserUrl: `${trimEnd(baseURL, '/')}/elfinder/tinymce5`,
         },

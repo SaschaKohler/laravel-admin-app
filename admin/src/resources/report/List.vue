@@ -23,15 +23,11 @@
                                 :item="item"
                                 action=""
                             >
-
-                                    <h3>{{ item.name }}</h3>
+                                <h3>{{ item.name }}</h3>
                                 <p v-if="item.pivot['hours']">
                                     {{ item.pivot['hours'] }} h
                                 </p>
-                                <p v-else>
-                                    kein Eintrag
-                                </p>
-
+                                <p v-else>kein Eintrag</p>
                             </va-reference-field>
                         </template>
                     </va-data-table>
@@ -67,7 +63,7 @@ export default {
                     attributes: {
                         reference: 'users',
                         itemValue: 'name',
-                    }
+                    },
                 },
                 {
                     source: 'finished',
@@ -76,27 +72,29 @@ export default {
             ],
             fields: [
                 'type',
-                {source: 'start', type: 'date', sortable: true},
+                { source: 'start', type: 'date', sortable: true },
                 {
                     source: 'customer',
                     type: 'reference',
-                    attributes: {reference: 'customers', chip: true ,action: 'show'},
+                    attributes: {
+                        reference: 'customers',
+                        chip: true,
+                        action: 'show',
+                    },
                 },
                 {
                     source: 'users',
                     sortable: false,
                     attributes: {
                         itemText: () => {
-                            return 'Hello World'
+                            return 'Hello World';
                         },
-                    }
+                    },
                 },
-                {source: 'sumHours', sortable: true},
+                { source: 'sumHours', sortable: true },
             ],
         };
-
     },
-
 };
 </script>
 

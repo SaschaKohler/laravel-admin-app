@@ -14,7 +14,10 @@
                             <v-row justify="center">
                                 <v-col>
                                     <va-field source="type"></va-field>
-                                    <va-field v-if="type === 'Sonstiges'" source="special"></va-field>
+                                    <va-field
+                                        v-if="type === 'Sonstiges'"
+                                        source="special"
+                                    ></va-field>
                                 </v-col>
                                 <v-col>
                                     <va-field
@@ -32,7 +35,26 @@
                                         class="text-lg-h2"
                                     >{{ item.customer.last }} /
                                         {{ item.customer.street }} /
+                                        {{ item.customer.city }} /
+
                                         {{ item.customer.phone }}
+
+
+                                    <p v-if="item.location != null" class="text-subtitle-1">abweichende Baustellenadresse: <span class="red--text">{{item.location}}</span></p>
+                                    </va-field>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col>
+                                    <va-field source="customerOrder"
+                                              :label="$t('va.job_for_customer')"
+                                    >{{ item.customer_order.brand }} /
+                                        {{ item.customer_order.street }} /
+                                        {{ item.customer_order.city }} --
+                                        {{ item.customer_order.phone }} (
+                                        {{ item.customer_order.prefix }}
+                                        {{ item.customer_order.title}}
+                                        {{ item.customer_order.last}}) --
                                     </va-field>
                                 </v-col>
                             </v-row>
@@ -87,8 +109,6 @@
                                             </v-list-item>
                                         </v-list>
                                     </va-field>
-
-
                                 </v-col>
                             </v-row>
                             <v-row>
@@ -116,12 +136,13 @@
                                     </va-field>
                                 </v-col>
                             </v-row>
-                            <v-row >
-                                <va-image-field
-                                    source="images"
-                                    type="image"
-                                    src="thumbnails.small"
-                                ></va-image-field>
+                            <v-row justify="center">
+                                    <va-image-field
+                                        source="images"
+                                        type="image"
+                                        src="thumbnails.large"
+                                        lg="3"
+                                    ></va-image-field>
                             </v-row>
                         </v-card-text>
                     </base-material-card>

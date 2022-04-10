@@ -10,9 +10,7 @@
                 users_id: user.id,
             }"
         >
-            <va-data-table :fields="fields"
-                           disable-delete
-                           disable-clone>
+            <va-data-table :fields="fields" disable-delete disable-clone>
                 <template v-slot:[`field.vehicles`]="{ value }">
                     <v-chip-group column>
                         <va-reference-field
@@ -66,7 +64,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
     props: ['resource', 'title', 'item'],
@@ -83,11 +81,11 @@ export default {
                 },
             ],
             fields: [
-                {source: 'type', sortable: true},
+                { source: 'type', sortable: true },
                 {
                     source: 'start',
                     type: 'date',
-                    attributes: {format: 'short'},
+                    attributes: { format: 'short' },
                     sortable: true,
                 },
                 {
@@ -120,11 +118,11 @@ export default {
                     source: 'tools',
                     sortable: false,
                 },
-                {source: 'finished', type: 'boolean'},
+                { source: 'finished', type: 'boolean' },
                 {
                     source: 'updated_at',
                     type: 'date',
-                    attributes: {format: 'time'},
+                    attributes: { format: 'time' },
                 },
             ],
         };

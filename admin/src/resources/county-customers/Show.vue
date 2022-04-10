@@ -10,7 +10,6 @@
                             </div>
                         </template>
                         <v-card-text>
-
                             <va-field source="county"></va-field>
                             <va-field source="offer"></va-field>
 

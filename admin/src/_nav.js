@@ -11,6 +11,11 @@ export default (i18n, admin) => [
 
     admin.can(['admin']) && {
         icon: 'mdi-card-account-details',
+        text: i18n.t('menu.offers'),
+        link: '/offers',
+    },
+    admin.can(['admin']) && {
+        icon: 'mdi-card-account-details',
         text: i18n.t('menu.events'),
         link: '/events',
     },

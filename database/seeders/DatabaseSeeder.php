@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call(UserSeeder::class);
-//        $this->call(CustomerSeeder::class);
+        $this->call(CustomerSeeder::class);
         $this->call(VehicleSeeder::class);
         $this->call(ToolSeeder::class);
-//        $this->call(EventSeeder::class);
+        $this->call(EventSeeder::class);
 //        $this->call(TicketSeeder::class);
     }
 

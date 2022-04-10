@@ -36,12 +36,13 @@ class CustomerController extends Controller
                     AllowedFilter::partial('first'),
                     AllowedFilter::exact('type'),
                     AllowedFilter::exact('offer'),
+                    AllowedFilter::exact('can_job_order'),
 
 
 
                 ])
-                ->allowedSorts(['county','brand','offer','offerType','first', 'last', 'street', 'city','email'])
-                ->allowedIncludes('events')
+                ->allowedSorts(['county','brand','offer','offerType','first', 'last', 'street', 'city','email','can_job_order'])
+                ->allowedIncludes('events','offers')
                 ->get()
         );
         return $resource;

@@ -1,14 +1,10 @@
 <template>
-    <v-dialog
-        v-model="dialog"
-        width="500"
-    >
+    <v-dialog v-model="dialog" width="500">
         <template v-slot:activator="{ on, attrs }">
             <v-btn
                 color="black lighten-1"
                 v-bind="attrs"
                 dark
-
                 fab
                 depressed
                 v-on="on"
@@ -24,8 +20,7 @@
                 Kunden-Verständigung
             </v-card-title>
             <v-card-text>
-                Um den Kunden per Mail zu verständigen ?
-                Bitte wählen.
+                Um den Kunden per Mail zu verständigen ? Bitte wählen.
             </v-card-text>
 
             <v-divider></v-divider>
@@ -52,8 +47,6 @@
             </v-card-actions>
         </v-card>
     </v-dialog>
-
-
 </template>
 
 <script>
@@ -65,7 +58,7 @@ export default {
         item: Object,
         icon: Boolean,
         confirm: Boolean,
-        dialog:Boolean,
+        dialog: Boolean,
     },
     computed: {
         ...mapState({
@@ -78,7 +71,7 @@ export default {
                 const resp = await this.$admin.http.post(
                     `/api/events/${this.item.id}/sendConfirmMail`
                 );
-                this.dialog=false;
+                this.dialog = false;
                 this.$admin.toast.success(resp.data.message);
             } catch ({ response }) {
                 this.$admin.toast.error(response.data.message);
@@ -89,7 +82,7 @@ export default {
                 const resp = await this.$admin.http.post(
                     `/api/events/${this.item.id}/sendDismissMail`
                 );
-                this.dialog=false;
+                this.dialog = false;
                 this.$admin.toast.success(resp.data.message);
             } catch ({ response }) {
                 this.$admin.toast.error(response.data.message);

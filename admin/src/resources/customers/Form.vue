@@ -24,10 +24,23 @@
                             </v-row>
                             <v-row>
                                 <v-col cols="4">
-                                    <va-boolean-input source="offer" v-model="hasOffer"></va-boolean-input>
+                                    <va-boolean-input
+                                        source="can_job_order"
+                                    ></va-boolean-input>
+                                </v-col>
+                            </v-row>
+                                <v-row>
+                                <v-col cols="4">
+                                    <va-boolean-input
+                                        source="offer"
+                                        v-model="hasOffer"
+                                    ></va-boolean-input>
                                 </v-col>
                                 <v-col cols="8">
-                                    <va-text-input v-if="hasOffer" source="offerType"></va-text-input>
+                                    <va-text-input
+                                        v-if="hasOffer"
+                                        source="offerType"
+                                    ></va-text-input>
                                 </v-col>
                             </v-row>
                         </v-card-text>
@@ -41,61 +54,112 @@
                                     required
                                 ></va-select-input>
                                 <va-text-input source="title"></va-text-input>
-                                <va-text-input source="first" required></va-text-input>
-                                <va-text-input source="last" required></va-text-input>
+                                <va-text-input
+                                    source="first"
+                                    required
+                                ></va-text-input>
+                                <va-text-input
+                                    source="last"
+                                    required
+                                ></va-text-input>
                                 <v-divider></v-divider>
-                                <va-text-input source="phone" required></va-text-input>
+                                <va-text-input
+                                    source="phone"
+                                    required
+                                ></va-text-input>
                                 <va-text-input source="email"></va-text-input>
-
                             </template>
 
                             <template v-if="customerType === 2">
-                                <va-text-input source="brand" required></va-text-input>
+                                <va-text-input
+                                    source="brand"
+                                    required
+                                ></va-text-input>
                                 <v-expansion-panels>
                                     <v-expansion-panel class="mb-4">
-
-                                        <v-expansion-panel-header>Ansprechpartner</v-expansion-panel-header>
+                                        <v-expansion-panel-header
+                                            >Ansprechpartner</v-expansion-panel-header
+                                        >
                                         <v-expansion-panel-content>
                                             <va-select-input
                                                 source="prefix"
                                                 required
                                             ></va-select-input>
-                                            <va-text-input source="title"></va-text-input>
-                                            <va-text-input source="first" required></va-text-input>
-                                            <va-text-input source="last" required></va-text-input>
-                                            <va-text-input source="phone" required></va-text-input>
-                                            <va-text-input source="email"></va-text-input>
+                                            <va-text-input
+                                                source="title"
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="first"
+                                                required
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="last"
+                                                required
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="phone"
+                                                required
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="email"
+                                            ></va-text-input>
                                         </v-expansion-panel-content>
                                     </v-expansion-panel>
                                 </v-expansion-panels>
                             </template>
 
                             <template v-if="customerType === 3" class="mt-6">
-                                <va-text-input source="county" required></va-text-input>
+                                <va-text-input
+                                    source="county"
+                                    required
+                                ></va-text-input>
                                 <v-expansion-panels>
                                     <v-expansion-panel class="mb-4">
-                                        <v-expansion-panel-header>Ansprechpartner</v-expansion-panel-header>
+                                        <v-expansion-panel-header
+                                            >Ansprechpartner</v-expansion-panel-header
+                                        >
                                         <v-expansion-panel-content>
                                             <va-select-input
                                                 source="prefix"
                                                 required
                                             ></va-select-input>
-                                            <va-text-input source="title"></va-text-input>
-                                            <va-text-input source="first" required></va-text-input>
-                                            <va-text-input source="last" required></va-text-input>
-                                            <va-text-input source="phone" required></va-text-input>
-                                            <va-text-input source="email"></va-text-input>
+                                            <va-text-input
+                                                source="title"
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="first"
+                                                required
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="last"
+                                                required
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="phone"
+                                                required
+                                            ></va-text-input>
+                                            <va-text-input
+                                                source="email"
+                                            ></va-text-input>
                                         </v-expansion-panel-content>
                                     </v-expansion-panel>
                                 </v-expansion-panels>
                             </template>
 
-                            <va-text-input source="street" required></va-text-input>
-                            <va-text-input source="city" required></va-text-input>
+                            <va-text-input
+                                source="street"
+                                hint="Musterweg 12"
+                                required
+                            ></va-text-input>
+                            <va-text-input
+                                source="city"
+                                hint="1234 Musterbergl"
+                                required
+                            ></va-text-input>
                         </v-card-text>
-                    <v-card-actions>
-                        <va-save-button></va-save-button>
-                    </v-card-actions>
+                        <v-card-actions>
+                            <va-save-button></va-save-button>
+                        </v-card-actions>
                     </v-card>
                 </base-material-card>
             </v-col>
@@ -104,20 +168,18 @@
 </template>
 
 <script>
-
 export default {
     props: ['id', 'title', 'item'],
     data() {
         return {
-            customerType: "1",
+            customerType: '1',
             hasOffer: false,
             choices: [
-                {text: 'Privatkunde', value: 1},
-                {text: 'Firma', value: 2},
-                {text: 'Gemeinde', value: 3},
-
-            ]
-        }
+                { text: 'Privatkunde', value: 1 },
+                { text: 'Firma', value: 2 },
+                { text: 'Gemeinde', value: 3 },
+            ],
+        };
     },
     methods: {
         // getDefaults() {
@@ -139,6 +201,6 @@ export default {
     },
     mounted() {
         this.getDefaults();
-    }
+    },
 };
 </script>

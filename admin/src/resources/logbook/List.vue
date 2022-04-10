@@ -1,10 +1,6 @@
 <template>
     <base-material-card :icon="resource.icon" :title="title">
-        <va-list
-            :filters="filters"
-            disable-create
-            disable-export
-        >
+        <va-list :filters="filters" disable-create disable-export>
             <va-data-table
                 :fields="fields"
                 disable-show
@@ -104,9 +100,13 @@ export default {
                 },
             ],
             fields: [
-                { source: 'type', type: 'chip' ,sortable: true , attributes:{
+                {
+                    source: 'type',
+                    type: 'chip',
+                    sortable: true,
+                    attributes: {
                         color: (v) => this.$eventTypeColor(v),
-                    }
+                    },
                 },
                 {
                     source: 'start',

@@ -41,61 +41,76 @@
                                     </v-row>
                                     <v-row justify="center">
                                         <v-col cols="12">
-
                                             <template
                                                 v-if="
-                                            props.item.type === 'Pickup' ||
-                                            props.item.type === 'Pritsche' ||
-                                            props.item.type === 'PKW'
-                                        "
+                                                    props.item.type ===
+                                                        'Pickup' ||
+                                                    props.item.type ===
+                                                        'Pritsche' ||
+                                                    props.item.type === 'PKW'
+                                                "
                                             >
                                                 <v-row>
                                                     <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
                                                             source="pivot.kmBegin"
-                                                            :label="$t('va.kmBegin')"
+                                                            :label="
+                                                                $t('va.kmBegin')
+                                                            "
                                                         ></va-number-input>
                                                     </v-col>
                                                     <v-col>
                                                         <va-number-input
                                                             v-bind="props"
                                                             source="pivot.kmEnd"
-                                                            :label="$t('va.kmEnd')"
+                                                            :label="
+                                                                $t('va.kmEnd')
+                                                            "
                                                         ></va-number-input>
                                                     </v-col>
                                                 </v-row>
                                             </template>
                                             <template
                                                 v-if="
-                                            props.item.type === 'Traktor' ||
-                                            props.item.type === 'Mähdrescher'
-                                        "
+                                                    props.item.type ===
+                                                        'Traktor' ||
+                                                    props.item.type ===
+                                                        'Mähdrescher'
+                                                "
                                             >
                                                 <v-row>
                                                     <v-col v-bind="props">
                                                         <v-slider
                                                             v-bind="props"
-                                                            :label="$t('pivot.hours')"
+                                                            :label="
+                                                                $t(
+                                                                    'pivot.hours'
+                                                                )
+                                                            "
                                                             thumb-color="primary"
                                                             min="0.5"
                                                             max="24"
                                                             step="0.5"
                                                             v-model="
-                                                        props.item.pivot.hours
-                                                    "
+                                                                props.item.pivot
+                                                                    .hours
+                                                            "
                                                         ></v-slider>
                                                     </v-col>
                                                 </v-row>
                                             </template>
                                             <template
-                                                v-if="props.item.type === 'Anhänger'"
+                                                v-if="
+                                                    props.item.type ===
+                                                    'Anhänger'
+                                                "
                                             >
                                                 <v-row>
                                                     <v-col>
                                                         <p>
-                                                            Keine Einträge für dieses
-                                                            Fahrzeug
+                                                            Keine Einträge für
+                                                            dieses Fahrzeug
                                                         </p>
                                                     </v-col>
                                                 </v-row>

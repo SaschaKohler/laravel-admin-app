@@ -3,33 +3,41 @@ export default [
         name: 'users',
         icon: 'mdi-hand-saw',
         label: 'name',
-        routes: ['list', 'show'],
+        routes: ['list', 'show']
+    },
+    {
+        name: 'offers',
+        icon: 'mdi-account',
+        label: 'offer',
+        permissions: ['admin', 'employee'],
+        include: ['customer']
+
     },
     {
         name: 'events',
         icon: 'mdi-card-account-details',
         label: 'type',
-        permissions: ['admin'],
+        permissions: ['admin']
     },
     {
         name: 'active_events',
         api: 'events',
         icon: 'mdi-account',
         permissions: ['employee'],
-        include: ['vehicles', 'customers', 'users', 'tools'],
+        include: ['vehicles', 'customers', 'users', 'tools']
     },
     {
         name: 'logbook',
         api: 'events',
         icon: 'mdi-notebook-edit',
-        permissions: ['admin'],
+        permissions: ['admin']
     },
     {
         name: 'active-logbook',
         api: 'events',
         icon: 'mdi-notebook-edit',
         permissions: ['employee'],
-        include: ['vehicles', 'users', 'tools',],
+        include: ['vehicles', 'users', 'tools']
     },
     {
         name: 'customers',
@@ -37,14 +45,13 @@ export default [
         label: (customers) => {
             switch (customers.type) {
                 case 1 :
-                    return  'Privat: ' + customers.last + ', ' + customers.first + ' / ' + customers.city;
+                    return customers.last + ', ' + customers.first + ' / ' + customers.city + ' (Privat)';
                 case 2:
-                     return 'Firma: ' + customers.brand + ' (' + (customers.city) + ') | ' + customers.last + ', ' + customers.first;
-
+                    return customers.last + ', ' + customers.first + ' / ' + customers.city + ' -- ' + customers.brand + ' (Firma)';
                 case 3:
-                     return 'Gemeinde: ' + customers.county + ' | '+ + customers.last + ', ' + customers.first;
-        }
-      },
+                    return customers.last + ', ' + customers.first + ' / ' + customers.county + ' (Gemeinde)';
+            }
+        },
         permissions: ['admin', 'employee'],
     },
     {
@@ -69,6 +76,7 @@ export default [
         },
         permissions: ['admin', 'employee'],
     },
+
     {
         name: 'county-customers',
         api: 'customers',
@@ -85,26 +93,25 @@ export default [
         icon: 'mdi-car',
         label: 'branding',
         permissions: ['admin'],
-        include: ['events'],
+        include: ['events']
     },
     {
         name: 'tools',
         icon: 'mdi-tool',
         label: 'title',
-        permissions: ['admin'],
+        permissions: ['admin']
     },
     {
         name: 'tickets',
         icon: 'mdi-ticket',
         label: 'ticket',
         permissions: ['admin', 'employee'],
-        include: ['event', 'user'],
+        include: ['event', 'user']
     },
     {
         name: 'report',
         icon: 'mdi-ticket',
-        permissions: ['admin'],
-
+        permissions: ['admin']
     },
 
-];
+]

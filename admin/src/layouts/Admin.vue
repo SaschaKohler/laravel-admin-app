@@ -23,13 +23,14 @@
             <impersonate-message></impersonate-message>
         </template>
         <va-aside slot="aside"></va-aside>
-        <va-footer slot="footer" >
+        <va-footer slot="footer">
             &copy; 2022,
             <v-icon size="18"> mdi-xml</v-icon>
             with
             <v-icon size="18"> mdi-heart</v-icon>
             by
-            <a href="https://skit-software.at">sk.IT</a> individual web solutions.
+            <a href="https://skit-software.at">sk.IT</a> individual web
+            solutions.
         </va-footer>
     </va-layout>
 </template>

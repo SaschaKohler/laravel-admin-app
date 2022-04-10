@@ -23,7 +23,8 @@ class Customer extends Model
         'email',
         'street',
         'city',
-        'phone'
+        'phone',
+        'can_job_order'
     ];
 
     protected $casts = [];
@@ -31,5 +32,15 @@ class Customer extends Model
     public function events()
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function orderEvents()
+    {
+        return $this->hasMany(Event::class,'id',);
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
     }
 }

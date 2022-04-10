@@ -69,6 +69,7 @@
     "va.tools": "Werkzeuge / Maschinen",
     "va.users": "Mitarbeiter",
     "va.customer": "Kunde / Kundendaten",
+    "va.job_for_customer": "bauftragende Firma/Gemeinde etc.",
     "pivot.hours": "Betriebsstunden",
     "pivot.workingHours": "Arbeitsstunden",
     "routes": {
@@ -126,6 +127,7 @@
         "users": "Mitarbeiter",
         "profile": "Profile",
         "dashboard": "Dashboard",
+        "offers": "Angebotsliste",
         "events": "Auftragsliste",
         "logbook": "Aufträge buchen",
         "act_events": "Aufträge bearbeiten",
@@ -149,12 +151,15 @@
             "fields": {
                 "type": "Leistung",
                 "special": "Leistungsart",
+                "is_job_order" : "Lohnauftrag",
+                "customer_order" : "beauftr. Firma",
                 "color": "Farbe / Kalendar",
                 "finished": "Baustelle fertig",
                 "fixed": "Termin fixiert",
                 "recurrence": "Wiederholung",
                 "event_id": "StartAuftrag",
                 "customer": "Kunde",
+                "location" : "abweichende Baustellenadresse",
                 "tools": "Werkzeug / Maschinen",
                 "vehicles": "Fahrzeuge",
                 "allDay": "ganztägig",
@@ -167,6 +172,7 @@
             "enums": {
                 "type": {
                     "Baumpflege": "Baumpflege",
+                    "Stockfräsen": "Stockfräsen",
                     "Zaunbau": "Zaunbau",
                     "Gartenpflege": "Gartenpflege",
                     "Transport": "Transport",
@@ -193,6 +199,7 @@
             "enums": {
                 "type": {
                     "Baumpflege": "Baumpflege",
+                    "Stockfräsen": "Stockfräsen",
                     "Zaunbau": "Zaunbau",
                     "Gartenpflege": "Gartenpflege",
                     "Transport": "Transport",
@@ -202,6 +209,7 @@
                 },
                 "color": {
                     "green lighten-2": "grün",
+                    "orange": "orange",
                     "cyan darken-1": "cyan",
                     "blue lighten-2": "blau",
                     "brown lighten-2": "braun",
@@ -250,6 +258,7 @@
                 "type": "Kundentyp",
                 "offer": "Angebot erstellen",
                 "offerType": "Angebot bezüglich ?",
+                "can_job_order": "erteilt Lohnaufträge",
                 "county": "Gemeinde",
                 "brand": "Firma",
                 "manager": "Ansprechpartner",
@@ -277,6 +286,7 @@
                 "type": "Kundentyp",
                 "offer": "Angebot erstellen",
                 "offerType": "Angebot bezüglich ?",
+                "can_job_order": "erteilt Lohnaufträge",
                 "county": "Gemeinde",
                 "brand": "Firma",
                 "manager": "Ansprechpartner",
@@ -304,6 +314,7 @@
                 "offerType": "Angebot bezüglich ?",
                 "county": "Gemeinde",
                 "type": "Kundentyp",
+                "can_job_order": "erteilt Lohnaufträge",
                 "brand": "Firma",
                 "manager": "Ansprechpartner",
                 "title": "Titel",
@@ -328,6 +339,7 @@
                 "prefix": "Anrede",
                 "county": "Gemeinde",
                 "type": "Kundentyp",
+                "can_job_order": "erteilt Lohnaufträge",
                 "offer": "Angebot erstellen",
                 "offerType": "Angebot bezüglich ?",
                 "brand": "Firma",
@@ -410,7 +422,18 @@
                     "ready": "erledigt"
                 }
             }
+        },
+        "offers": {
+            "name": "Angebot | Angebote",
+            "fields": {
+                "type": "Angebot (Art des Angebots)",
+                "detail": "Details zum Angebot",
+                "notes": "Notizen",
+                "customer_id": "Kunde",
+                "created_at": "Erstellt am",
+                "updated_at": "Geändert am"
+            },
+            "enums": {}
         }
     }
 }
-

@@ -29,7 +29,6 @@
                             label: $i18n.t('tabs.images'),
                             icon: 'mdi-image-multiple',
                         },
-
                     ]"
                 >
                     <template v-slot:attributes>
@@ -39,7 +38,10 @@
                                 required
                                 v-model="typeSelected"
                             ></va-select-input>
-                            <va-text-input v-if="typeSelected === 'Sonstiges'" source="special"></va-text-input>
+                            <va-text-input
+                                v-if="typeSelected === 'Sonstiges'"
+                                source="special"
+                            ></va-text-input>
                             <va-date-input
                                 source="start"
                                 v-model="picker"
@@ -85,6 +87,29 @@
                                 required
                             >
                             </va-select-input>
+
+
+                            <va-boolean-input
+                                source="is_job_order"
+                                v-model="isJobOrder">
+                            </va-boolean-input>
+                            <v-card v-if="isJobOrder">
+                                <v-card-title>Lohnauftrag</v-card-title>
+                                <v-card-text>
+                                    <va-select-input
+                                        source="order_by_id"
+                                        reference="customers"
+                                        :label="$t('va.job_for_customer')"
+                                        :filter=" {can_job_order : true }"
+
+                                        required
+                                    >
+                                    </va-select-input>
+                                    <va-text-input source="location"
+                                                   hint="Musterstrasse 12 / 1234 Musterhausen"></va-text-input>
+                                </v-card-text>
+                            </v-card>
+
                         </v-card-text>
                     </template>
                     <template v-slot:users>
@@ -127,8 +152,9 @@
                         <v-card>
                             <v-card-title>Material / Hilfsmittel</v-card-title>
                             <v-card-text>
-                                <va-rich-text-input source="material"></va-rich-text-input>
-
+                                <va-rich-text-input
+                                    source="material"
+                                ></va-rich-text-input>
                             </v-card-text>
                         </v-card>
                     </template>
@@ -139,7 +165,8 @@
                                 source="images"
                                 multiple
                                 preview
-                                src="thumbnails.medium"
+                                lg="3"
+                                src="thumbnails.large"
                                 color="success"
                             ></va-file-input>
                         </v-card-text>
@@ -169,6 +196,7 @@ export default {
             vehicles: [],
             isTimed: false,
             typeSelected: null,
+            isJobOrder: false,
             form: {
                 startTime: '07:00:00',
                 endTime: '08:00:00',
@@ -177,7 +205,8 @@ export default {
             picker: new Date(
                 Date.now() - new Date().getTimezoneOffset() * 60000
             )
-                .toISOString().substring(0, 10),
+                .toISOString()
+                .substring(0, 10),
             recurrence_choices: [
                 {value: 10, text: 'keine'},
                 {value: 1, text: 'täglich'},
@@ -202,22 +231,20 @@ export default {
                 this.timed = false;
             }
             if (this.item.startTime) {
-                this.form.startTime = (this.item.startTime);//.substring(0,5);
+                this.form.startTime = this.item.startTime; //.substring(0,5);
             } else {
                 this.form.startTime = '0:19';
             }
             if (this.item.endTime) {
-                this.form.endTime = (this.item.endTime);//.substring(0,5);
+                this.form.endTime = this.item.endTime; //.substring(0,5);
             } else {
                 this.form.endTime = '0:39';
             }
-        }
+        },
     },
     watch: {},
     created() {
         this.getDefaults();
-    }
-
-
+    },
 };
 </script>

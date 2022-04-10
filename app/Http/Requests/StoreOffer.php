@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateEvent extends FormRequest
+class StoreOffer extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class UpdateEvent extends FormRequest
     public function rules()
     {
         return [
-            'finished' => 'nullable|boolean',
-            'type' => 'required',
-            'start' => 'required',
-            'customer_id' => 'required',
-            'recurrence' => 'required|min:0',
+            //
         ];
     }
 }

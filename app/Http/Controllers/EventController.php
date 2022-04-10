@@ -39,8 +39,9 @@ class EventController extends Controller
         return EventResource::collection(
             QueryBuilder::for(Event::class)
                 ->with('vehicles:id,branding,type')
-                ->with('customer:id,first,last,brand,county,type,street,city')
+                ->with('customer:id,prefix,title,first,last,brand,phone,email,county,type,street,city')
                 ->with('users:id,name')
+                ->with('customerOrder:id,prefix,title,first,last,brand,phone,email,county,type,street,city')
                 ->with('tools:id,title')
                 ->allowedFilters([
                     AllowedFilter::custom('q', new SearchFilter(['type'])),
@@ -78,8 +79,8 @@ class EventController extends Controller
                     AllowedFilter::exact('finished'),
                     AllowedFilter::partial('type'),
                 ])
-                ->allowedSorts(['id', 'start', 'type', 'customer', 'updated_at', 'finished', 'fixed'])
-                ->allowedIncludes(['customer', 'users', 'tools', 'vehicles'])
+                ->allowedSorts(['id', 'is_job_order','start', 'type', 'customer', 'updated_at', 'finished', 'fixed'])
+                ->allowedIncludes(['customer', 'users', 'tools', 'vehicles','customerOrder'])
                 ->orderBy('start')
                 ->get()
         );
@@ -93,7 +94,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return new EventResource($event->load(['vehicles', 'users', 'customer', 'tools', 'media']));
+        return new EventResource($event->load(['vehicles', 'users', 'customer', 'tools', 'media','customerOrder']));
     }
 
     /**
@@ -111,6 +112,9 @@ class EventController extends Controller
             case 'Baumpflege':
                 $event->color = "brown lighten-1";
                 break;
+            case 'Stockfräsen':
+                $event->color = "orange";
+                break;
             case 'Zaunbau':
                 $event->color = "purple";
                 break;
@@ -127,7 +131,7 @@ class EventController extends Controller
                 $event->color = "grey";
                 break;
             case 'Sonstiges':
-                $event->color = "orange";
+                $event->color = "orange darken-1";
                 break;
         }
 

@@ -149,16 +149,15 @@
                 </va-data-table>
             </va-list>
         </base-material-card>
-
     </va-show-layout>
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState } from 'vuex';
 
 export default {
     props: ['title', 'item'],
-    data () {
+    data() {
         return {
             fields: [
                 {

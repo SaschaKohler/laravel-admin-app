@@ -61,6 +61,9 @@ class RecurrenceObserver
                 case 'Baumpflege':
                     $color = "brown lighten-1";
                     break;
+                case 'Stockfräsen':
+                    $color = "orange";
+                    break;
                 case 'Zaunbau':
                     $color = "purple";
                     break;
@@ -77,7 +80,7 @@ class RecurrenceObserver
                     $color = "grey";
                     break;
                 case 'Sonstiges':
-                    $color = "orange";
+                    $color = "orange darken-1";
                     break;
             }
 

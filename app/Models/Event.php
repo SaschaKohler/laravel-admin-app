@@ -67,6 +67,11 @@ class Event extends Model implements HasMedia
         return $this->belongsTo(Customer::class);
     }
 
+    public function customerOrder()
+    {
+        return $this->belongsTo(Customer::class,'order_by_id','id');
+    }
+
     public
     function vehicles()
     {

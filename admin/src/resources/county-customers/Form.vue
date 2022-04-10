@@ -23,15 +23,26 @@
                                 required
                             ></va-select-input>
                             <va-text-input source="title"></va-text-input>
-                            <va-text-input source="first" required></va-text-input>
-                            <va-text-input source="last" required></va-text-input>
+                            <va-text-input
+                                source="first"
+                                required
+                            ></va-text-input>
+                            <va-text-input
+                                source="last"
+                                required
+                            ></va-text-input>
                         </template>
                         <template v-if="customerType === 2">
-                            <va-text-input source="brand" required></va-text-input>
+                            <va-text-input
+                                source="brand"
+                                required
+                            ></va-text-input>
 
-                            <va-text-input source="manager" required></va-text-input>
+                            <va-text-input
+                                source="manager"
+                                required
+                            ></va-text-input>
                         </template>
-
 
                         <va-text-input source="email"></va-text-input>
                         <va-text-input source="street" required></va-text-input>
@@ -52,33 +63,32 @@ export default {
         return {
             customerType: 1,
             choices: [
-                {text: 'Privatkunde', value: 1},
-                {text: 'Firma', value: 2},
-                {text: 'Gemeinde', value: 3},
-
-            ]
-        }
+                { text: 'Privatkunde', value: 1 },
+                { text: 'Firma', value: 2 },
+                { text: 'Gemeinde', value: 3 },
+            ],
+        };
     },
     methods: {
         getDefaults() {
             switch (this.item.type) {
                 case 1:
-                    this.customerType = 1
+                    this.customerType = 1;
                     break;
-                case 2 :
-                    this.customerType = 2
+                case 2:
+                    this.customerType = 2;
                     break;
                 case 3:
-                    this.customerType = 3
+                    this.customerType = 3;
                     break;
                 default:
                     this.customerType = 1;
                     break;
             }
-        }
+        },
     },
     created() {
         this.getDefaults();
-    }
+    },
 };
 </script>

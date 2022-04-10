@@ -10,13 +10,22 @@
                             </div>
                         </template>
                         <v-card-text>
-                            <va-field source="first"></va-field>
-                            <va-field source="last"></va-field>
-                            <va-field source="title"></va-field>
-                            <va-field source="email"></va-field>
+                            <va-field source="county"></va-field>
+                            <va-field source="offer"></va-field>
+
+                            <v-card class="mb-4">
+                                <v-card-title>Ansprechpartner</v-card-title>
+                                <v-card-text>
+                                    <va-field source="prefix"></va-field>
+                                    <va-field source="title"></va-field>
+                                    <va-field source="first"></va-field>
+                                    <va-field source="last"></va-field>
+                                    <va-field source="phone"></va-field>
+                                    <va-field source="email"></va-field>
+                                </v-card-text>
+                            </v-card>
                             <va-field source="street"></va-field>
                             <va-field source="city"></va-field>
-                            <va-field source="phone"></va-field>
                         </v-card-text>
                     </base-material-card>
                 </v-col>

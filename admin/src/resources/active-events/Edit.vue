@@ -9,12 +9,10 @@
 </template>
 
 <script>
-
 export default {
     props: ['id', 'title', 'item'],
     data() {
-        return {}
-    }
-}
+        return {};
+    },
+};
 </script>
-

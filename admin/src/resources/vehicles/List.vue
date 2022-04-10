@@ -3,9 +3,7 @@
         <v-col cols="12" lg="12">
             <base-material-card :icon="resource.icon" :title="title">
                 <va-list :filters="filters" :include="['events']">
-                    <va-data-table :fields="fields">
-
-                    </va-data-table>
+                    <va-data-table :fields="fields"> </va-data-table>
                 </va-list>
             </base-material-card>
         </v-col>

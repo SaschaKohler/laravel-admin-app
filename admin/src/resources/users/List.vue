@@ -44,7 +44,7 @@ export default {
                 { source: 'email', type: 'email' },
                 { source: 'address', type: 'text' },
                 { source: 'phone1', type: 'text' },
-                { source: 'roles', type: 'array', sortable: false, },
+                { source: 'roles', type: 'array', sortable: false },
                 { source: 'active', type: 'boolean' },
             ],
             asideTitle: null,

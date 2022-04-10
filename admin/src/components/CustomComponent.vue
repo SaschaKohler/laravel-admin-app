@@ -14,7 +14,8 @@
                     :item="item"
                     :parent-source="source"
                     :index="i"
-                > </slot>
+                >
+                </slot>
             </div>
         </div>
     </va-input>

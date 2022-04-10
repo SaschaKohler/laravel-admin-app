@@ -48,8 +48,7 @@ export default {
 };
 </script>
 <style scoped>
-
-div{
+div {
     color: white;
 }
 </style>

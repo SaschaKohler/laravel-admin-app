@@ -19,7 +19,6 @@
                             <va-field source="street"></va-field>
                             <va-field source="city"></va-field>
                             <va-field source="phone"></va-field>
-
                         </v-card-text>
                     </base-material-card>
                 </v-col>

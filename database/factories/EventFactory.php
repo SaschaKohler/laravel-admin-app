@@ -18,13 +18,16 @@ class EventFactory extends Factory
         $timeStart = Carbon::createFromFormat('H:i', $this->faker->time('H:i'))->format('H:i:s');
         $timeEnd = Carbon::createFromFormat('H:i:s', $timeStart)->addHour()->format('H:i:s');
 
-        $type = $this->faker->randomElement(['Baumpflege', 'Zaunbau', 'Gartenpflege',
+        $type = $this->faker->randomElement(['Baumpflege', 'Stockfräsen','Zaunbau', 'Gartenpflege',
             'Transport', 'pers_Termin', 'Winterdienst', 'Sonstiges']);
 
         $color = '';
         switch ($type) {
             case 'Baumpflege' :
                 $color = 'brown lighten-1';
+                break;
+            case 'Stockfräsen' :
+                $color = 'orange';
                 break;
             case 'Zaunbau':
                 $color = 'purple';

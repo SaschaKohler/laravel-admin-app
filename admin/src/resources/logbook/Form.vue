@@ -62,14 +62,18 @@
                                                         <va-number-input
                                                             v-bind="props"
                                                             source="pivot.kmBegin"
-                                                            :label="$t('va.kmBegin')"
+                                                            :label="
+                                                                $t('va.kmBegin')
+                                                            "
                                                         ></va-number-input>
                                                     </v-col>
                                                     <v-col cols="6">
                                                         <va-number-input
                                                             v-bind="props"
                                                             source="pivot.kmEnd"
-                                                            :label="$t('va.kmEnd')"
+                                                            :label="
+                                                                $t('va.kmEnd')
+                                                            "
                                                         ></va-number-input>
                                                     </v-col>
                                                 </v-row>
@@ -96,7 +100,10 @@
                                                             min="0.5"
                                                             max="24"
                                                             step="0.5"
-                                                            v-model="props.item.pivot.hours"
+                                                            v-model="
+                                                                props.item.pivot
+                                                                    .hours
+                                                            "
                                                         ></v-slider>
                                                     </v-col>
                                                 </v-row>
@@ -159,7 +166,6 @@
                     </template>
                     <template v-slot:material>
                         <va-rich-text-input source="material">
-
                         </va-rich-text-input>
                     </template>
                     <template v-slot:users>
@@ -187,7 +193,7 @@
                                             header-color="green darken-3"
                                             :max="props.item.pivot.endTime"
                                             v-model="props.item.pivot.startTime"
-                                        >Arbeitsbeginn
+                                            >Arbeitsbeginn
                                         </v-time-picker>
                                         <v-time-picker
                                             v-bind="props"
@@ -195,12 +201,11 @@
                                             header-color="green darken-3"
                                             :min="props.item.pivot.startTime"
                                             v-model="props.item.pivot.endTime"
-                                        >Arbeitsende
+                                            >Arbeitsende
                                         </v-time-picker>
                                     </v-col>
                                 </v-row>
                             </CustomComponent>
-
 
                             <v-row justify="right">
                                 <v-col cols="6">
@@ -234,13 +239,11 @@ export default {
     data() {
         return {};
     },
-    methods: {
-    },
+    methods: {},
 };
 </script>
 
 <style>
-
 div .v-picker__title {
     padding: 2px;
     margin: 2px;
@@ -255,5 +258,4 @@ div .v-time-picker-title__time .v-picker__title__btn,
     font-size: 30px;
     padding: 0px;
 }
-
 </style>
