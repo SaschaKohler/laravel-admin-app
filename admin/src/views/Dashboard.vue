@@ -95,11 +95,17 @@
                             </v-col>
                         </v-row>
                         <v-row>
-                            <p class="text-h5">
+                            <p v-if="selectedEvent.customer.type === 2" class="text-h5">
+                                {{ selectedEvent.customer.brand }} /
+                                {{ selectedEvent.customer.street }} /
+                                {{ selectedEvent.customer.city }}
+                            </p>
+                            <p v-else class="text-h5">
                                 {{ selectedEvent.customer.name }} /
                                 {{ selectedEvent.customer.street }} /
                                 {{ selectedEvent.customer.city }}
                             </p>
+
                         </v-row>
                         <div class="d-flex justify-space-around">
                             <ul class="pa-0 ma-0">
@@ -248,7 +254,8 @@ export default {
 
                 this.selectedEvent.customer.name = event.customer.name;
                 this.selectedEvent.customer.street = event.customer.street;
-                // this.selectedEvent.customer.PLZ = event.customer.PLZ
+                 this.selectedEvent.customer.brand = event.customer.brand;
+                 this.selectedEvent.customer.type = event.customer.type;
                 this.selectedEvent.customer.city = event.customer.city;
 
                 this.selectedElement = nativeEvent.target;
