@@ -1,5 +1,5 @@
 <template>
-    <va-form :id="id" :item="item">
+    <va-form :id="id" :item="item" :customer="customer">
         <v-row justify="center">
             <v-col sm="8">
                 <base-material-card>
@@ -29,7 +29,7 @@
                                     ></va-boolean-input>
                                 </v-col>
                             </v-row>
-                                <v-row>
+                            <v-row>
                                 <v-col cols="4">
                                     <va-boolean-input
                                         source="offer"
@@ -55,12 +55,9 @@
                                 ></va-select-input>
                                 <va-text-input source="title"></va-text-input>
                                 <va-text-input
-                                    source="first"
-                                    required
-                                ></va-text-input>
-                                <va-text-input
-                                    source="last"
-                                    required
+                                    source="name"
+                                    hint="Nachname (Vorname)"
+
                                 ></va-text-input>
                                 <v-divider></v-divider>
                                 <va-text-input
@@ -73,12 +70,14 @@
                             <template v-if="customerType === 2">
                                 <va-text-input
                                     source="brand"
+                                    hint="Firmenbezeichner bzw. Name"
                                     required
                                 ></va-text-input>
                                 <v-expansion-panels>
                                     <v-expansion-panel class="mb-4">
                                         <v-expansion-panel-header
-                                            >Ansprechpartner</v-expansion-panel-header
+                                        >Ansprechpartner
+                                        </v-expansion-panel-header
                                         >
                                         <v-expansion-panel-content>
                                             <va-select-input
@@ -86,14 +85,12 @@
                                                 required
                                             ></va-select-input>
                                             <va-text-input
-                                                source="title"
+                                                source="manager_title"
+                                                hint="Mag. Dr. Prof. Dipl. Ing. Ing etc."
                                             ></va-text-input>
                                             <va-text-input
-                                                source="first"
-                                                required
-                                            ></va-text-input>
-                                            <va-text-input
-                                                source="last"
+                                                source="manager"
+                                                hint="Nachname Vorname"
                                                 required
                                             ></va-text-input>
                                             <va-text-input
@@ -116,7 +113,8 @@
                                 <v-expansion-panels>
                                     <v-expansion-panel class="mb-4">
                                         <v-expansion-panel-header
-                                            >Ansprechpartner</v-expansion-panel-header
+                                        >Ansprechpartner
+                                        </v-expansion-panel-header
                                         >
                                         <v-expansion-panel-content>
                                             <va-select-input
@@ -127,11 +125,8 @@
                                                 source="title"
                                             ></va-text-input>
                                             <va-text-input
-                                                source="first"
-                                                required
-                                            ></va-text-input>
-                                            <va-text-input
-                                                source="last"
+                                                source="manager"
+                                                hint="Nachname Vorname"
                                                 required
                                             ></va-text-input>
                                             <va-text-input
@@ -172,12 +167,14 @@ export default {
     props: ['id', 'title', 'item'],
     data() {
         return {
-            customerType: '1',
+
+customerType:'',
             hasOffer: false,
             choices: [
-                { text: 'Privatkunde', value: 1 },
-                { text: 'Firma', value: 2 },
-                { text: 'Gemeinde', value: 3 },
+
+                {text: 'Privatkunde', value: 1},
+                {text: 'Firma', value: 2},
+                {text: 'Gemeinde', value: 3},
             ],
         };
     },

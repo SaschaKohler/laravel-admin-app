@@ -10,7 +10,7 @@
                         <v-card-title>Privat</v-card-title>
                         <v-card-text>
 
-                            <p class="text-caption ma-0">{{ value.prefix }} {{ value.title }} {{ value.last }}
+                            <p class="text-caption ma-0">{{ value.prefix }} {{ value.title }} {{ value.name }}
                             <p class="text-caption ma-0">{{ value.phone }}</p>
                             <p class="text-caption mb-1">{{ value.email }}</p>
                             <p class="text-subtitle-2">
@@ -22,8 +22,8 @@
                         <v-card-title>Firma</v-card-title>
                         <v-card-text>
                             <p class="text-capitalize">{{ value.brand }}</p>
-                            <p class="text-caption ma-0">Ansprechp.: {{ value.prefix }} {{ value.title }}
-                                {{ value.last }}
+                            <p class="text-caption ma-0">Ansprechp.: {{ value.prefix }} {{ value.manager_title }}
+                                {{ value.manager }}
                             <p class="text-caption ma-0">{{ value.phone }}</p>
                             <p class="text-caption mb-1">{{ value.email }}</p>
                             <p class="text-subtitle-2">
@@ -50,7 +50,7 @@
                         <v-card-title>Privat</v-card-title>
                         <v-card-text>
 
-                            <p class="text-caption ma-0">{{ value.prefix }} {{ value.title }} {{ value.last }}
+                            <p class="text-caption ma-0">{{ value.prefix }} {{ value.title }} {{ value.name }}
                             <p class="text-caption ma-0">{{ value.phone }}</p>
                             <p class="text-caption mb-1">{{ value.email }}</p>
                             <p class="text-subtitle-2">
@@ -62,8 +62,8 @@
                         <v-card-title>Firma</v-card-title>
                         <v-card-text>
                             <p class="text-capitalize">{{ value.brand }}</p>
-                            <p class="text-caption ma-0">Ansprechp.: {{ value.prefix }} {{ value.title }}
-                                {{ value.last }}
+                            <p class="text-caption ma-0">Ansprechp.: {{ value.prefix }} {{ value.manager_title }}
+                                {{ value.manager }}
                             <p class="text-caption ma-0">{{ value.phone }}</p>
                             <p class="text-caption mb-1">{{ value.email }}</p>
                             <p class="text-subtitle-2">
@@ -75,8 +75,8 @@
                         <v-card-title>Gemeinde</v-card-title>
                         <v-card-text>
                             <p class="text-capitalize">{{ value.county }}</p>
-                            <p class="text-caption ma-0">Ansprechp.: {{ value.prefix }} {{ value.title }}
-                                {{ value.last }}
+                            <p class="text-caption ma-0">Ansprechp.: {{ value.prefix }} {{ value.manager_title }}
+                                {{ value.manager }}
                             <p class="text-caption ma-0">{{ value.phone }}</p>
                             <p class="text-caption mb-1">{{ value.email }}</p>
                             <p class="text-subtitle-2">
@@ -150,9 +150,10 @@ export default {
                 },
                 {
                     source: 'customer',
-                    type: 'reference',
+                    type: 'autocomplete',
                     attributes: {
                         reference: 'customers',
+                        minChars: 2
                     },
                 },
                 {

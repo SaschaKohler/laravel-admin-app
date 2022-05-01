@@ -80,14 +80,15 @@
                                 required
                             ></va-select-input>
 
-                            <va-select-input
+                            <va-autocomplete-input
                                 source="customer_id"
                                 reference="customers"
                                 :label="$t('va.customer')"
+                                search-query="name"
+                                min-chars="2"
                                 required
-                            >
-                            </va-select-input>
-
+                                >
+                            </va-autocomplete-input>
 
                             <va-boolean-input
                                 source="is_job_order"
@@ -105,6 +106,7 @@
                                         required
                                     >
                                     </va-select-input>
+
                                     <va-text-input source="location"
                                                    hint="Musterstrasse 12 / 1234 Musterhausen"></va-text-input>
                                 </v-card-text>

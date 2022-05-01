@@ -11,11 +11,10 @@ export default {
     props: ['resource', 'title'],
     data() {
         return {
-            filters: ['id', 'first', 'last', 'city'],
+            filters: ['id', 'name', 'city'],
             fields: [
                 'type',
-                { source: 'first', sortable: true },
-                { source: 'last', sortable: true },
+                { source: 'name', sortable: true },
                 { source: 'email', sortable: true },
                 { source: 'phone', sortable: false },
                 { source: 'street', sortable: true },

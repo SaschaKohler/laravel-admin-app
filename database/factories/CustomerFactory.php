@@ -26,22 +26,24 @@ class CustomerFactory extends Factory
         $customerType = random_int(1, 3);
         $prefix = $pref[random_int(1, 3)];
         $brand = $this->faker->company();
-        if($customerType = 1) $brand = '';
+        $county = $this->faker->city();
+
 
         return [
-            'first' => $first,
 
-            'last' => $last,
-            'email' => $this->faker->email(),
-            'offer' => random_int(0,1),
+            'name' => $last . ' ' . $first,
+            'email' => $email,
+            'offer' => random_int(0, 1),
             'prefix' => $prefix,
+            'manager' => $last . ' ' . $first,
             'title' => $this->faker->title($gender = 'male' | 'female'),
             'street' => $this->faker->streetName,
             'city' => $this->faker->city,
             'phone' => $this->faker->phoneNumber,
-            'county' => $this->faker->city,
+            'county' => $county,
             'brand' => $brand,
             'type' => $customerType,
+            'can_job_order' => random_int(0,1)
 
         ];
     }

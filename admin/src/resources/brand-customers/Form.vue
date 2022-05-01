@@ -35,6 +35,7 @@
                         <template v-if="customerType === 2">
                             <va-text-input
                                 source="brand"
+                                hint="Firmenbezeichner bzw. Name"
                                 required
                             ></va-text-input>
 

@@ -17,21 +17,25 @@ export default {
             filters: [
                 'id',
                 'city',
-                'last',
-                'first',
                 'brand',
+                'name',
                 { source: 'offer', type: 'boolean' },
             ],
 
             fields: [
                 { source: 'brand', sortable: true },
                 {
-                    source: 'last',
+                    source: 'manager',
                     sortable: true,
                     attributes: { label: 'customers' },
                 },
+                { source: 'name2', sortable: true },
                 { source: 'email', sortable: true },
+                { source: 'email2', sortable: true },
                 { source: 'phone', sortable: false },
+                { source: 'phone2', sortable: false },
+                { source: 'phone3', sortable: false },
+                { source: 'uident', sortable: false },
                 { source: 'street', sortable: true },
                 { source: 'city', sortable: true },
                 { source: 'offer', type: 'boolean', sortable: true },

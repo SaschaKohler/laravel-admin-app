@@ -50,11 +50,11 @@
                 <template v-slot:event="{ event }">
                     <span v-if="event.allDay"
                         ><span class="text-bold">ganztägig</span> -
-                        {{ event.customer.last }}</span
+                        {{ event.customer.name }}</span
                     >
                     <span v-else
                         ><span class="text-bold">{{ event.startTime }}</span> -
-                        {{ event.customer.last }}</span
+                        {{ event.customer.name }}</span
                     >
                 </template>
             </v-calendar>
@@ -96,8 +96,7 @@
                         </v-row>
                         <v-row>
                             <p class="text-h5">
-                                {{ selectedEvent.customer.firstName }}
-                                {{ selectedEvent.customer.lastName }} /
+                                {{ selectedEvent.customer.name }} /
                                 {{ selectedEvent.customer.street }} /
                                 {{ selectedEvent.customer.city }}
                             </p>
@@ -154,8 +153,7 @@ export default {
                 start: null,
                 end: null,
                 customer: {
-                    firstName: null,
-                    lastName: null,
+                    name: null,
                     PLZ: null,
                     street: null,
                     city: null,
@@ -248,8 +246,7 @@ export default {
                 this.selectedEvent.fixed = event.fixed;
                 this.selectedEvent.name = event.name;
 
-                this.selectedEvent.customer.lastName = event.customer.last;
-                this.selectedEvent.customer.firstName = event.customer.first;
+                this.selectedEvent.customer.name = event.customer.name;
                 this.selectedEvent.customer.street = event.customer.street;
                 // this.selectedEvent.customer.PLZ = event.customer.PLZ
                 this.selectedEvent.customer.city = event.customer.city;

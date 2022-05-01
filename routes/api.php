@@ -26,6 +26,7 @@ Route::get('report' , [ReportController::class,'index'])->name('report');
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
+
     Route::account();
     Route::impersonate();
     Route::upload();
@@ -46,6 +47,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         'offers' => OfferController::class,
     ]);
 
+    Route::post('customers/importCSV', [CustomerController::class, 'importCSV'])->name('customers.importCSV');
     Route::post('events/{event}/sendConfirmMail', [EventController::class, 'sendConfirmMail'])->name('events.sendConfirmMail');
     Route::post('events/{event}/sendDismissMail', [EventController::class, 'sendDismissMail'])->name('events.sendDismissMail');
+
 });

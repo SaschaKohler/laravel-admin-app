@@ -99,8 +99,7 @@ class Event extends Model implements HasMedia
     {
         $query->whereHas('customer', function (Builder $query) use ($value) {
             $query->where(function ($query) use ($value) {
-                $query->where('last', 'LIKE', '%' . $value . '%')
-                    ->orWhere('first', 'LIKE', '%' . $value . '%');
+                $query->where('name', 'LIKE', '%' . $value . '%');
             });
         });
     }

@@ -45,11 +45,11 @@ export default [
         label: (customers) => {
             switch (customers.type) {
                 case 1 :
-                    return customers.last + ', ' + customers.first + ' / ' + customers.city + ' (Privat)';
+                    return customers.name  + ' / ' + customers.city + ' (Privat)';
                 case 2:
-                    return customers.last + ', ' + customers.first + ' / ' + customers.city + ' -- ' + customers.brand + ' (Firma)';
+                    return customers.name + ' / ' + customers.city + ' (Firma)';
                 case 3:
-                    return customers.last + ', ' + customers.first + ' / ' + customers.county + ' (Gemeinde)';
+                    return customers.name +  ' / ' + customers.city + ' (Gemeinde)';
             }
         },
         permissions: ['admin', 'employee'],
@@ -60,7 +60,7 @@ export default [
         icon: 'mdi-account',
         label: (customers) => {
             return (
-                customers.first + ' ' + customers.last + ' ' + customers.city
+                customers.name + ' ' + customers.city
             );
         },
         permissions: ['admin', 'employee'],
@@ -71,7 +71,7 @@ export default [
         icon: 'mdi-account-hard-hat',
         label: (customers) => {
             return (
-                customers.brand + ' ' + customers.last + ' ' + customers.city
+                customers.name + ' ' + customers.brand + ' '  + customers.city
             );
         },
         permissions: ['admin', 'employee'],
@@ -83,7 +83,7 @@ export default [
         icon: 'mdi-account-tie',
         label: (customers) => {
             return (
-                customers.first + ' ' + customers.last + ' ' + customers.city
+                customers.name +  ' ' + customers.city
             );
         },
         permissions: ['admin', 'employee'],

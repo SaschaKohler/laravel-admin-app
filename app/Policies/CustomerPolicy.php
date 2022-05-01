@@ -76,4 +76,10 @@ class CustomerPolicy
     {
         return true;
     }
+
+    public function importCSV(User $user, Customer $customer)
+    {
+        return true;
+    }
+
 }

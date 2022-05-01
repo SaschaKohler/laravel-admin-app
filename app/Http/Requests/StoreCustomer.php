@@ -24,7 +24,7 @@ class StoreCustomer extends FormRequest
     public function rules()
     {
         return [
-            'first' => 'sometimes|nullable|min:3|max:150',
+            'name' => 'sometimes|nullable|min:3|max:150',
             'last' => 'sometimes|nullable|min:3|max:150',
             'brand' => 'sometimes|nullable|min:3|max:150',
             'county' => 'sometimes|nullable|min:3|max:150',
