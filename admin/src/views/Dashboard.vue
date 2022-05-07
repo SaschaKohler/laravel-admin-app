@@ -75,6 +75,7 @@
                             v-html="selectedEvent.name"
                         >
                         </v-toolbar-title>
+
                         <div class="flex-grow-1"></div>
                     </v-toolbar>
                     <v-card-text>

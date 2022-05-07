@@ -47,9 +47,9 @@ export default [
                 case 1 :
                     return customers.name  + ' / ' + customers.city + ' (Privat)';
                 case 2:
-                    return customers.name + ' / ' + customers.city + ' (Firma)';
+                    return customers.brand + ' / ' + customers.city + ' (Firma)';
                 case 3:
-                    return customers.name +  ' / ' + customers.city + ' (Gemeinde)';
+                    return customers.county +  ' / ' + customers.city + ' (Gemeinde)';
             }
         },
         permissions: ['admin', 'employee'],

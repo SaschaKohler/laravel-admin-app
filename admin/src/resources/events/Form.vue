@@ -84,7 +84,6 @@
                                 source="customer_id"
                                 reference="customers"
                                 :label="$t('va.customer')"
-                                search-query="name"
                                 min-chars="2"
                                 required
                                 >
